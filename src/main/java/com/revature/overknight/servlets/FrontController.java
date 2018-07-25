@@ -8,7 +8,12 @@ import java.io.IOException;
 
 public class FrontController extends HttpServlet {
 
-    public FrontController() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public FrontController() {
         super();
         System.out.println("FrontController Created.");     //TODO: change to log statement
     }
