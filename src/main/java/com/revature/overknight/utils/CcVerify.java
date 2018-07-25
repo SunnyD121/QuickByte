@@ -19,7 +19,7 @@ public class CcVerify {
 		
 		if(isValid(result))
 		{
-			Logger.log(CcVerify.class,"Number is VALID!!!!");
+			System.out.println("Number is VALID!!!!");
 			walterResult = result;
 			Logger.log(CcVerify.class, walterResult.toString(), Logger.Severity.INFO);
 		}
