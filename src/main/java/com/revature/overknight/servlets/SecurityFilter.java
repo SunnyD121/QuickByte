@@ -1,21 +1,23 @@
 package com.revature.overknight.servlets;
 
+import com.revature.overknight.utils.Logger;
+
 import javax.servlet.*;
 import java.io.IOException;
 
 public class SecurityFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("Filter initialized.");  //TODO: Change to log statement
+        Logger.log(this.getClass(), "Security Filter Initialized.");     //TODO: change to log statement
     }
 
     @Override
     public void destroy() {
-        System.out.println("Filter destroyed.");  //TODO: Change to log statement
+        Logger.log(this.getClass(), "Security Filter Destroyed.");     //TODO: change to log statement
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("Filter doFilter() called.");  //TODO: Change to log statement
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+        Logger.log(this.getClass(), "Security Filter doFilter() called.");     //TODO: change to log statement
     }
 }
