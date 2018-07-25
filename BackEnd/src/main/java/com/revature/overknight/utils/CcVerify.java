@@ -13,18 +13,19 @@ public class CcVerify {
 		// TODO Auto-generated method stub
 		
 		Scanner input = new Scanner(System.in);
-		System.out.println("Enter a credit card number");
+		Logger.log(CcVerify.class,"Enter a credit card number", Logger.Severity.INFO);
 		Long result = input.nextLong();
 		Long walterResult;
 		
 		if(isValid(result))
 		{
-			System.out.println("Number is VALID!!!!");
+			Logger.log(CcVerify.class,"Number is VALID!!!!");
 			walterResult = result;
+			Logger.log(CcVerify.class, walterResult.toString(), Logger.Severity.INFO);
 		}
 		else
 		{
-			System.out.println("Number is INVALID!!");
+			Logger.log(CcVerify.class,"Number is INVALID!!", Logger.Severity.INFO);
 		}
 		
 		input.close();
@@ -93,14 +94,13 @@ public class CcVerify {
 	  */
 	public static int sumOfDoubleEvenPlace(long number)
 	{
-
 		int result = 0;
 		
 		// reverse number by using a StringBuilder and the .reverse() functionality
 		String numberString = Long.toString(number);
 		StringBuilder sb = new StringBuilder(numberString).reverse();
 		
-		// We start at 1 instead of 0 since we ar result = 0;
+		// We start at 1 instead of 0 since we are only using the numbers in even positions
 		// we then increment by 2
 		int iterationLength = numberString.length();
 		for (int i = 1; i < iterationLength; i +=2) 
