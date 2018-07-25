@@ -2,7 +2,7 @@
 // From examples in chapter 6.
 // Credit also to Kevin G (https://www.youtube.com/watch?v=k3s-yv1McwA)
 
-package com.revature.overknight.util;
+package com.revature.overknight.utils;
 
 import java.util.Scanner;
 
@@ -13,19 +13,19 @@ public class CcVerify {
 		// TODO Auto-generated method stub
 		
 		Scanner input = new Scanner(System.in);
-		System.out.println("Enter a credit card number");
+		Logger.log(CcVerify.class,"Enter a credit card number", Logger.Severity.INFO);
 		Long result = input.nextLong();
 		Long walterResult;
 		
 		if(isValid(result))
 		{
-			System.out.println("Number is VALID!!!!");
+			Logger.log(CcVerify.class,"Number is VALID!!!!");
 			walterResult = result;
-			System.out.println(walterResult);
+			Logger.log(CcVerify.class, walterResult.toString(), Logger.Severity.INFO);
 		}
 		else
 		{
-			System.out.println("Number is INVALID!!");
+			Logger.log(CcVerify.class,"Number is INVALID!!", Logger.Severity.INFO);
 		}
 		
 		input.close();
