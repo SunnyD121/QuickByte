@@ -31,7 +31,10 @@ public class CcVerify {
 		input.close();
 	}
 	
-	 /** Return true if the credit card number is valid */
+	 /** Return true if the credit card number is valid
+	  * 
+	  *  
+	  *  */
 	public static boolean isValid(long number)
 	{
 		int sumEven = 0;
