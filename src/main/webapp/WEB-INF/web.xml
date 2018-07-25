@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-<<<<<<< HEAD
-    <display-name>QuickByte</display-name>
-=======
 
     <display-name>QuickByte</display-name>
 
->>>>>>> e759c36d1a22e149c56ffebc686af8825f248aaf
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.htm</welcome-file>
@@ -28,20 +24,12 @@
 
     <servlet>
         <servlet-name>FrontController</servlet-name>
-<<<<<<< HEAD
-        <servlet-class>com.revature.servlets.FrontController</servlet-class>
-=======
         <servlet-class>com.revature.overknight.servlets.FrontController</servlet-class>
->>>>>>> e759c36d1a22e149c56ffebc686af8825f248aaf
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
         <url-pattern>*.Servlet</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
-
-=======
->>>>>>> e759c36d1a22e149c56ffebc686af8825f248aaf
 
 </web-app>
