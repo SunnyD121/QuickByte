@@ -1,0 +1,10 @@
+2018-07-24 20:53:36 DEBUG SecurityFilter:28 - Security Filter Initialized.
+2018-07-24 20:53:36 DEBUG FrontController:28 - FrontController Created.
+2018-07-24 20:53:36 DEBUG FrontController:28 - FrontController Initialized.
+2018-07-24 20:57:44 DEBUG SecurityFilter:28 - Security Filter Initialized.
+2018-07-24 20:57:44 DEBUG FrontController:28 - FrontController Created.
+2018-07-24 20:57:44 DEBUG FrontController:28 - FrontController Initialized.
+2018-07-25 17:19:15 INFO  CcVerify:28 - Enter a credit card number
+2018-07-25 17:19:25 INFO  CcVerify:28 - Enter a credit card number
+2018-07-25 17:19:58 INFO  CcVerify:28 - Enter a credit card number
+2018-07-25 17:20:08 INFO  CcVerify:28 - Number is INVALID!!
