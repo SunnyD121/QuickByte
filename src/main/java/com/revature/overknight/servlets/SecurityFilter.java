@@ -6,6 +6,7 @@ import javax.servlet.*;
 import java.io.IOException;
 
 public class SecurityFilter implements Filter {
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         Logger.log(this.getClass(), "Security Filter Initialized.");     //TODO: change to log statement

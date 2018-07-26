@@ -1,0 +1,1 @@
+/* This is where JavaScript Functions that multiple pages use can go */

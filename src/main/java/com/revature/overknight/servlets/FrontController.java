@@ -3,7 +3,6 @@ package com.revature.overknight.servlets;
 import com.revature.overknight.utils.Logger;
 
 import javax.servlet.ServletException;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,4 +37,5 @@ public class FrontController extends HttpServlet {
         super.service(req, resp);
         Logger.log(this.getClass(), "FrontController service() called.");     //TODO: change to log statement
     }
+
 }
