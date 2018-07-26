@@ -2,6 +2,8 @@ package com.revature.overknight.dao;
 
 import java.util.List;
 
+import com.revature.overknight.beans.Post;
+
 public interface PostDao {
 	public Integer insertPost(Post post);
 	public Boolean insertPostViaSp(Post post);
