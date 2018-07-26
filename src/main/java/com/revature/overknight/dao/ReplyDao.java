@@ -1,8 +1,8 @@
-package com.revature.overknight.dao;
+package com.revature.dao;
 
 import java.util.List;
 
-import com.revature.overknight.beans.Reply;
+import com.revature.beans.Reply;
 
 public interface ReplyDao {
 	public Integer insertReply(Reply reply);
