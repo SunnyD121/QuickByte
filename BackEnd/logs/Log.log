@@ -4,16 +4,7 @@
 2018-07-24 20:57:44 DEBUG SecurityFilter:28 - Security Filter Initialized.
 2018-07-24 20:57:44 DEBUG FrontController:28 - FrontController Created.
 2018-07-24 20:57:44 DEBUG FrontController:28 - FrontController Initialized.
-2018-07-25 09:55:22 INFO  CcVerify:28 - Enter a credit card number
-2018-07-25 09:55:49 INFO  CcVerify:28 - Number is INVALID!!
-2018-07-25 09:56:57 INFO  CcVerify:28 - Enter a credit card number
-2018-07-25 09:57:02 INFO  CcVerify:28 - Number is INVALID!!
-2018-07-25 09:57:13 INFO  CcVerify:28 - Enter a credit card number
-2018-07-25 09:57:20 INFO  CcVerify:28 - Number is INVALID!!
-2018-07-25 10:11:00 DEBUG SecurityFilter:29 - Security Filter Initialized.
-2018-07-25 10:11:00 DEBUG FrontController:29 - FrontController Created.
-2018-07-25 10:11:00 DEBUG FrontController:29 - FrontController Initialized.
-2018-07-25 10:15:41 INFO  CcVerify:28 - Enter a credit card number
-2018-07-25 10:16:00 INFO  CcVerify:28 - Enter a credit card number
-2018-07-25 10:16:41 INFO  CcVerify:28 - Enter a credit card number
-2018-07-25 10:18:56 INFO  CcVerify:28 - Enter a credit card number
+2018-07-25 17:19:15 INFO  CcVerify:28 - Enter a credit card number
+2018-07-25 17:19:25 INFO  CcVerify:28 - Enter a credit card number
+2018-07-25 17:19:58 INFO  CcVerify:28 - Enter a credit card number
+2018-07-25 17:20:08 INFO  CcVerify:28 - Number is INVALID!!
