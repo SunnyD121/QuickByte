@@ -118,11 +118,8 @@ public class UserDaoImpl implements UserDao {
 				if(user.getPassword()!=null){
 					u.setPassword(u.getPassword());
 				}
-				if(user.getuserStatus()!=null){
-					u.setuserStatus(u.getuserStatus());
-				}
-				if(user.getuserStatus()!=null){
-					u.setuserStatus(u.getuserStatus());
+				if(user.getUserStatus()!=null){
+					u.setUserStatus(u.getUserStatus());
 				}
 				if(user.getfName()!=null){
 					u.setfName(u.getfName());
@@ -138,6 +135,9 @@ public class UserDaoImpl implements UserDao {
 				}
 				if(user.getCreditCardNumber()!=null){
 					u.setCreditCardNumber(u.getCreditCardNumber());
+				}
+				if(user.getProfileImgKey()!=null){
+					u.setProfileImgKey(u.getProfileImgKey());
 				}
 				session.save(u);
 			}
