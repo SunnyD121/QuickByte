@@ -30,6 +30,8 @@ public class User {
 	private String email;
 	@Column
 	private Long phone;
+	@Column
+	private Long creditCardNumber;
 	
 	public User() {
 		super();
@@ -37,7 +39,7 @@ public class User {
 	}
 
 	public User(String username, String password, Integer userType, String fName, String lName,
-			String email, Long phone) {
+			String email, Long phone, Long creditCardNumber) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -46,10 +48,11 @@ public class User {
 		this.lName = lName;
 		this.email = email;
 		this.phone = phone;
+		this.creditCardNumber = creditCardNumber;
 	}
 
 	public User(Integer id, String username, String password, Integer userType, String fName, String lName,
-			String email, Long phone) {
+			String email, Long phone, Long creditCardNumber) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -59,6 +62,7 @@ public class User {
 		this.lName = lName;
 		this.email = email;
 		this.phone = phone;
+		this.creditCardNumber = creditCardNumber;
 	}
 
 	public Integer getId() {
@@ -123,6 +127,14 @@ public class User {
 
 	public void setPhone(Long phone) {
 		this.phone = phone;
+	}
+
+	public Long getCreditCardNumber() {
+		return creditCardNumber;
+	}
+
+	public void setCreditCardNumber(Long creditCardNumber) {
+		this.creditCardNumber = creditCardNumber;
 	}
 	
 	
