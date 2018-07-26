@@ -21,7 +21,7 @@ public class User {
 	@Column
 	private String password;
 	@Column
-	private Integer userType; //0 = regular user, 1 = premium user, 2 = administrator
+	private Integer userStatus; //0 = banned, 1 = free user, 2 = premium user, 3 = admin
 	@Column
 	private String fName;
 	@Column
@@ -30,35 +30,41 @@ public class User {
 	private String email;
 	@Column
 	private Long phone;
+	@Column
+	private Long creditCardNumber;
+	@Column
+	private String profileImgKey;
 	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String username, String password, Integer userType, String fName, String lName,
-			String email, Long phone) {
+	public User(String username, String password, Integer userStatus, String fName, String lName,
+			String email, Long phone, Long creditCardNumber) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.userType = userType;
+		this.userStatus = userStatus;
 		this.fName = fName;
 		this.lName = lName;
 		this.email = email;
 		this.phone = phone;
+		this.creditCardNumber = creditCardNumber;
 	}
 
-	public User(Integer id, String username, String password, Integer userType, String fName, String lName,
-			String email, Long phone) {
+	public User(Integer id, String username, String password, Integer userStatus, String fName, String lName,
+			String email, Long phone, Long creditCardNumber) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.userType = userType;
+		this.userStatus = userStatus;
 		this.fName = fName;
 		this.lName = lName;
 		this.email = email;
 		this.phone = phone;
+		this.creditCardNumber = creditCardNumber;
 	}
 
 	public Integer getId() {
@@ -85,12 +91,12 @@ public class User {
 		this.password = password;
 	}
 
-	public Integer getUserType() {
-		return userType;
+	public Integer getuserStatus() {
+		return userStatus;
 	}
 
-	public void setUserType(Integer userType) {
-		this.userType = userType;
+	public void setuserStatus(Integer userStatus) {
+		this.userStatus = userStatus;
 	}
 
 	public String getfName() {
@@ -123,6 +129,14 @@ public class User {
 
 	public void setPhone(Long phone) {
 		this.phone = phone;
+	}
+
+	public Long getCreditCardNumber() {
+		return creditCardNumber;
+	}
+
+	public void setCreditCardNumber(Long creditCardNumber) {
+		this.creditCardNumber = creditCardNumber;
 	}
 	
 	
