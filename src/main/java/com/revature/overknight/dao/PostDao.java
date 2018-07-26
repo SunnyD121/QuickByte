@@ -1,8 +1,6 @@
-package com.revature.dao;
+package com.revature.overknight.dao;
 
 import java.util.List;
-
-import com.revature.beans.Post;
 
 public interface PostDao {
 	public Integer insertPost(Post post);
