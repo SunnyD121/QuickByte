@@ -2,7 +2,7 @@ package com.revature.dao;
 
 import java.util.List;
 
-import com.revature.beans.CreditCard;
+import com.revature.overknight.beans.CreditCard;
 
 public interface CreditCardDao {
 	public Integer insertCreditCard(CreditCard cc);

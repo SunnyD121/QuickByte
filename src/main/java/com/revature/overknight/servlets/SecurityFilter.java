@@ -1,9 +1,15 @@
 package com.revature.overknight.servlets;
 
-import com.revature.overknight.utils.Logger;
-
-import javax.servlet.*;
 import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+import com.revature.overknight.utils.Logger;
 
 public class SecurityFilter implements Filter {
 

@@ -2,8 +2,6 @@ package com.revature.dao;
 
 import java.util.List;
 
-import com.revature.beans.User;
-
 public interface UserDao {
 	public Integer insertUser(User user);
 	public Boolean insertUserViaSp(User user);
