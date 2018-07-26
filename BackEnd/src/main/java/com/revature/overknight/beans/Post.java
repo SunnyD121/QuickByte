@@ -15,8 +15,8 @@ import javax.persistence.Table;
 public class Post {
 	@Id
 	@Column(name="pid")
-	@SequenceGenerator(sequenceName="POST_SEQ", name="UID_GEN")
-	@GeneratedValue(generator="UID_GEN", strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(sequenceName="POST_SEQ", name="PID_GEN")
+	@GeneratedValue(generator="PID_GEN", strategy=GenerationType.SEQUENCE)
 	private Integer postId;
 	@Column
 	private String postTitle;

@@ -32,6 +32,8 @@ public class User {
 	private Long phone;
 	@Column
 	private Long creditCardNumber;
+	@Column
+	private String profileImgKey;
 	
 	public User() {
 		super();
