@@ -1,29 +1,39 @@
 <!DOCTYPE>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <!-- Bootstrap (CSS) -->
-        <link rel="stylesheet" type="text/css"
-              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <!-- JQuery -->
-        <script src="http://code.jquery.com/jquery-3.3.1.min.js"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-                crossorigin="anonymous">
-        </script>
-        <!-- Bootstrap (JavaScript) -->
-        <script
-                src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
-        </script>
-
-        <title>QuickByte</title>
     </head>
     <body>
-        <h3>Hello World!</h3>
+        <app-nav-bar></app-nav-bar>
 
-        <h3>Eric says: If you see this, then the merge conflicts were resolved</h3>
-        <h3>More testing!</h3>
-        <h3>Walter says: Thank you Andrew.</h3>
-        <h3>菩萨道：“我方才不用五行之器者，知道此物与五行相畏故耳。”</h3>
-        <h3>The Bodhisattva says: "I did not use utensils of the five elements just now, because I know this object is destroyed by the five elements."</h3>
+        <div class="container-fluid text-center">
+          <div class="row content">
+            <div class="col-sm-2 sidenav">
+              <p><a href="#">Link</a></p>
+              <p><a href="#">Link</a></p>
+              <p><a href="#">Link</a></p>
+            </div>
+            <div class="col-sm-8 text-left">
+              <h1>Welcome</h1>
+              <p>This is some information. There are words here talking about the words that should be here instead of the words that are here,
+              these words. Words words words words words. Did you know that you can type virtually anything onto a webpage?</p>
+              <hr>
+              <app-media-post></app-media-post>
+            </div>
+            <div class="col-sm-2 sidenav">
+              <div class="well">
+                <p>ADS</p>
+              </div>
+              <div class="well">
+                <p>ADS</p>
+              </div>
+            </div>
+          </div>
+      </div>
+
+    <footer class="container-fluid text-center">
+      <p>Down here are even more words! However, the words here probably shouldn't be these words but rather links to some fancy
+      places. Hopefully the links are safe, but who knows, its all just words.</p>
+    </footer>
+
     </body>
 </html>
