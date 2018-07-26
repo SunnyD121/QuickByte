@@ -21,7 +21,7 @@ public class User {
 	@Column
 	private String password;
 	@Column
-	private Integer userType; //0 = regular user, 1 = premium user, 2 = administrator
+	private Integer userStatus; //0 = banned, 1 = free user, 2 = premium user, 3 = admin
 	@Column
 	private String fName;
 	@Column
@@ -40,12 +40,12 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String username, String password, Integer userType, String fName, String lName,
+	public User(String username, String password, Integer userStatus, String fName, String lName,
 			String email, Long phone, Long creditCardNumber) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.userType = userType;
+		this.userStatus = userStatus;
 		this.fName = fName;
 		this.lName = lName;
 		this.email = email;
@@ -53,13 +53,13 @@ public class User {
 		this.creditCardNumber = creditCardNumber;
 	}
 
-	public User(Integer id, String username, String password, Integer userType, String fName, String lName,
+	public User(Integer id, String username, String password, Integer userStatus, String fName, String lName,
 			String email, Long phone, Long creditCardNumber) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.userType = userType;
+		this.userStatus = userStatus;
 		this.fName = fName;
 		this.lName = lName;
 		this.email = email;
@@ -91,12 +91,12 @@ public class User {
 		this.password = password;
 	}
 
-	public Integer getUserType() {
-		return userType;
+	public Integer getuserStatus() {
+		return userStatus;
 	}
 
-	public void setUserType(Integer userType) {
-		this.userType = userType;
+	public void setuserStatus(Integer userStatus) {
+		this.userStatus = userStatus;
 	}
 
 	public String getfName() {
