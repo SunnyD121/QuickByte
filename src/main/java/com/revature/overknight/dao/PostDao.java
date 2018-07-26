@@ -3,7 +3,6 @@ package com.revature.dao;
 import java.util.List;
 
 import com.revature.beans.Post;
-import com.revature.beans.User;
 
 public interface PostDao {
 	public Integer insertPost(Post post);
