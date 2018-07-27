@@ -6,19 +6,19 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.revature.overknight.beans.User;
+import com.revature.overknight.beans.Post;
 import com.revature.overknight.utils.HibernateUtil;
 
-public class UserDaoImpl implements UserDao {
+public class PostDaoImpl implements PostDao {
 
-	public Integer insertUser(User user) {
+	public Integer insertPost(Post post) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		Integer id = null;
 		
 		try{
 			trans = session.beginTransaction();
-			id = (Integer)session.save(user);
+			id = (Integer)session.save(post);
 			trans.commit();
 			
 		}catch(HibernateException e){
@@ -34,14 +34,14 @@ public class UserDaoImpl implements UserDao {
 	}
 
 
-	public List<User> selectAllUsers() {
-		List<User> users = null; 
+	public List<Post> selectAllPosts() {
+		List<Post> posts = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		
 		try{
 			trans = session.beginTransaction();
-			users = session.createQuery("FROM User").list();
+			posts = session.createQuery("FROM Post").list();
 						
 		}catch(HibernateException e){
 			if(trans!=null){
@@ -51,43 +51,65 @@ public class UserDaoImpl implements UserDao {
 		}finally{
 			session.close();
 		}
-		return users;
+		return posts;	
+		
+	}
+	
+	public List<Post> selectAllPostsByUsername(String username) {
+		List<Post> posts = null; 
+		Session session = HibernateUtil.getSession();
+		Transaction trans = null;
+		
+		try{
+			trans = session.beginTransaction();
+			posts = session.createQuery("FROM Post WHERE username ="+username).list();
+						
+		}catch(HibernateException e){
+			if(trans!=null){
+				trans.rollback();
+			}
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return posts;	
+		
 	}
 
-	public User selectUserById(Integer id) {
+	public Post selectPostById(Integer id) {
 		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		User user = null;
+		Transaction trans = null;
+		Post post = null;
 		
 		try {
-			tx = session.beginTransaction();
+			trans = session.beginTransaction();
 			
-			user = (User)session.get(User.class, id);
+			post = (Post)session.get(Post.class, id);
 			
-			tx.commit();
+			trans.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			if(tx!=null){
-				tx.rollback();
+			if(trans!=null){
+				trans.rollback();
 			}
 		}finally {
 			session.close();
 		}
 			
-		return user; 
+		return post; 
 	}
 
-	public Boolean deleteUserById(Integer id) {
-		User user = null;
+	public Boolean deletePostById(Integer id) {
+		Post post = null;
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		Boolean result = false;
 
 		try{
 			trans = session.beginTransaction();
-			user = (User)session.get(User.class, id);
-			if(user!=null){
-				session.delete(user);
+			post = (Post)session.get(Post.class, id);
+			if(post!=null){
+				session.delete(post);
 				result = true;
 			}
 			trans.commit();
@@ -103,43 +125,31 @@ public class UserDaoImpl implements UserDao {
 		return result;
 	}
 
-	public User updateUser(User user) {
-		User u = null;
+	public Post updatePost(Post post) {
+		Post p = null;
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 
 		try{
 			trans = session.beginTransaction();
-			u = (User)session.get(User.class, user.getId());
-			if(null != u){
-				if(user.getUsername()!=null){
-					u.setUsername(u.getUsername());
+			p = (Post)session.get(Post.class, post.getPostId());
+			if(null != p){
+				if(post.getPostTitle()!=null){
+					p.setPostTitle(p.getPostTitle());
 				}
-				if(user.getPassword()!=null){
-					u.setPassword(u.getPassword());
+				if(post.getUsername()!=null){
+					p.setUsername(p.getUsername());
 				}
-				if(user.getUserStatus()!=null){
-					u.setUserStatus(u.getUserStatus());
+				if(post.getPostImgKey()!=null){
+					p.setPostImgKey(p.getPostImgKey());
 				}
-				if(user.getfName()!=null){
-					u.setfName(u.getfName());
+				if(post.getPostContent()!=null){
+					p.setPostContent(p.getPostContent());
 				}
-				if(user.getlName()!=null){
-					u.setlName(u.getlName());
+				if(post.getPostDate()!=null){
+					p.setPostDate(p.getPostDate());
 				}
-				if(user.getEmail()!=null){
-					u.setEmail(u.getEmail());
-				}
-				if(user.getPhone()!=null){
-					u.setPhone(u.getPhone());
-				}
-				if(user.getCreditCardNumber()!=null){
-					u.setCreditCardNumber(u.getCreditCardNumber());
-				}
-				if(user.getProfileImgKey()!=null){
-					u.setProfileImgKey(u.getProfileImgKey());
-				}
-				session.save(u);
+				session.save(p);
 			}
 			trans.commit();
 			
@@ -151,18 +161,18 @@ public class UserDaoImpl implements UserDao {
 		}finally{
 			session.close(); 
 		}
-		return user;
+		return post;
 	}
 
-	public User selectUserByUsername(String username) {
+	public Post selectPostByUsername(String username) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
-		User user = null;
+		Post post = null;
 		
 		try {
 			trans = session.beginTransaction();
 			
-			user = (User)session.get(User.class, username);
+			post = (Post)session.get(Post.class, username);
 			
 			trans.commit();
 		} catch (Exception e) {
@@ -174,9 +184,7 @@ public class UserDaoImpl implements UserDao {
 			session.close();
 		}
 			
-		return user; 
+		return post;
 	}
-
-	
 
 }

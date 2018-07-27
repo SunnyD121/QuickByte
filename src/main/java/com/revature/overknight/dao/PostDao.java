@@ -6,10 +6,10 @@ import com.revature.overknight.beans.Post;
 
 public interface PostDao {
 	public Integer insertPost(Post post);
-	public Boolean insertPostViaSp(Post post);
-	public List<Post> selectAllPost();
+	public List<Post> selectAllPosts();
+	public List<Post> selectAllPostsByUsername(String username);
 	public Post selectPostById(Integer id);
-	public Integer deletePostById(Integer id);
-	public Integer updatePost(Post post);
+	public Boolean deletePostById(Integer id);
+	public Post updatePost(Post post);
 	public Post selectPostByUsername(String username);
 }

@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="User")
 public class User {
@@ -35,6 +36,7 @@ public class User {
 	@Column
 	private String profileImgKey;
 	
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub

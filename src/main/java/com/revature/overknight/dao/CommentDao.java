@@ -6,10 +6,10 @@ import com.revature.overknight.beans.Comment;
 
 public interface CommentDao {
 	public Integer insertComment(Comment comment);
-	public Boolean insertCommentViaSp(Comment comment);
-	public List<Comment> selectAllComment();
+	public List<Comment> selectAllComments();
+	public List<Comment> selectAllCommentsByPId(Integer pid);
 	public Comment selectCommentById(Integer id);
-	public Integer deleteCommentById(Integer id);
-	public Integer updateComment(Comment comment);
+	public Boolean deleteCommentById(Integer id);
+	public Comment updateComment(Comment comment);
 	public Comment selectCommentByUsername(String username);
 }

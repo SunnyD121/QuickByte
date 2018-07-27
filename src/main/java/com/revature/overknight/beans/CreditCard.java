@@ -13,8 +13,8 @@ public class CreditCard {
 	private Integer creditCardNumber;
 	@Column
 	private Integer userID;
-	
-	
+
+
 	public CreditCard() {
 		super();
 		// TODO Auto-generated constructor stub
