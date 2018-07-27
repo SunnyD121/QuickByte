@@ -1,4 +1,4 @@
-package com.revature.overknight.beans;
+package com.revature.beans;
 
 import java.sql.Date;
 
@@ -28,7 +28,7 @@ public class Post {
 	private String postContent;
 	@Column
 	private Date postDate;
-	
+
 	public Post() {
 		super();
 		// TODO Auto-generated constructor stub

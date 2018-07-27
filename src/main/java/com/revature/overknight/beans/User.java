@@ -1,4 +1,4 @@
-package com.revature.overknight.beans;
+package com.revature.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="User")
@@ -35,6 +36,7 @@ public class User {
 	@Column
 	private String profileImgKey;
 	
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.revature.beans.Post;
-import com.revature.beans.User;
 import com.revature.util.HibernateUtil;
 
 public class PostDaoImpl implements PostDao {
@@ -35,7 +34,7 @@ public class PostDaoImpl implements PostDao {
 	}
 
 
-	public List<Post> selectAllPost() {
+	public List<Post> selectAllPosts() {
 		List<Post> posts = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
@@ -52,23 +51,46 @@ public class PostDaoImpl implements PostDao {
 		}finally{
 			session.close();
 		}
-		return posts;	}
+		return posts;	
+		
+	}
+	
+	public List<Post> selectAllPostsByUsername(String username) {
+		List<Post> posts = null; 
+		Session session = HibernateUtil.getSession();
+		Transaction trans = null;
+		
+		try{
+			trans = session.beginTransaction();
+			posts = session.createQuery("FROM Post WHERE username ="+username).list();
+						
+		}catch(HibernateException e){
+			if(trans!=null){
+				trans.rollback();
+			}
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return posts;	
+		
+	}
 
 	public Post selectPostById(Integer id) {
 		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
+		Transaction trans = null;
 		Post post = null;
 		
 		try {
-			tx = session.beginTransaction();
+			trans = session.beginTransaction();
 			
 			post = (Post)session.get(Post.class, id);
 			
-			tx.commit();
+			trans.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			if(tx!=null){
-				tx.rollback();
+			if(trans!=null){
+				trans.rollback();
 			}
 		}finally {
 			session.close();

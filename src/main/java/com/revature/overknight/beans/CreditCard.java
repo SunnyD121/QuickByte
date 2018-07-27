@@ -1,4 +1,4 @@
-package com.revature.overknight.beans;
+package com.revature.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,8 +13,8 @@ public class CreditCard {
 	private Integer creditCardNumber;
 	@Column
 	private Integer userID;
-	
-	
+
+
 	public CreditCard() {
 		super();
 		// TODO Auto-generated constructor stub

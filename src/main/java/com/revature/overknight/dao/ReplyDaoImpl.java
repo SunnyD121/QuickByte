@@ -6,19 +6,19 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.revature.beans.Comment;
+import com.revature.beans.Reply;
 import com.revature.util.HibernateUtil;
 
-public class CommentDaoImpl implements CommentDao {
+public class ReplyDaoImpl implements ReplyDao {
 
-	public Integer insertComment(Comment comment) {
+	public Integer insertReply(Reply reply) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		Integer id = null;
 		
 		try{
 			trans = session.beginTransaction();
-			id = (Integer)session.save(comment);
+			id = (Integer)session.save(reply);
 			trans.commit();
 			
 		}catch(HibernateException e){
@@ -33,14 +33,14 @@ public class CommentDaoImpl implements CommentDao {
 		return id;
 	}
 
-	public List<Comment> selectAllComments() {
-		List<Comment> comments = null; 
+	public List<Reply> selectAllReply() {
+		List<Reply> replies = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		
 		try{
 			trans = session.beginTransaction();
-			comments = session.createQuery("FROM Comment").list();
+			replies = session.createQuery("FROM Reply").list();
 						
 		}catch(HibernateException e){
 			if(trans!=null){
@@ -50,38 +50,38 @@ public class CommentDaoImpl implements CommentDao {
 		}finally{
 			session.close();
 		}
-		return comments;	
-	}
-	
-	public List<Comment> selectAllCommentsByPId(Integer pid) {
-		List<Comment> comments = null; 
-		Session session = HibernateUtil.getSession();
-		Transaction trans = null;
-		
-		try{
-			trans = session.beginTransaction();
-			comments = session.createQuery("FROM Comment WHERE pid = "+pid).list();
-						
-		}catch(HibernateException e){
-			if(trans!=null){
-				trans.rollback();
-			}
-			e.printStackTrace();
-		}finally{
-			session.close();
-		}
-		return comments;	
+		return replies;	
 	}
 
-	public Comment selectCommentById(Integer id) {
+	public List<Reply> selectAllReplyByCId(Integer cid) {
+		List<Reply> replies = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
-		Comment comment = null;
+		
+		try{
+			trans = session.beginTransaction();
+			replies = session.createQuery("FROM Reply WHERE cid = "+cid).list();
+						
+		}catch(HibernateException e){
+			if(trans!=null){
+				trans.rollback();
+			}
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return replies;
+	}
+
+	public Reply selectReplyById(Integer id) {
+		Session session = HibernateUtil.getSession();
+		Transaction trans = null;
+		Reply reply = null;
 		
 		try {
 			trans = session.beginTransaction();
 			
-			comment = (Comment)session.get(Comment.class, id);
+			reply = (Reply)session.get(Reply.class, id);
 			
 			trans.commit();
 		} catch (Exception e) {
@@ -93,20 +93,20 @@ public class CommentDaoImpl implements CommentDao {
 			session.close();
 		}
 			
-		return comment; 
+		return reply; 
 	}
 
-	public Boolean deleteCommentById(Integer id) {
-		Comment comment = null;
+	public Boolean deleteReplyById(Integer id) {
+		Reply reply = null;
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		Boolean result = false;
 
 		try{
 			trans = session.beginTransaction();
-			comment = (Comment)session.get(Comment.class, id);
-			if(comment!=null){
-				session.delete(comment);
+			reply = (Reply)session.get(Reply.class, id);
+			if(reply!=null){
+				session.delete(reply);
 				result = true;
 			}
 			trans.commit();
@@ -122,25 +122,25 @@ public class CommentDaoImpl implements CommentDao {
 		return result;
 	}
 
-	public Comment updateComment(Comment comment) {
-		Comment c = null;
+	public Reply updateReply(Reply reply) {
+		Reply r = null;
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 
 		try{
 			trans = session.beginTransaction();
-			c = (Comment)session.get(Comment.class, comment.getCid());
-			if(null != c){
-				if(comment.getPid()!=null){
-					c.setPid(c.getPid());
+			r = (Reply)session.get(Reply.class, reply.getCid());
+			if(null != r){
+				if(reply.getCid()!=null){
+					r.setCid(r.getCid());
 				}
-				if(comment.getUsername()!=null){
-					c.setUsername(c.getUsername());
+				if(reply.getUsername()!=null){
+					r.setUsername(r.getUsername());
 				}
-				if(comment.getCommentContent()!=null){
-					c.setCommentContent(c.getCommentContent());
+				if(reply.getReplyContent()!=null){
+					r.setReplyContent(r.getReplyContent());
 				}
-				session.save(c);
+				session.save(r);
 			}
 			trans.commit();
 			
@@ -152,18 +152,18 @@ public class CommentDaoImpl implements CommentDao {
 		}finally{
 			session.close(); 
 		}
-		return comment;
+		return reply;
 	}
 
-	public Comment selectCommentByUsername(String username) {
+	public Reply selectReplyByUsername(String username) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
-		Comment comment = null;
+		Reply reply = null;
 		
 		try {
 			trans = session.beginTransaction();
 			
-			comment = (Comment)session.get(Comment.class, username);
+			reply = (Reply)session.get(Reply.class, username);
 			
 			trans.commit();
 		} catch (Exception e) {
@@ -175,8 +175,9 @@ public class CommentDaoImpl implements CommentDao {
 			session.close();
 		}
 			
-		return comment;
+		return reply;
 	}
 
 	
+
 }

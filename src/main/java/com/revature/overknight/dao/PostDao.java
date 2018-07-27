@@ -6,7 +6,8 @@ import com.revature.beans.Post;
 
 public interface PostDao {
 	public Integer insertPost(Post post);
-	public List<Post> selectAllPost();
+	public List<Post> selectAllPosts();
+	public List<Post> selectAllPostsByUsername(String username);
 	public Post selectPostById(Integer id);
 	public Boolean deletePostById(Integer id);
 	public Post updatePost(Post post);
