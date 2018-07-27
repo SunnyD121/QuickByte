@@ -20,7 +20,7 @@ export class SignupPageComponent implements OnInit {
   }
 
   displayError = {
-      display: 'none';
+      display: 'none',
   }
 
   public checkPasswordMatch(){
@@ -53,7 +53,7 @@ export class SignupPageComponent implements OnInit {
   }
 
   public authenticateAndSubmit(){
-      this.authenticate();)
+      this.authenticate();
       if (this.authenticationCheck && this.uniquenessCheck && this.validCardCheck){
           this.submit();
       }
