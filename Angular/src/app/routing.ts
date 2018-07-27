@@ -14,6 +14,11 @@ export const approutes: Routes = [
         component: HomePageComponent
     },
     {
+        //The URL mapping
+        path: 'Homepage',
+        component: HomePageComponent
+    },
+    {
         path: 'loginpage',
         component: LoginPageComponent
     },
@@ -29,7 +34,7 @@ export const approutes: Routes = [
         pathMatch: 'full'
     },
     {
-        //Any path at all should lead to interpolation
+        //Any path at all should lead to 404page
         //(Assuming the above paths are hit first)
         //This designates how a user can be taken back to this page
         //should they arrive at a 404
