@@ -12,7 +12,6 @@ import javax.servlet.ServletResponse;
 import com.revature.overknight.utils.Logger;
 
 public class SecurityFilter implements Filter {
-
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         Logger.log(this.getClass(), "Security Filter Initialized.");     //TODO: change to log statement
