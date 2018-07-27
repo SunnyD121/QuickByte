@@ -13,6 +13,8 @@ import { LoginPageComponent } from './components/loginpage/loginpage.component';
 import { SignupPageComponent } from './components/signuppage/signuppage.component';
 import { ErrorPage404Component } from './components/errorpage404/errorpage404.component';
 
+import { APP_BASE_HREF } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,7 @@ import { ErrorPage404Component } from './components/errorpage404/errorpage404.co
     FormsModule,
     RouterModule.forRoot(approutes)
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue : 'QuickByte'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
