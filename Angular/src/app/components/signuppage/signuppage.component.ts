@@ -20,7 +20,7 @@ export class SignupPageComponent implements OnInit {
   }
 
   displayError = {
-      display: 'none'
+      display: 'none',
   }
   
 
@@ -54,7 +54,7 @@ export class SignupPageComponent implements OnInit {
   }
 
   public authenticateAndSubmit(){
-      this.authenticate();)
+      this.authenticate();
       if (this.authenticationCheck && this.uniquenessCheck && this.validCardCheck){
           this.submit();
       }
