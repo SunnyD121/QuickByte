@@ -1,15 +1,14 @@
-package com.revature.dao;
+package com.revature.overknight.dao;
 
 import java.util.List;
 
-import com.revature.beans.User;
+import com.revature.overknight.beans.User;
 
 public interface UserDao {
 	public Integer insertUser(User user);
-	public Boolean insertUserViaSp(User user);
-	public List<User> selectAllEmployee();
-	public User selectEmployeeById(Integer id);
-	public Integer deleteUserById(Integer id);
-	public Integer updateUser(User user);
+	public List<User> selectAllUsers();
+	public User selectUserById(Integer id);
+	public Boolean deleteUserById(Integer id);
+	public User updateUser(User user);
 	public User selectUserByUsername(String username);
 }

@@ -1,4 +1,4 @@
-package com.revature.beans;
+package com.revature.overknight.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="User")
@@ -35,13 +36,14 @@ public class User {
 	@Column
 	private String profileImgKey;
 	
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String username, String password, Integer userStatus, String fName, String lName,
-			String email, Long phone, Long creditCardNumber) {
+	public User(String username, String password, Integer userStatus, String fName, String lName, String email,
+			Long phone, Long creditCardNumber, String profileImgKey) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -51,10 +53,11 @@ public class User {
 		this.email = email;
 		this.phone = phone;
 		this.creditCardNumber = creditCardNumber;
+		this.profileImgKey = profileImgKey;
 	}
 
 	public User(Integer id, String username, String password, Integer userStatus, String fName, String lName,
-			String email, Long phone, Long creditCardNumber) {
+			String email, Long phone, Long creditCardNumber, String profileImgKey) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -65,7 +68,9 @@ public class User {
 		this.email = email;
 		this.phone = phone;
 		this.creditCardNumber = creditCardNumber;
+		this.profileImgKey = profileImgKey;
 	}
+
 
 	public Integer getId() {
 		return id;
@@ -91,11 +96,11 @@ public class User {
 		this.password = password;
 	}
 
-	public Integer getuserStatus() {
+	public Integer getUserStatus() {
 		return userStatus;
 	}
 
-	public void setuserStatus(Integer userStatus) {
+	public void setUserStatus(Integer userStatus) {
 		this.userStatus = userStatus;
 	}
 
@@ -138,6 +143,23 @@ public class User {
 	public void setCreditCardNumber(Long creditCardNumber) {
 		this.creditCardNumber = creditCardNumber;
 	}
+
+	public String getProfileImgKey() {
+		return profileImgKey;
+	}
+
+	public void setProfileImgKey(String profileImgKey) {
+		this.profileImgKey = profileImgKey;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", userStatus=" + userStatus
+				+ ", fName=" + fName + ", lName=" + lName + ", email=" + email + ", phone=" + phone
+				+ ", creditCardNumber=" + creditCardNumber + ", profileImgKey=" + profileImgKey + "]";
+	}
+	
+	
 	
 	
 

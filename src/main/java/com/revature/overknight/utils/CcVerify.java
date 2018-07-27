@@ -13,19 +13,18 @@ public class CcVerify {
 		// TODO Auto-generated method stub
 		
 		Scanner input = new Scanner(System.in);
-		Logger.log(CcVerify.class,"Enter a credit card number", Logger.Severity.INFO);
+		System.out.println("Enter a credit card number");
 		Long result = input.nextLong();
 		Long walterResult;
 		
 		if(isValid(result))
 		{
-			Logger.log(CcVerify.class,"Number is VALID!!!!");
+			System.out.println("Number is VALID!!!!");
 			walterResult = result;
-			Logger.log(CcVerify.class, walterResult.toString(), Logger.Severity.INFO);
 		}
 		else
 		{
-			Logger.log(CcVerify.class,"Number is INVALID!!", Logger.Severity.INFO);
+			System.out.println("Number is INVALID!!");
 		}
 		
 		input.close();

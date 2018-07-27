@@ -1,15 +1,15 @@
-package com.revature.dao;
+package com.revature.overknight.dao;
 
 import java.util.List;
 
-import com.revature.beans.Reply;
+import com.revature.overknight.beans.Reply;
 
 public interface ReplyDao {
 	public Integer insertReply(Reply reply);
-	public Boolean insertReplyViaSp(Reply reply);
 	public List<Reply> selectAllReply();
+	public List<Reply> selectAllReplyByCId(Integer cid);
 	public Reply selectReplyById(Integer id);
-	public Integer deleteReplyById(Integer id);
-	public Integer updateReply(Reply reply);
+	public Boolean deleteReplyById(Integer id);
+	public Reply updateReply(Reply reply);
 	public Reply selectReplyByUsername(String username);
 }
