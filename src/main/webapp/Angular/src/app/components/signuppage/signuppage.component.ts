@@ -20,8 +20,9 @@ export class SignupPageComponent implements OnInit {
   }
 
   displayError = {
-      display: 'none';
+      display: 'none'
   }
+  
 
   public checkPasswordMatch(){
      this.displayError.display = (this.password != this.passwordConfirm) ? 'block' : 'none';
