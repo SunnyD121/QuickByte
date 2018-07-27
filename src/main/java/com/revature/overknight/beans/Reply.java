@@ -1,4 +1,4 @@
-package com.revature.beans;
+package com.revature.overknight.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,8 +1,8 @@
-package com.revature.dao;
+package com.revature.overknight.dao;
 
 import java.util.List;
 
-import com.revature.beans.CreditCard;
+import com.revature.overknight.beans.CreditCard;
 
 public interface CreditCardDao {
 	public Integer insertCreditCard(CreditCard cc);

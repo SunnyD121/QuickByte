@@ -1,4 +1,4 @@
-package com.revature.dao;
+package com.revature.overknight.dao;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.revature.beans.User;
-import com.revature.util.HibernateUtil;
+import com.revature.overknight.beans.User;
+import com.revature.overknight.utils.HibernateUtil;
 
 public class UserDaoImpl implements UserDao {
 

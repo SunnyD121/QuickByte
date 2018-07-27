@@ -1,8 +1,8 @@
-package com.revature.dao;
+package com.revature.overknight.dao;
 
 import java.util.List;
 
-import com.revature.beans.Comment;
+import com.revature.overknight.beans.Comment;
 
 public interface CommentDao {
 	public Integer insertComment(Comment comment);
