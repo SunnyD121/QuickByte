@@ -72,6 +72,26 @@ public class CommentDaoImpl implements CommentDao {
 		}
 		return comments;	
 	}
+	
+	public List<Comment> selectAllCommentsByUid(Integer uid){
+		List<Comment> comments = null; 
+		Session session = HibernateUtil.getSession();
+		Transaction trans = null;
+		
+		try{
+			trans = session.beginTransaction();
+			comments = session.createQuery("FROM Comment WHERE uid = "+uid).list();
+						
+		}catch(HibernateException e){
+			if(trans!=null){
+				trans.rollback();
+			}
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return comments;	
+	}
 
 	public Comment selectCommentById(Integer id) {
 		Session session = HibernateUtil.getSession();
@@ -134,8 +154,8 @@ public class CommentDaoImpl implements CommentDao {
 				if(comment.getPid()!=null){
 					c.setPid(c.getPid());
 				}
-				if(comment.getUsername()!=null){
-					c.setUsername(c.getUsername());
+				if(comment.getUid()!=null){
+					c.setUid(c.getUid());
 				}
 				if(comment.getCommentContent()!=null){
 					c.setCommentContent(c.getCommentContent());
@@ -152,29 +172,6 @@ public class CommentDaoImpl implements CommentDao {
 		}finally{
 			session.close(); 
 		}
-		return comment;
-	}
-
-	public Comment selectCommentByUsername(String username) {
-		Session session = HibernateUtil.getSession();
-		Transaction trans = null;
-		Comment comment = null;
-		
-		try {
-			trans = session.beginTransaction();
-			
-			comment = (Comment)session.get(Comment.class, username);
-			
-			trans.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if(trans!=null){
-				trans.rollback();
-			}
-		}finally {
-			session.close();
-		}
-			
 		return comment;
 	}
 

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -16,10 +18,12 @@ public class Reply {
 	@SequenceGenerator(sequenceName="REP_SEQ", name="REP_GEN")
 	@GeneratedValue(generator="REP_GEN", strategy=GenerationType.SEQUENCE)
 	private Integer rid;
-	@Column
+	@ManyToOne
+	@JoinColumn(name="cid")
 	private Integer cid;
-	@Column
-	private String username;
+	@ManyToOne
+	@JoinColumn(name="uid")
+	private String uid;
 	@Column
 	private String replyContent;
 	
@@ -29,60 +33,68 @@ public class Reply {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reply(Integer cid, String username, String replyContent) {
+
+	public Reply(Integer cid, String uid, String replyContent) {
 		super();
 		this.cid = cid;
-		this.username = username;
+		this.uid = uid;
 		this.replyContent = replyContent;
 	}
 
 
-	public Reply(Integer rid, Integer cid, String username, String replyContent) {
+	public Reply(Integer rid, Integer cid, String uid, String replyContent) {
 		super();
 		this.rid = rid;
 		this.cid = cid;
-		this.username = username;
+		this.uid = uid;
 		this.replyContent = replyContent;
 	}
-	
+
 
 	public Integer getRid() {
 		return rid;
 	}
 
+
 	public void setRid(Integer rid) {
 		this.rid = rid;
 	}
+
 
 	public Integer getCid() {
 		return cid;
 	}
 
+
 	public void setCid(Integer cid) {
 		this.cid = cid;
 	}
 
-	public String getUsername() {
-		return username;
+
+	public String getUid() {
+		return uid;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
+
 
 	public String getReplyContent() {
 		return replyContent;
 	}
 
+
 	public void setReplyContent(String replyContent) {
 		this.replyContent = replyContent;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Reply [rid=" + rid + ", cid=" + cid + ", username=" + username + ", replyContent=" + replyContent + "]";
+		return "Reply [rid=" + rid + ", cid=" + cid + ", uid=" + uid + ", replyContent=" + replyContent + "]";
 	}
-
 	
-	
+		
 }

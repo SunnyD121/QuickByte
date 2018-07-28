@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -16,34 +18,32 @@ public class Comment {
 	@SequenceGenerator(sequenceName="COM_SEQ", name="COM_GEN")
 	@GeneratedValue(generator="COM_GEN", strategy=GenerationType.SEQUENCE)
 	private Integer cid;
-	@Column
+	@ManyToOne
+	@JoinColumn(name="pid")
 	private Integer pid;
-	@Column
-	private String username;
+	@ManyToOne
+	@JoinColumn(name="uid")
+	private Integer uid;
 	@Column
 	private String commentContent;
-	
-	public static void main (String[] args) {
-		
-	}
 	
 	public Comment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Comment(Integer pid, String username, String commentContent) {
+	public Comment(Integer pid, Integer uid, String commentContent) {
 		super();
 		this.pid = pid;
-		this.username = username;
+		this.uid = uid;
 		this.commentContent = commentContent;
 	}
-	
-	public Comment(Integer cid, Integer pid, String username, String commentContent) {
+
+	public Comment(Integer cid, Integer pid, Integer uid, String commentContent) {
 		super();
 		this.cid = cid;
 		this.pid = pid;
-		this.username = username;
+		this.uid = uid;
 		this.commentContent = commentContent;
 	}
 
@@ -63,12 +63,12 @@ public class Comment {
 		this.pid = pid;
 	}
 
-	public String getUsername() {
-		return username;
+	public Integer getUid() {
+		return uid;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUid(Integer uid) {
+		this.uid = uid;
 	}
 
 	public String getCommentContent() {
@@ -81,8 +81,8 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [cid=" + cid + ", pid=" + pid + ", username=" + username + ", commentContent=" + commentContent
-				+ "]";
+		return "Comment [cid=" + cid + ", pid=" + pid + ", uid=" + uid + ", commentContent=" + commentContent + "]";
 	}
+	
 	
 }
