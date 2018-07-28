@@ -4,7 +4,7 @@ import { Routes } from '@angular/router';
 import { HomePageComponent } from './components/homepage/homepage.component';
 import { LoginPageComponent } from './components/loginpage/loginpage.component';
 import { SignupPageComponent } from './components/signuppage/signuppage.component';
-import { ErrorPage404Component } from './components/errorpage404/errorpage404.component';
+// import { ErrorPage404Component } from './components/errorpage404/errorpage404.component';
 
 
 export const approutes: Routes = [
@@ -39,6 +39,7 @@ export const approutes: Routes = [
         //This designates how a user can be taken back to this page
         //should they arrive at a 404
         path: '**',
-        component: ErrorPage404Component
+        // component: ErrorPage404Component
+        component: HomePageComponent
     }
 ]
