@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-expandable-pane',
@@ -7,9 +7,7 @@ import { Component, Input, OnInit, ElementRef, ViewChild } from '@angular/core';
 })
 export class ExpandablePaneComponent implements OnInit {
     @Input() contentString: string;
-    variable ="nope.";
 
-    
     expanded = false;
     overflow = "hidden";
     height = "64px";
@@ -26,7 +24,6 @@ export class ExpandablePaneComponent implements OnInit {
             this.height = "64px";
             this.clickTitle = "Click to Expand";
         }
-        console.log(this.variable);
     }
 
   constructor() {}
