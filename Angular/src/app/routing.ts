@@ -34,10 +34,9 @@ export const approutes: Routes = [
         pathMatch: 'full'
     },
     {
-        //Any path at all should lead to 404page
+        //Any path at all should lead homepage
         //(Assuming the above paths are hit first)
-        //This designates how a user can be taken back to this page
-        //should they arrive at a 404
+        //This is needed for the server.
         path: '**',
         // component: ErrorPage404Component
         component: HomePageComponent
