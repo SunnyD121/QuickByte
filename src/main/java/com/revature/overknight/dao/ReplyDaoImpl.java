@@ -33,7 +33,7 @@ public class ReplyDaoImpl implements ReplyDao {
 		return id;
 	}
 
-	public List<Reply> selectAllReply() {
+	public List<Reply> selectAllReplies() {
 		List<Reply> replies = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
@@ -53,7 +53,7 @@ public class ReplyDaoImpl implements ReplyDao {
 		return replies;	
 	}
 
-	public List<Reply> selectAllReplyByCId(Integer cid) {
+	public List<Reply> selectAllRepliesByCId(Integer cid) {
 		List<Reply> replies = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
@@ -61,6 +61,26 @@ public class ReplyDaoImpl implements ReplyDao {
 		try{
 			trans = session.beginTransaction();
 			replies = session.createQuery("FROM Reply WHERE cid = "+cid).list();
+						
+		}catch(HibernateException e){
+			if(trans!=null){
+				trans.rollback();
+			}
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return replies;
+	}
+	
+	public List<Reply> selectAllRepliesByUid(Integer uid) {
+		List<Reply> replies = null; 
+		Session session = HibernateUtil.getSession();
+		Transaction trans = null;
+		
+		try{
+			trans = session.beginTransaction();
+			replies = session.createQuery("FROM Reply WHERE uid = "+uid).list();
 						
 		}catch(HibernateException e){
 			if(trans!=null){
@@ -134,8 +154,8 @@ public class ReplyDaoImpl implements ReplyDao {
 				if(reply.getCid()!=null){
 					r.setCid(r.getCid());
 				}
-				if(reply.getUsername()!=null){
-					r.setUsername(r.getUsername());
+				if(reply.getUid()!=null){
+					r.setUid(r.getUid());
 				}
 				if(reply.getReplyContent()!=null){
 					r.setReplyContent(r.getReplyContent());
@@ -178,6 +198,6 @@ public class ReplyDaoImpl implements ReplyDao {
 		return reply;
 	}
 
-	
+
 
 }

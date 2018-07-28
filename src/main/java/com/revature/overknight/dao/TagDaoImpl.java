@@ -10,16 +10,16 @@ import com.revature.overknight.beans.Post;
 import com.revature.overknight.beans.Tag;
 import com.revature.overknight.utils.HibernateUtil;
 
-public class PostDaoImpl implements PostDao {
+public class TagDaoImpl implements TagDao {
 
-	public Integer insertPost(Post post) {
+	public Integer insertTag(Tag tag) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		Integer id = null;
 		
 		try{
 			trans = session.beginTransaction();
-			id = (Integer)session.save(post);
+			id = (Integer)session.save(tag);
 			trans.commit();
 			
 		}catch(HibernateException e){
@@ -34,15 +34,14 @@ public class PostDaoImpl implements PostDao {
 		return id;
 	}
 
-
-	public List<Post> selectAllPosts() {
-		List<Post> posts = null; 
+	public List<Tag> selectAllTags() {
+		List<Tag> tags = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		
 		try{
 			trans = session.beginTransaction();
-			posts = session.createQuery("FROM Post").list();
+			tags = session.createQuery("FROM Tags").list();
 						
 		}catch(HibernateException e){
 			if(trans!=null){
@@ -52,39 +51,17 @@ public class PostDaoImpl implements PostDao {
 		}finally{
 			session.close();
 		}
-		return posts;	
-		
-	}
-	
-	public List<Post> selectAllPostsByUid(Integer uid) {
-		List<Post> posts = null; 
-		Session session = HibernateUtil.getSession();
-		Transaction trans = null;
-		
-		try{
-			trans = session.beginTransaction();
-			posts = session.createQuery("FROM Post WHERE uid ="+uid).list();
-						
-		}catch(HibernateException e){
-			if(trans!=null){
-				trans.rollback();
-			}
-			e.printStackTrace();
-		}finally{
-			session.close();
-		}
-		return posts;	
-		
+		return tags;	
 	}
 
-	public List<Post> selectAllPostsByTag(Tag t) {
-		List<Post> posts = null; 
+	public List<Tag> selectAllTagByPost(Post p) {
+		List<Tag> tags = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		
 		try{
 			trans = session.beginTransaction();
-			posts = session.createQuery("FROM Post WHERE Tag ="+t).list();
+			tags = session.createQuery("FROM Tags WHERE Post = "+p).list();
 						
 		}catch(HibernateException e){
 			if(trans!=null){
@@ -94,18 +71,18 @@ public class PostDaoImpl implements PostDao {
 		}finally{
 			session.close();
 		}
-		return posts;	
-		
+		return tags;	
 	}
-	public Post selectPostById(Integer id) {
+
+	public Tag selectTagById(Integer id) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
-		Post post = null;
+		Tag tag = null;
 		
 		try {
 			trans = session.beginTransaction();
 			
-			post = (Post)session.get(Post.class, id);
+			tag = (Tag)session.get(Tag.class, id);
 			
 			trans.commit();
 		} catch (Exception e) {
@@ -117,20 +94,20 @@ public class PostDaoImpl implements PostDao {
 			session.close();
 		}
 			
-		return post; 
+		return tag; 
 	}
 
-	public Boolean deletePostById(Integer id) {
-		Post post = null;
+	public Boolean deleteTagById(Integer id) {
+		Tag tag = null;
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		Boolean result = false;
 
 		try{
 			trans = session.beginTransaction();
-			post = (Post)session.get(Post.class, id);
-			if(post!=null){
-				session.delete(post);
+			tag = (Tag)session.get(Tag.class, id);
+			if(tag!=null){
+				session.delete(tag);
 				result = true;
 			}
 			trans.commit();
@@ -146,34 +123,22 @@ public class PostDaoImpl implements PostDao {
 		return result;
 	}
 
-	public Post updatePost(Post post) {
-		Post p = null;
+	public Tag updateTag(Tag tag) {
+		Tag t = null;
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 
 		try{
 			trans = session.beginTransaction();
-			p = (Post)session.get(Post.class, post.getPostId());
-			if(null != p){
-				if(post.getUid()!=null){
-					p.setUid(p.getUid());
+			t = (Tag)session.get(Tag.class, tag.getTid());
+			if(null != t){
+				if(tag.getPosts()!=null){
+					t.setPosts(t.getPosts());
 				}
-				if(post.getPostTitle()!=null){
-					p.setPostTitle(p.getPostTitle());
+				if(tag.getTag()!=null){
+					t.setTag(t.getTag());
 				}
-				if(post.getPostImgKey()!=null){
-					p.setPostImgKey(p.getPostImgKey());
-				}
-				if(post.getPostContent()!=null){
-					p.setPostContent(p.getPostContent());
-				}
-				if(post.getPostDate()!=null){
-					p.setPostDate(p.getPostDate());
-				}
-				if(post.getTags()!=null){
-					p.setTags(p.getTags());
-				}
-				session.save(p);
+				session.save(t);
 			}
 			trans.commit();
 			
@@ -185,8 +150,7 @@ public class PostDaoImpl implements PostDao {
 		}finally{
 			session.close(); 
 		}
-		return post;
+		return tag;
 	}
 
-	
 }
