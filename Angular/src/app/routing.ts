@@ -28,11 +28,9 @@ export const approutes: Routes = [
         component: SignupPageComponent
     },
     {
-        //Walter here, screwing around.
         //Home page
         path: '',
-        // redirectTo: '/homepage',
-        component: HomePageComponent,
+        redirectTo: '/homepage',
         pathMatch: 'full'
     },
     {

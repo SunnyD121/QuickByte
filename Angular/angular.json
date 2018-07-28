@@ -14,7 +14,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             // "outputPath": "dist/Angular",
-            "outputPath": "dist/",
+            "outputPath": "dist/QuickByte",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
