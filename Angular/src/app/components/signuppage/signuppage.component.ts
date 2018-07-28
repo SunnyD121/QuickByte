@@ -22,7 +22,7 @@ export class SignupPageComponent implements OnInit {
   displayError = {
       display: 'none',
   }
-  
+
 
   public checkPasswordMatch(){
      this.displayError.display = (this.password != this.passwordConfirm) ? 'block' : 'none';
@@ -39,8 +39,6 @@ export class SignupPageComponent implements OnInit {
           this.validCardCheck = false;
       }
       else this.validCardCheck = true;
-      console.log(this.cardNum);
-      console.log(this.validCardCheck);
   }
 
 

@@ -14,7 +14,7 @@ export class NavBarComponent implements OnInit {
         //TODO: call the database with searchQuery and see if it matches a tag, return the collection of posts
         alert("search() NOT IMPLEMENTED YET.");
         if (this.searchResults == null){
-            this.router.navigate(['/searchResults']);
+            this.router.navigate(['/searchResults'], { queryParams: { query: this.searchQuery } });
         }
 
     }

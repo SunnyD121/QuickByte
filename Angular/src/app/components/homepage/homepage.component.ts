@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomePageComponent implements OnInit {
+    array = new Array<number>(7);
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

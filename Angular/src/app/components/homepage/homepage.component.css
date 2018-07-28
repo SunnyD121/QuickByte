@@ -12,7 +12,7 @@
 .sidenav {
   padding-top: 20px;
   background-color: #f1f1f1;
-  height: 100%; /* This setting sets the size of the grayish background on the sidebar */
+  height: 300%; /* This setting sets the size of the grayish background on the sidebar */
 }
 
 /* Set black background color, white text and some padding */
@@ -30,3 +30,30 @@ footer {
   }
   .row.content {height:auto;}
 }
+
+.ad:hover {
+    cursor:pointer;
+}
+
+
+/* Uncomment this if you want the ads to be REALLY annoying */
+/*
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    49% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+img {
+    animation: blink 0.5s;
+    animation-iteration-count: infinite;
+}
+*/

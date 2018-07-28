@@ -11,13 +11,20 @@
           </div>
           <div class="col-sm-4">
               <h3>Recipe</h3>
-              <app-expandable-pane [contentString]="recipe1"></app-expandable-pane>
+              <app-expandable-pane>{{recipe1}}</app-expandable-pane>
           </div>
 
       </div>
   </div>
-  <br>
-<div class="well" style="width:50%">
+
+  <span>
+      <a class="post-badge" style="padding-left:150px"><span class="glyphicon glyphicon-heart"><span class="glyph-text">Favorite</span></span></a>
+      <a class="post-badge"><span class="glyphicon glyphicon-thumbs-up"><span class="glyph-text">Like</span></span></a>
+      <a class="post-badge"><span class="glyphicon glyphicon-thumbs-down"><span class="glyph-text">Dislike</span></span></a>
+      <a class="post-badge"><span class="glyphicon glyphicon-share-alt"><span class="glyph-text">Share</span></span></a>
+  </span>
+  <br><br>
+  <app-expandable-pane width="50%" min_height="128px">
   <div class="media">
     <div class="media-left">
       <img src={{img1Path}} class="media-object" style="width:45px">
@@ -45,9 +52,9 @@
               <p>Stop fooling around, we have a website to make.</p>
             </div>
           </div>
-</div>
         </div>
       </div>
 
   </div>
+  </app-expandable-pane>
 </div>

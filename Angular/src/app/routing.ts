@@ -14,7 +14,6 @@ export const approutes: Routes = [
         component: HomePageComponent
     },
     {
-        //The URL mapping
         path: 'Homepage',
         component: HomePageComponent
     },
@@ -23,10 +22,10 @@ export const approutes: Routes = [
         component: LoginPageComponent
     },
     {
-        //The URL mapping
         path: 'signuppage',
         component: SignupPageComponent
     },
+
     {
         //Home page
         path: '',

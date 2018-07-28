@@ -1,5 +1,7 @@
 
-<div class="well" (click)="customClick()">
-    <div  [style.overflow]="overflow" [style.height]="height">{{contentString}}</div>
+<div class="well" (click)="customClick()" [style.width]="width">
+    <div  [style.overflow]="overflow" [style.height]="height">
+        <ng-content></ng-content>
+    </div>
     <span [innerHtml]="clickTitle"></span>
 </div>

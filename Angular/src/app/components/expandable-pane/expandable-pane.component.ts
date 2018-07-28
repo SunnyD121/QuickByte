@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-expandable-pane',
@@ -6,11 +6,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./expandable-pane.component.css']
 })
 export class ExpandablePaneComponent implements OnInit {
-    @Input() contentString: string;
+    @Input() width: string;
+    @Input() min_height: string;
 
     expanded = false;
     overflow = "hidden";
-    height = "64px";
+    height: number;
+
     clickTitle = "Click to Expand";
 
     public customClick(){
@@ -21,7 +23,7 @@ export class ExpandablePaneComponent implements OnInit {
         }
         else{
             this.overflow = "hidden";
-            this.height = "64px";
+            this.height = (this.min_height) ? this.min_height : "64px";
             this.clickTitle = "Click to Expand";
         }
     }
@@ -29,6 +31,7 @@ export class ExpandablePaneComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+      this.height = (this.min_height) ? this.min_height : "64px";
   }
 
 }

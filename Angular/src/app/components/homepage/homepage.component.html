@@ -15,12 +15,14 @@
       <app-media-post></app-media-post>
     </div>
     <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p>ADS</p>
-      </div>
-      <div class="well">
-        <p>ADS</p>
-      </div>
+
+        <!-- loops the ad -->
+        <div *ngFor="let element of array">
+            <div class="well">
+                <a href="https://revature.com" ><img class="ad" src="../assets/images/ad_revature.png" style="max-width: 100%"></a>
+            </div>
+        </div>
+
     </div>
   </div>
 </div>
