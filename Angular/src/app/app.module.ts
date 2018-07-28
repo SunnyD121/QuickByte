@@ -12,6 +12,7 @@ import { HomePageComponent } from './components/homepage/homepage.component';
 import { LoginPageComponent } from './components/loginpage/loginpage.component';
 import { SignupPageComponent } from './components/signuppage/signuppage.component';
 import { ErrorPage404Component } from './components/errorpage404/errorpage404.component';
+import { ExpandablePaneComponent } from './components/expandable-pane/expandable-pane.component';
 
 import { APP_BASE_HREF } from '@angular/common';
 
@@ -23,7 +24,8 @@ import { APP_BASE_HREF } from '@angular/common';
     HomePageComponent,
     LoginPageComponent,
     SignupPageComponent,
-    ErrorPage404Component
+    ErrorPage404Component,
+    ExpandablePaneComponent
   ],
   imports: [
     BrowserModule,
