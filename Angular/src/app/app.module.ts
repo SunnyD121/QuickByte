@@ -14,6 +14,8 @@ import { SignupPageComponent } from './components/signuppage/signuppage.componen
 import { ErrorPage404Component } from './components/errorpage404/errorpage404.component';
 import { ExpandablePaneComponent } from './components/expandable-pane/expandable-pane.component';
 
+import { APP_BASE_HREF } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,7 @@ import { ExpandablePaneComponent } from './components/expandable-pane/expandable
     FormsModule,
     RouterModule.forRoot(approutes)
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue : 'QuickByte'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
