@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './services/user-service/user-service.service';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -30,9 +32,10 @@ import { APP_BASE_HREF } from '@angular/common';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(approutes, {onSameUrlNavigation:'reload'})
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : ''}],
+  providers: [UserService, {provide: APP_BASE_HREF, useValue : ''}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

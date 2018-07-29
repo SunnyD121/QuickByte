@@ -10,10 +10,10 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="User")
+@Table(name="Users")
 public class User {
 	@Id
-	@Column(name="uid")
+	@Column(name="user_id")
 	@SequenceGenerator(sequenceName="USER_SEQ", name="UID_GEN")
 	@GeneratedValue(generator="UID_GEN", strategy=GenerationType.SEQUENCE)
 	private Integer id;

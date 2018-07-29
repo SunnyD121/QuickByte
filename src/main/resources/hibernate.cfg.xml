@@ -23,11 +23,11 @@
 		</property>
 		
 		<property name="hibernate.connection.username">
-			local_180616
+			this_pc<!--local_180616-->
 		</property>
 		
 		<property name="hibernate.connection.password">
-			admin
+			password<!--admin-->
 		</property>
 		
 		<!-- This determines how many connections a single user cna have to the database.
@@ -46,7 +46,7 @@
 
 		<!-- hibernate mapping to data definition language -->
 		<property name="hibernate.hbm2ddl.auto">
-			update
+			create
 		</property>
 		<!-- There are 4 different states youc an place it as:
 		 create: Wipe anye existing database tables and create it from scratch
@@ -55,25 +55,25 @@
 		 create-drop: database is cleared and emptied upon server shutdown.-->
 
 	 	<!-- 2nd level cache properties -->
-		<property name="hibernate.cache.region.factory_class">
-			org.hibernate.cache.ehcache.EhCacheRegionFactory
-		</property>
-		<property name="hibernate.cache.use_second_level_cache">
-			true
-		</property>
-		<property name="hibernate.cache.use_query_cache">
-			true
-			<!-- Though there are TWO levels of cache, there is technically a 3rd
-			level called 'query cache'. However all it does is cache HQL query 
-			results, so is not considered along side L1 and L2 -->
-		</property>
+		<!--<property name="hibernate.cache.region.factory_class">-->
+			<!--org.hibernate.cache.ehcache.EhCacheRegionFactory-->
+		<!--</property>-->
+		<!--<property name="hibernate.cache.use_second_level_cache">-->
+			<!--true-->
+		<!--</property>-->
+		<!--<property name="hibernate.cache.use_query_cache">-->
+			<!--true-->
+			<!--&lt;!&ndash; Though there are TWO levels of cache, there is technically a 3rd-->
+			<!--level called 'query cache'. However all it does is cache HQL query -->
+			<!--results, so is not considered along side L1 and L2 &ndash;&gt;-->
+		<!--</property>-->
 
 		<!-- <mapping resource="person.hbm.xml" /> -->
-		<mapping class="com.revature.beans.Person"/>
-		<mapping class="com.revature.beans.Item"/>
-		<mapping class="com.revature.beans.Shop"/>
-		<mapping class="com.revature.beans.Npc"/>
-		<mapping class="com.revature.beans.Job"/>
+		<mapping class="com.revature.overknight.beans.User"/>
+		<!--<mapping class="com.revature.overknight.beans.Item"/>-->
+		<!--<mapping class="com.revature.overknight.beans.Shop"/>-->
+		<!--<mapping class="com.revature.overknight.beans.Npc"/>-->
+		<!--<mapping class="com.revature.overknight.beans.Job"/>-->
 
 	</session-factory>
 </hibernate-configuration>

@@ -1,4 +1,8 @@
 import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
+import { UserService } from '../../services/user-service/user-service.service';
+import { User } from '../../objects/User';
 
 @Component({
   selector: 'app-loginpage',
@@ -12,7 +16,7 @@ export class LoginPageComponent implements OnInit {
     usernameCheck = false;
     passwordCheck = false;
 
-  constructor() { }
+  constructor( private router: Router, private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -30,11 +34,31 @@ export class LoginPageComponent implements OnInit {
   public validateCredentials(){
       this.checkIfValidUsername();
       this.checkIfValidPassword();
-
+      this.testFunction2();
       if (this.usernameCheck && this.passwordCheck){
           this.router.navigate(['/homepage']);
       }
       else {}
+  }
+
+  testFunction(){
+      this.userService.getUser().subscribe(
+          data => {
+              console.log(data);
+          },
+          error => {
+              console.log("ERROR");
+              console.log(error);
+          }
+      );
+      console.log("clicked!");
+  }
+
+  userList: Array<User>;    /*Not sure why I need this, but it was on Angular.io*/
+  testFunction2(){
+      console.log("commented out.");
+      // this.userService.checkCredentials(this.username, this.password).subscribe(
+      //     user => this.userList.push(this.username));
   }
 
 }

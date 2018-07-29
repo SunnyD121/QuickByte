@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { LowerCasePipe } from '@angular/common';
 
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -103,6 +104,5 @@ export class HomePageComponent implements OnInit {
         return false;
 
     }
-
 
 }
