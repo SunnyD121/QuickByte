@@ -16,6 +16,17 @@ export class HomePageComponent implements OnInit {
     isInitialized: boolean;
     searchedPosts: [];
 
+    //TODO: delete this, for testing purposes only
+    testString = "Voilà! In view, a humble vaudevillian veteran, cast vicariously as both victim and villian"
+    +" by the vicissitudes of Fate. This visage, no mere veneer of vanity, is a vestige of the"
+    +" vox populi, now vacant, vanished. However, this valorous visitation of a by-gone vexation,"
+    +" stands vivified and has vowed to vanquish these venal and virulent vermin vanguarding vice"
+    +" and vouchsafing the violently vicious and voracious violation of volition. (he carves a \"V\""
+    +" into a sign) The only verdict is vengence; a vendetta, held as a votive, not in vain, for"
+    +" the value and veracity of such shall one day vindicate the vigilant and the virtuous."
+    +" (giggles) Verily, this vichyssoise of verbiage veers most verbose, so let me simply add"
+    +" that it is my very good honor to meet you and you may call me V.\n     -V for Vendetta";
+
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router) {
     /* This part will only be accessable on load only. So, it will not be accessable on Reload. */
@@ -35,14 +46,17 @@ export class HomePageComponent implements OnInit {
                 this.headerTitle = "Welcome";
                 this.headerMessage = "This is some information. There are words here talking about the words that should be here instead of the words that are here,"
                       + " these words. Words words words words words. Did you know that you can type virtually anything onto a webpage?"
+                this.searchedPosts = this.getPostsMatchingSearchCriteria("trending");
             }
             else {
                 this.headerTitle = "Search Results";
                 if (!this.contains(this.query, this.validCriteria)){
                     this.headerMessage = "\'" + this.query + "\' is not a valid search criteria. Valid critera are: \n" + this.validCriteria;
+                    this.searchedPosts = null;
                 }
                 else {
                     this.headerMessage = "Showing results for \'" + this.query + "\':";
+                    this.searchedPosts = this.getPostsMatchingSearchCriteria("french");
                 }
             }
         }
@@ -52,10 +66,25 @@ export class HomePageComponent implements OnInit {
         alert("TODO: Call backend and retrieve posts matching search criteria NOT IMPLEMENTED YET");
         //Use searchQuery here to call Service layer
         //NOTE: Hardcoded to emulate functionality
-        posts:Array<Object>
-        if (searchQuery.toLowerCase() == "french") posts = [
-            {img: "../assets/images/main_pic.jpg",
-             comments: [{cid: 2, pid: 3, uid: 4, commentContent: "Hello World"}]
+        let posts:Array<Object>;
+        if (searchQuery.toLowerCase() == "trending") posts = [
+            {img: "../assets/images/food1.jpg",
+             recipe: "Step 1: Take out of box \nStep 2: put in oven \nStep 3: Take out of oven \nStep 4: Eat while hot.",
+             comments: [{cid: 1, pid: 2, uid: 3, commentContent: "Hello World"}]
+            },
+            {img: "../assets/images/food2.jpg",
+             recipe: this.testString,
+             comments: [{cid: 4, pid: 5, uid: 6, commentContent: "I am saying words and you are reading words."}]
+            },
+            {img: "../assets/images/food4.jpg",
+             recipe: "HelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld",
+             comments: [{cid: 7, pid: 8, uid: 9, commentContent: "This is a comment!"}]
+            }
+        ];
+        else if (searchQuery.toLowerCase() == "french") posts = [
+            {img: "../assets/images/food3.jpg",
+             recipe: "Eat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,",
+             comments: [{cid: 10, pid: 11, uid: 12, commentContent: "I can't believe you."}]
             }
         ];
         else posts = null;
@@ -74,5 +103,6 @@ export class HomePageComponent implements OnInit {
         return false;
 
     }
+
 
 }

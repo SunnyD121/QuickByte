@@ -13,3 +13,7 @@ span {
 span:hover {
     cursor: pointer
 }
+
+*{
+    white-space: pre-wrap;
+}

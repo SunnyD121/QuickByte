@@ -13,8 +13,14 @@
     <div class="col-sm-8 text-left">
       <h1>{{headerTitle}}</h1>
       <p style="white-space:pre-wrap">{{headerMessage}}</p>
-      <app-media-post></app-media-post>
-      <app-media-post></app-media-post>
+      <div *ngIf="searchedPosts; else elseBlock1">  <!-- if there are posts (search results) -->
+          <div *ngFor="let post of searchedPosts">  <!-- loop over all posts -->
+              <app-media-post [postPic]="post.img" [postComments]="post.comments[0].commentContent" [postRecipe]="post.recipe"></app-media-post>
+          </div>
+      </div>    <!-- end *ngIf -->
+      <ng-template #elseBlock1>
+          <hr>
+      </ng-template>
     </div>
     <div class="col-sm-2 sidenav">
 
