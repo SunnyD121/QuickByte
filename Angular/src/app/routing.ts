@@ -4,7 +4,7 @@ import { Routes } from '@angular/router';
 import { HomePageComponent } from './components/homepage/homepage.component';
 import { LoginPageComponent } from './components/loginpage/loginpage.component';
 import { SignupPageComponent } from './components/signuppage/signuppage.component';
-// import { ErrorPage404Component } from './components/errorpage404/errorpage404.component';
+import { ErrorPage404Component } from './components/errorpage404/errorpage404.component';
 
 
 export const approutes: Routes = [
@@ -25,7 +25,10 @@ export const approutes: Routes = [
         path: 'signuppage',
         component: SignupPageComponent
     },
-
+    {
+        path: 'searchResults',
+        component: HomePageComponent
+    },
     {
         //Home page
         path: '',
@@ -37,7 +40,7 @@ export const approutes: Routes = [
         //(Assuming the above paths are hit first)
         //This is needed for the server.
         path: '**',
-        // component: ErrorPage404Component
-        component: HomePageComponent
+        component: ErrorPage404Component
+        // component: HomePageComponent
     }
 ]
