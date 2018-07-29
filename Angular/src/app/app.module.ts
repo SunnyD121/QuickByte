@@ -15,6 +15,8 @@ import { ErrorPage404Component } from './components/errorpage404/errorpage404.co
 import { ExpandablePaneComponent } from './components/expandable-pane/expandable-pane.component';
 
 import { APP_BASE_HREF } from '@angular/common';
+import { LocationStrategy } from '@angular/common';
+import { HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { APP_BASE_HREF } from '@angular/common';
     FormsModule,
     RouterModule.forRoot(approutes)
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : ''}],
+  providers: [{provide: APP_BASE_HREF, useValue : ''},
+              { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
