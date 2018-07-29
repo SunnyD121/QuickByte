@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { LowerCasePipe } from '@angular/common';
 
 @Component({
@@ -7,21 +7,12 @@ import { LowerCasePipe } from '@angular/common';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
     query: string;
     array = new Array<number>(7);
     headerTitle: string;
     headerMessage: string;
     validCriteria = ["American", "British", "Carribean", "Chinese", "French", "German", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Portuguese", "Spanish", "Thai"];
-
-
-  constructor(private route: ActivatedRoute) {
-  }
-  //
-  // public toLowerCase(input:string){
-  //     input = new LowerCasePipe().transform(input);
-  //
-  // }
 
   ngOnInit() {
       this.route.queryParams.subscribe(params => {this.query = params.query;});
@@ -39,6 +30,25 @@ export class HomePageComponent implements OnInit {
               this.headerMessage = "Showing results for \'" + this.query + "\':";
           }
       }
+  }
+
+  constructor(private route: ActivatedRoute, private router: Router) {
+      this.navigationSubscription = this.router.events.subscribe((e: any) => {
+         // If it is a NavigationEnd event re-initalise the component
+         if (e instanceof NavigationEnd) {
+           this.initializeValues();
+         }
+       });
+  }
+
+  initializeValues() {}
+
+  ngOnDestroy() {
+      //For avoiding memory leaks
+    if (this.navigationSubscription) {
+       this.navigationSubscription.unsubscribe();
+    }
+    if (this.route.queryParams) this.route.queryParams.unsubscribe();
   }
 
   contains(word: string, container:string[]){

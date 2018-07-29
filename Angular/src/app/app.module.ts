@@ -30,7 +30,7 @@ import { APP_BASE_HREF } from '@angular/common';
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(approutes)
+    RouterModule.forRoot(approutes, {onSameUrlNavigation:'reload'})
   ],
   providers: [{provide: APP_BASE_HREF, useValue : ''}],
   bootstrap: [AppComponent]
