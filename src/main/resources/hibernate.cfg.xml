@@ -69,11 +69,12 @@
 		</property>
 
 		<!-- <mapping resource="person.hbm.xml" /> -->
-		<mapping class="com.revature.beans.Person"/>
-		<mapping class="com.revature.beans.Item"/>
-		<mapping class="com.revature.beans.Shop"/>
-		<mapping class="com.revature.beans.Npc"/>
-		<mapping class="com.revature.beans.Job"/>
+		<mapping class="com.revature.overnight.beans.User"/>
+		<mapping class="com.revature.overnight.beans.Post"/>
+		<mapping class="com.revature.overnight.beans.Tag"/>
+		<mapping class="com.revature.overnight.beans.Comment"/>
+		<mapping class="com.revature.overnight.beans.Reply"/>
+		<mapping class="com.revature.overnight.beans.CreditCard"/>
 
 	</session-factory>
 </hibernate-configuration>

@@ -35,6 +35,8 @@ public class User {
 	private Long creditCardNumber;
 	@Column
 	private String profileImgKey;
+	@Column
+	private Integer isDeleted;	//0 = not deleted, 1=deleted
 	
 
 	public User() {
@@ -54,6 +56,7 @@ public class User {
 		this.phone = phone;
 		this.creditCardNumber = creditCardNumber;
 		this.profileImgKey = profileImgKey;
+		this.isDeleted = 0;
 	}
 
 	public User(Integer id, String username, String password, Integer userStatus, String fName, String lName,
@@ -69,6 +72,7 @@ public class User {
 		this.phone = phone;
 		this.creditCardNumber = creditCardNumber;
 		this.profileImgKey = profileImgKey;
+		this.isDeleted = 0;
 	}
 
 
@@ -152,12 +156,25 @@ public class User {
 		this.profileImgKey = profileImgKey;
 	}
 
+	
+	
+	public Integer getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Integer isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", userStatus=" + userStatus
 				+ ", fName=" + fName + ", lName=" + lName + ", email=" + email + ", phone=" + phone
-				+ ", creditCardNumber=" + creditCardNumber + ", profileImgKey=" + profileImgKey + "]";
+				+ ", creditCardNumber=" + creditCardNumber + ", profileImgKey=" + profileImgKey + ", isDeleted="
+				+ isDeleted + "]";
 	}
+
+	
 	
 	
 	

@@ -41,7 +41,7 @@ public class UserDaoImpl implements UserDao {
 		
 		try{
 			trans = session.beginTransaction();
-			users = session.createQuery("FROM User").list();
+			users = session.createQuery("FROM User WHERE isDeleted = 0").list();
 						
 		}catch(HibernateException e){
 			if(trans!=null){
@@ -63,7 +63,7 @@ public class UserDaoImpl implements UserDao {
 			tx = session.beginTransaction();
 			
 			user = (User)session.get(User.class, id);
-			
+				
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,8 +73,12 @@ public class UserDaoImpl implements UserDao {
 		}finally {
 			session.close();
 		}
-			
-		return user; 
+		if(user.getIsDeleted()==0) {
+			return user;
+		}else {
+			return null;
+		}
+		 
 	}
 
 	public Boolean deleteUserById(Integer id) {
@@ -87,7 +91,9 @@ public class UserDaoImpl implements UserDao {
 			trans = session.beginTransaction();
 			user = (User)session.get(User.class, id);
 			if(user!=null){
-				session.delete(user);
+				if(user.getIsDeleted()!=null) {
+					user.setIsDeleted(1);
+				}
 				result = true;
 			}
 			trans.commit();
@@ -111,7 +117,7 @@ public class UserDaoImpl implements UserDao {
 		try{
 			trans = session.beginTransaction();
 			u = (User)session.get(User.class, user.getId());
-			if(null != u){
+			if(null != u && u.getIsDeleted()!=1){
 				if(user.getUsername()!=null){
 					u.setUsername(u.getUsername());
 				}
@@ -173,8 +179,11 @@ public class UserDaoImpl implements UserDao {
 		}finally {
 			session.close();
 		}
-			
+		if (user.getIsDeleted()!=1) {	
 		return user; 
+		}else {
+			return null;
+		}
 	}
 
 	
