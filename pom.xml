@@ -166,9 +166,6 @@
 					<groupId>com.github.eirslett</groupId>
 					<artifactId>frontend-maven-plugin</artifactId>
 					<version>1.0</version>
-					<configuration>
-						<workingDirectory>Angular</workingDirectory>
-					</configuration>
 					<executions>
 						<!-- It will execute command "npm build" inside "/angular" directory 
 							to clean and create "/dist" directory -->
