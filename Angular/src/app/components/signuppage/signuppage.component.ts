@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-signuppage',
@@ -15,24 +14,7 @@ export class SignupPageComponent implements OnInit {
     uniquenessCheck: boolean;
     validCardCheck: boolean;
 
-
-    constructor(private router: Router) {
-      this.navigationSubscription = this.router.events.subscribe((e: any) => {
-         // If it is a NavigationEnd event re-initalise the component
-         if (e instanceof NavigationEnd) {
-           this.initializeValues();
-         }
-       });
-    }
-
-    initializeValues() {}
-
-    ngOnDestroy() {
-          //For avoiding memory leaks
-        if (this.navigationSubscription) {
-           this.navigationSubscription.unsubscribe();
-        }
-    }
+    constructor() { }
 
   ngOnInit() {
   }

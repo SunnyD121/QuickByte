@@ -11,29 +11,23 @@ export const approutes: Routes = [
     {
         //The URL mapping
         path: 'homepage',
-        component: HomePageComponent,
-        runGuardsAndResolvers: 'always'
-
+        component: HomePageComponent
     },
     {
         path: 'Homepage',
-        component: HomePageComponent,
-        runGuardsAndResolvers: 'always'
+        component: HomePageComponent
     },
     {
         path: 'loginpage',
-        component: LoginPageComponent,
-        runGuardsAndResolvers: 'always'
+        component: LoginPageComponent
     },
     {
         path: 'signuppage',
-        component: SignupPageComponent,
-        runGuardsAndResolvers: 'always'
+        component: SignupPageComponent
     },
     {
         path: 'searchResults',
-        component: HomePageComponent,
-        runGuardsAndResolvers: 'always'
+        component: HomePageComponent
     },
     {
         //Home page
@@ -46,9 +40,7 @@ export const approutes: Routes = [
         //(Assuming the above paths are hit first)
         //This is needed for the server.
         path: '**',
-        component: ErrorPage404Component,
-
+        component: ErrorPage404Component
         // component: HomePageComponent
-        runGuardsAndResolvers: 'always'
     }
 ]

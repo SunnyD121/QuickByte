@@ -11,7 +11,7 @@ export class ExpandablePaneComponent implements OnInit {
 
     expanded = false;
     overflow = "hidden";
-    height: number;
+    height: string;
 
     clickTitle = "Click to Expand";
 
