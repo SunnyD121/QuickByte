@@ -160,6 +160,30 @@
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.8.2</version>
                 </plugin>
+                <!-- Plugin to copy the content of /angular/dist/ directory to output directory (ie/ /target/transactionManager-1.0/) -->
+			    <plugin>
+			      <groupId>org.apache.maven.plugins</groupId>
+			      <artifactId>maven-resources-plugin</artifactId>
+			      <version>2.4.2</version>
+			      <executions>
+			        <execution>
+			          <id>default-copy-resources</id>
+			          <phase>process-resources</phase>
+			          <goals>
+			            <goal>copy-resources</goal>
+			          </goals>
+			          <configuration>
+			            <overwrite>true</overwrite>
+			            <outputDirectory>${CATALINA_HOME}/webapps/QuickByte/</outputDirectory>
+			            <resources>
+			              <resource>
+			                <directory>${project.basedir}/Angular/dist</directory>
+			              </resource>
+			            </resources>
+			          </configuration>
+			        </execution>
+			      </executions>
+			    </plugin>
             </plugins>
         </pluginManagement>
     </build>
