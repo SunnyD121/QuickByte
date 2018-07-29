@@ -32,7 +32,7 @@ import { APP_BASE_HREF } from '@angular/common';
     FormsModule,
     RouterModule.forRoot(approutes)
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : ''}],
+  providers: [{provide: APP_BASE_HREF, useValue : 'QuickByte'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
