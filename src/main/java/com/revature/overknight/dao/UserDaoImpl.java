@@ -3,6 +3,7 @@ package com.revature.overknight.dao;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -176,6 +177,16 @@ public class UserDaoImpl implements UserDao {
 			
 		return user; 
 	}
+
+    public User selectUserByUserName(String username){
+        Session session = HibernateUtil.getSession();
+        Query query = session.getNamedQuery("getUserByUsername");
+
+        query.setParameter("username", username);
+
+        System.out.println(query.list());
+        return null;
+    }
 
 	
 

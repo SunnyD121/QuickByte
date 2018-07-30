@@ -27,15 +27,14 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-
 		<dependency>
 			<artifactId>ojdbc7</artifactId>
 			<groupId>com.oracle</groupId>
 			<version>12.1.0</version>
 		</dependency>
-		<!-- 
+		<!--
 			https://mvnrepository.com/artifact/org.codehaus.jackson/
-									  jackson-mapper-asl 
+									  jackson-mapper-asl
 		  -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
@@ -141,9 +140,9 @@
 						</configuration>
 					</execution>
 
-					<!-- 
-						It will execute "npm install" inside "/Angular" 
-						directory. 
+					<!--
+						It will execute "npm install" inside "/Angular"
+						directory.
 					-->
 					<execution>
 						<id>npm install</id>
@@ -154,8 +153,8 @@
 							<arguments>install</arguments>
 						</configuration>
 					</execution>
-					<!-- 
-						It will execute "npm build" inside "/Angular" 
+					<!--
+						It will execute "npm build" inside "/Angular"
 						directory to clean and create "/dist" directory
 				     -->
 					<execution>
@@ -169,9 +168,9 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- 
+			<!--
 				Plugin to copy the content of "/Angular/dist/" directory to
-				output directory "/target/QuickByte-1.0/" 
+				output directory "/target/QuickByte-1.0/"
 			 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
