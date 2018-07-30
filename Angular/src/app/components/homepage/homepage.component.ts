@@ -15,7 +15,7 @@ export class HomePageComponent implements OnInit {
     headerMessage: string;
     validCriteria = ["American", "British", "Carribean", "Chinese", "French", "German", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Portuguese", "Spanish", "Thai"];
     isInitialized: boolean;
-    searchedPosts: [];
+    searchedPosts: Array<Object>;
 
     //TODO: delete this, for testing purposes only
     testString = "Voilà! In view, a humble vaudevillian veteran, cast vicariously as both victim and villian"
@@ -35,7 +35,7 @@ export class HomePageComponent implements OnInit {
         /* This part will be accessable on Reload */
         this.isInitialized = false;
         this.ngOnInit();
-        }));
+        });
     }
 
     ngOnInit() {

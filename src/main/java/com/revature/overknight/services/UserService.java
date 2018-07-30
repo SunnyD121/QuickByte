@@ -11,7 +11,7 @@ public class UserService {
 		UserDaoImpl ud = new UserDaoImpl();
 		User user = new User();
 		
-		user = ud.selectUserByUsername(username);
+		user = ud.selectUserByUserName(username);
 		
 		if(user.getPassword().equals(password))
 		{
