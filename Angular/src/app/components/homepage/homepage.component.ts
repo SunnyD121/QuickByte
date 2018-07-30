@@ -35,7 +35,7 @@ export class HomePageComponent implements OnInit {
         /* This part will be accessable on Reload */
         this.isInitialized = false;
         this.ngOnInit();
-        }));
+        });
     }
 
     ngOnInit() {
