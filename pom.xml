@@ -229,7 +229,8 @@
 							</goals>
 							<configuration>
 								<overwrite>true</overwrite>
-								<outputDirectory>${project.build.directory}/${project.artifactId}/</outputDirectory>
+								<!-- <outputDirectory>${project.build.directory}/${project.artifactId}/</outputDirectory> -->
+								<outputDirectory>/home/ec2-user/apache-tomcat-8.5.32/webapps/QuickByte/target/QuickByte</outputDirectory>
 								<resources>
 									<resource>
 										<directory>${project.basedir}/Angular/dist</directory>
