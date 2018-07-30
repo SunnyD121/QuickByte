@@ -125,8 +125,8 @@
 	</dependencies>
 
 	<build>
-		<finalName>QuickByte</finalName>
-		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
+		<!-- <finalName>QuickByte</finalName>
+		<pluginManagement>lock down plugins versions to avoid using Maven 
 				defaults (may be moved to parent pom) -->
 			<plugins>
 				<!-- Apache Tomcat Server -->
@@ -240,6 +240,6 @@
 					</executions>
 				</plugin>
 			</plugins>
-		</pluginManagement>
+<!-- 		</pluginManagement> -->
 	</build>
 </project>
