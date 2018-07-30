@@ -49,7 +49,7 @@ export class SignupPageComponent implements OnInit {
   }
 
   public submit(){
-      this.router.navigate(['/homepage']);
+    //   this.router.navigate(['/homepage']);
   }
 
   public authenticateAndSubmit(){

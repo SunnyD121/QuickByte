@@ -15,7 +15,7 @@ export class HomePageComponent implements OnInit {
     headerMessage: string;
     validCriteria = ["American", "British", "Carribean", "Chinese", "French", "German", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Portuguese", "Spanish", "Thai"];
     isInitialized: boolean;
-    searchedPosts: Array<Object>;
+    // searchedPosts: [];
 
     //TODO: delete this, for testing purposes only
     testString = "Voilà! In view, a humble vaudevillian veteran, cast vicariously as both victim and villian"
@@ -43,23 +43,23 @@ export class HomePageComponent implements OnInit {
             this.isInitialized = true;
 
             this.activatedRoute.queryParams.subscribe(params => {this.query = params.query;});
-            if (!this.query) {    //if not arriving here via search results
-                this.headerTitle = "Welcome";
-                this.headerMessage = "This is some information. There are words here talking about the words that should be here instead of the words that are here,"
-                      + " these words. Words words words words words. Did you know that you can type virtually anything onto a webpage?"
-                this.searchedPosts = this.getPostsMatchingSearchCriteria("trending");
-            }
-            else {
-                this.headerTitle = "Search Results";
-                if (!this.contains(this.query, this.validCriteria)){
-                    this.headerMessage = "\'" + this.query + "\' is not a valid search criteria. Valid critera are: \n" + this.validCriteria;
-                    this.searchedPosts = null;
-                }
-                else {
-                    this.headerMessage = "Showing results for \'" + this.query + "\':";
-                    this.searchedPosts = this.getPostsMatchingSearchCriteria("french");
-                }
-            }
+            // if (!this.query) {    //if not arriving here via search results
+            //     this.headerTitle = "Welcome";
+            //     this.headerMessage = "This is some information. There are words here talking about the words that should be here instead of the words that are here,"
+            //           + " these words. Words words words words words. Did you know that you can type virtually anything onto a webpage?"
+            //     this.searchedPosts = this.getPostsMatchingSearchCriteria("trending");
+            // }
+            // else {
+            //     this.headerTitle = "Search Results";
+            //     if (!this.contains(this.query, this.validCriteria)){
+            //         this.headerMessage = "\'" + this.query + "\' is not a valid search criteria. Valid critera are: \n" + this.validCriteria;
+            //         this.searchedPosts = null;
+            //     }
+            //     else {
+            //         this.headerMessage = "Showing results for \'" + this.query + "\':";
+            //         this.searchedPosts = this.getPostsMatchingSearchCriteria("french");
+            //     }
+            // }
         }
     }
 
