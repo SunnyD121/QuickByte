@@ -69,21 +69,21 @@ export class HomePageComponent implements OnInit {
         //NOTE: Hardcoded to emulate functionality
         let posts:Array<Object>;
         if (searchQuery.toLowerCase() == "trending") posts = [
-            {img: "../assets/images/food1.jpg",
+            {img: "../../assets/images/food1.jpg",
              recipe: "Step 1: Take out of box \nStep 2: put in oven \nStep 3: Take out of oven \nStep 4: Eat while hot.",
              comments: [{cid: 1, pid: 2, uid: 3, commentContent: "Hello World"}]
             },
-            {img: "../assets/images/food2.jpg",
+            {img: "../../assets/images/food2.jpg",
              recipe: this.testString,
              comments: [{cid: 4, pid: 5, uid: 6, commentContent: "I am saying words and you are reading words."}]
             },
-            {img: "../assets/images/food4.jpg",
+            {img: "../../assets/images/food4.jpg",
              recipe: "HelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld",
              comments: [{cid: 7, pid: 8, uid: 9, commentContent: "This is a comment!"}]
             }
         ];
         else if (searchQuery.toLowerCase() == "french") posts = [
-            {img: "../assets/images/food3.jpg",
+            {img: "../../assets/images/food3.jpg",
              recipe: "Eat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,",
              comments: [{cid: 10, pid: 11, uid: 12, commentContent: "I can't believe you."}]
             }
