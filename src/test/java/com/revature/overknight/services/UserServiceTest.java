@@ -30,8 +30,6 @@ public class UserServiceTest {
 		UserService us = new UserService();
 		us.setUD(userDaoImplMock);
 		assertTrue(us.userLogin("Test", "password"));
-		
-		
 	}
 
 }

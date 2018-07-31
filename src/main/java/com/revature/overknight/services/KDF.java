@@ -7,20 +7,45 @@ import javax.crypto.*;
 import javax.crypto.spec.*;
 
 public class KDF {
+	/*
+	 * Suppose variable is an array that holds a password. When we do not need
+	 * variable anymore, we can overwrite this sensitive information in memory
+	 * with Arrays.fill(variable, some_value).
+	 */
 	
 	public static void main(String[] args) {
 		KDF kdf = new KDF();
+//		
+//		byte[] hash = kdf.hashPassword("password".toCharArray(), "".getBytes());
+//		System.out.println(Arrays.toString(hash));
+		String s = "[56, 106, 50, 35, 87, 67, 99, 119, 39, -41, -22, -15, 6, 118, 51, -126, 49, 115, -33, 97]";
+		String[] ss = s.substring(1, s.length() - 1).split(",");
+		byte[] bytes = new byte[ss.length];
+		int l = bytes.length;
+		for (int i = 0; i < l; i++) bytes[i] = Byte.parseByte(ss[i].trim());    
 		
-		byte[] hash = kdf.hashPassword("password".toCharArray(), "".getBytes());
-		System.out.println(Arrays.toString(hash));
+		
+		boolean check = kdf.checkPassword(bytes, "password".toCharArray(),
+										  "salt".getBytes());
+		System.out.println(check);
+	}
+	
+	public boolean checkPassword(byte[] actual, char[] attempt, byte[] salt) {
+		byte[] hash = hashPassword(attempt, salt);
+		Arrays.fill(attempt, Character.MIN_VALUE);
+		boolean equal = Arrays.equals(actual, hash);
+		Arrays.fill(actual, Byte.MIN_VALUE);
+		Arrays.fill(hash, Byte.MIN_VALUE);
+		
+		return equal;
 	}
 	
 	public byte[] hashPassword(char[] password, byte[] salt) {
-		/* 20000 iterations is twice the recommendation. SHA1 produces a value
+		/* 
+		 * 20000 iterations is twice the recommendation. SHA1 produces a value
 		 * that is 160 bits long so we use 160 bits for the key length.
 		 */
 		PBEKeySpec ks = new PBEKeySpec(password, salt, 20000, 160);
-		// We do not need password anymore so overwrite it in memory.
 		Arrays.fill(password, Character.MIN_VALUE);
 		SecretKeyFactory skf = null;
 		

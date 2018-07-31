@@ -15,7 +15,7 @@ public class Users {
 	@Column
 	private String password;
 	@Column
-	private Integer userStatus; //0 = banned, 1 = free user, 2 = premium user, 3 = admin
+	private Integer userStatus; //0 = banned, 1 = free user, 2 = premium user, 3 = admin, 4 = "deleted"
 	@Column
 	private String fName;
 	@Column
