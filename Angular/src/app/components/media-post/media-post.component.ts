@@ -11,9 +11,9 @@ export class MediaPostComponent implements OnInit {
     @Input() postRecipe: string;
   constructor() {
       //TODO: Delete, these pictures are for testing only
-      this.img1Path = 'assets/images/img_avatar1.png';
+      // this.img1Path = 'assets/images/img_avatar1.png';
       // this.testImage = 'assets/images/testImage.png';
-      // this.postPic = 'assets/images/main_pic.jpg';
+      this.postPic = 'assets/images/main_pic.jpg';
 
   }
 
