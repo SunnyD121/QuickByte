@@ -12,26 +12,23 @@ import com.revature.overknight.utils.HibernateUtil;
 
 public class UserDaoImpl implements UserDao {
 
-	public Integer insertUser(Users user) {
+	public Integer insertUser(Users user) 
+	{
+		// SETUP
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		trans = session.beginTransaction();
 		Integer id = null;
-		
-		
-		
-			try
+
+		try
+		{
+			id = (Integer)session.save(user);
+			trans.commit();			
+		}
+		catch(HibernateException e)
+		{
+			if(trans!=null)
 			{
-				
-				
-				id = (Integer)session.save(user);
-				trans.commit();
-				
-			}
-			catch(HibernateException e)
-			{
-				if(trans!=null)
-				{
 				trans.rollback();
 			}
 			e.printStackTrace();
@@ -39,7 +36,6 @@ public class UserDaoImpl implements UserDao {
 		finally
 		{
 			session.close();
-			
 		}
 		
 		return id;
@@ -51,67 +47,86 @@ public class UserDaoImpl implements UserDao {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		
-		try{
+		try
+		{
 			trans = session.beginTransaction();
-			users = session.createQuery("FROM User").list();
-						
-		}catch(HibernateException e){
-			if(trans!=null){
+			users = session.createQuery("FROM User").list();				
+		}
+		catch(HibernateException e)
+		{
+			if(trans!=null)
+			{
 				trans.rollback();
 			}
 			e.printStackTrace();
-		}finally{
+		}
+		finally
+		{
 			session.close();
 		}
 		return users;
 	}
 
-	public Users selectUserById(Integer id) {
+	public Users selectUserById(Integer id) 
+	{
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		Users user = null;
 		
-		try {
+		try 
+		{
 			tx = session.beginTransaction();
-			
 			user = (Users)session.get(Users.class, id);
-			
 			tx.commit();
-		} catch (Exception e) {
+		} 
+		catch (Exception e) 
+		{
 			e.printStackTrace();
-			if(tx!=null){
+			if(tx!=null)
+			{
 				tx.rollback();
 			}
-		}finally {
+		}
+		finally 
+		{
 			session.close();
 		}
 			
 		return user; 
 	}
 
-	public Boolean deleteUserById(Integer id) {
+	public Boolean deleteUserById(Integer id) 
+	{
 		Users user = null;
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		Boolean result = false;
 
-		try{
+		try
+		{
 			trans = session.beginTransaction();
 			user = (Users)session.get(Users.class, id);
-			if(user!=null){
+			if(user!=null)
+			{
 				session.delete(user);
 				result = true;
 			}
 			trans.commit();
 			
-		}catch(HibernateException e){
-			if(trans!=null){
+		}
+		catch(HibernateException e)
+		{
+			if(trans!=null)
+			{
 				trans.rollback();
 			}
 			e.printStackTrace();
-		}finally{
+		}
+		finally
+		{
 			session.close(); 
 		}
+		
 		return result;
 	}
 
@@ -123,82 +138,83 @@ public class UserDaoImpl implements UserDao {
 		try{
 			trans = session.beginTransaction();
 			u = (Users)session.get(Users.class, user.getId());
-			if(null != u){
-				if(user.getUsername()!=null){
+			if(null != u)
+			{
+				if(user.getUsername()!=null)
+				{
 					u.setUsername(u.getUsername());
 				}
-				if(user.getPassword()!=null){
+				if(user.getPassword()!=null)
+				{
 					u.setPassword(u.getPassword());
 				}
-				if(user.getUserStatus()!=null){
+				if(user.getUserStatus()!=null)
+				{
 					u.setUserStatus(u.getUserStatus());
 				}
-				if(user.getfName()!=null){
+				if(user.getfName()!=null)
+				{
 					u.setfName(u.getfName());
 				}
-				if(user.getlName()!=null){
+				if(user.getlName()!=null)
+				{
 					u.setlName(u.getlName());
 				}
-				if(user.getEmail()!=null){
+				if(user.getEmail()!=null)
+				{
 					u.setEmail(u.getEmail());
 				}
 				if(user.getPhone()!=null){
 					u.setPhone(u.getPhone());
 				}
-				if(user.getCreditCardNumber()!=null){
+				if(user.getCreditCardNumber()!=null)
+				{
 					u.setCreditCardNumber(u.getCreditCardNumber());
 				}
-				if(user.getProfileImgKey()!=null){
+				if(user.getProfileImgKey()!=null)
+				{
 					u.setProfileImgKey(u.getProfileImgKey());
 				}
 				session.save(u);
 			}
 			trans.commit();
 			
-		}catch(HibernateException e){
-			if(trans!=null){
+		}
+		catch(HibernateException e)
+		{
+			if(trans!=null)
+			{
 				trans.rollback();
 			}
 			e.printStackTrace();
-		}finally{
+		}
+		finally
+		{
 			session.close(); 
 		}
+		
 		return user;
 	}
 
 	
 	
 	public Users selectUserByUsername(String username) {
+		
+		// Setup
 		Session session = HibernateUtil.getSession();
-		Transaction trans = null;
 		Users user = null;
 		String hql;
 		Query query;
 		
+		// Actually query the database
 		hql = "FROM Users WHERE username = :username";
 		query = session.createQuery(hql);
 		query.setParameter("username", username);
-		System.out.println(query.uniqueResult());
 		user = (Users)query.uniqueResult();
-		System.out.println("user = " + user.getfName());
 		session.close();
+			//System.out.println(query.uniqueResult());
+			//System.out.println("user = " + user.getfName());
 		
-		
-		
-		/*try {
-			trans = session.beginTransaction();
-			user = (User)session.get(User.class, username);
-			
-			trans.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if(trans!=null){
-				trans.rollback();
-			}
-		}finally {
-			session.close();
-		}*/
-			
 		return user; 
 	}
 
