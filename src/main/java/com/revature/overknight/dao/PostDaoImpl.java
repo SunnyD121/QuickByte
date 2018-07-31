@@ -170,8 +170,8 @@ public class PostDaoImpl implements PostDao {
 				if(post.getPostDate()!=null){
 					p.setPostDate(p.getPostDate());
 				}
-				if(post.getTags()!=null){
-					p.setTags(p.getTags());
+				if(post.gettag()!=null){
+					p.settag(p.gettag());
 				}
 				session.save(p);
 			}

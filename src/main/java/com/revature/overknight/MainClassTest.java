@@ -9,49 +9,6 @@ public class MainClassTest {
         UserDaoImpl dao = new UserDaoImpl();
         UserService us = new UserService();
         
-        dao.insertUser(new Users(1,
-                "username",
-                "password",
-                2,
-                "fName",
-                "lName",
-                "email",
-                4564564562L,
-                1234432112344321L,
-                "profileImgKey"));
-        dao.insertUser(new Users(2,
-                "usernombre",
-                "password",
-                2,
-                "fName",
-                "lName",
-                "email",
-                4564564562L,
-                1234432112344321L,
-                "profileImgKey"));
-        dao.insertUser(new Users(3,
-                "userNAMEname",
-                "password",
-                2,
-                "fName",
-                "lName",
-                "email",
-                4564564562L,
-                1234432112344321L,
-                "profileImgKey"));
-        dao.insertUser(new Users(4,
-                "Bobbertha",
-                "password",
-                2,
-                "fName",
-                "lName",
-                "email",
-                4564564562L,
-                1234432112344321L,
-                "profileImgKey"));
-        
-        //dao.selectUserByUsername("username");
-       Users user = new Users("Test", "password", 2, "Chris", "Parsons", "test@gmail.com", 2147483647L, 2147483647L, "Image Location");
-       UserService.deleteUser(user);
+       dao.insertUser(new Users("Toby", "password".getBytes(), "password".getBytes(), 3,"Toby" , "Lobster", "something@eamil.com", 1234567890L, "Here it is!"));
     }
 }

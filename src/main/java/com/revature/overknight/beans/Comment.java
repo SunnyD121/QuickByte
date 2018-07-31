@@ -1,5 +1,7 @@
 package com.revature.overknight.beans;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,44 +10,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Comment")
 public class Comment {
 	@Id
-	@Column(name="cid")
 	@SequenceGenerator(sequenceName="COM_SEQ", name="COM_GEN")
 	@GeneratedValue(generator="COM_GEN", strategy=GenerationType.SEQUENCE)
 	private Integer cid;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn( name= "pid" )
-	private Integer pid;
-	@ManyToOne
-	@JoinColumn(name="userid")
-	private Integer userid;
-	@Column
 	private String commentContent;
+	@OneToMany
+	private List<Reply> replies;
+	
+	
+	
 	
 	public Comment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Comment(Integer pid, Integer userid, String commentContent) {
-		super();
-		this.pid = pid;
-		this.userid = userid;
-		this.commentContent = commentContent;
-	}
-
-	public Comment(Integer cid, Integer pid, Integer userid, String commentContent) {
+	public Comment(Integer cid, String commentContent, List<Reply> replies) {
 		super();
 		this.cid = cid;
-		this.pid = pid;
-		this.userid = userid;
 		this.commentContent = commentContent;
+		this.replies = replies;
 	}
 
 	public Integer getCid() {
@@ -54,22 +46,6 @@ public class Comment {
 
 	public void setCid(Integer cid) {
 		this.cid = cid;
-	}
-
-	public Integer getPid() {
-		return pid;
-	}
-
-	public void setPid(Integer pid) {
-		this.pid = pid;
-	}
-
-	public Integer getuserid() {
-		return userid;
-	}
-
-	public void setuserid(Integer userid) {
-		this.userid = userid;
 	}
 
 	public String getCommentContent() {
@@ -82,7 +58,7 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [cid=" + cid + ", pid=" + pid + ", userid=" + userid + ", commentContent=" + commentContent + "]";
+		return "Comment [cid=" + cid + ", commentContent=" + commentContent + "]";
 	}
 	
 	

@@ -1,12 +1,14 @@
 package com.revature.overknight.beans;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,10 +16,11 @@ import javax.persistence.Table;
 public class CreditCard {
 	@Id
 	@Column(name="ccn")
-	private Integer creditCardNumber;
-	@ManyToOne
-	@JoinColumn(name="userid")
-	private Integer userid;
+	private byte[] creditCardNumber;
+	@Column
+	private byte[] saltcc;
+	@OneToMany
+	private List<Users> users;
 	@Column
 	private String cHName;
 	@Column
@@ -34,11 +37,11 @@ public class CreditCard {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CreditCard(Integer creditCardNumber, Integer userid, String cHName, Date expirationDate, Integer cVV2,
+	public CreditCard(byte[] creditCardNumber, List<Users> users, String cHName, Date expirationDate, Integer cVV2,
 			String bAddress, String eSign) {
 		super();
 		this.creditCardNumber = creditCardNumber;
-		this.userid = userid;
+		this.users = users;
 		this.cHName = cHName;
 		this.expirationDate = expirationDate;
 		this.cVV2 = cVV2;
@@ -46,20 +49,20 @@ public class CreditCard {
 		this.eSign = eSign;
 	}
 
-	public Integer getCreditCardNumber() {
+	public byte[] getCreditCardNumber() {
 		return creditCardNumber;
 	}
 
-	public void setCreditCardNumber(Integer creditCardNumber) {
+	public void setCreditCardNumber(byte[] creditCardNumber) {
 		this.creditCardNumber = creditCardNumber;
 	}
 
-	public Integer getuserid() {
-		return userid;
+	public List<Users> getusers() {
+		return users;
 	}
 
-	public void setuserid(Integer userid) {
-		this.userid = userid;
+	public void setusers(List<Users> users) {
+		this.users = users;
 	}
 
 	public String getcHName() {
@@ -104,7 +107,7 @@ public class CreditCard {
 
 	@Override
 	public String toString() {
-		return "CreditCard [creditCardNumber=" + creditCardNumber + ", userid=" + userid + ", cHName=" + cHName
+		return "CreditCard [creditCardNumber=" + creditCardNumber + ", users=" + users + ", cHName=" + cHName
 				+ ", expirationDate=" + expirationDate + ", cVV2=" + cVV2 + ", bAddress=" + bAddress + ", eSign="
 				+ eSign + "]";
 	}

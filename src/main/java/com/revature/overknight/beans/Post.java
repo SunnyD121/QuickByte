@@ -5,14 +5,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,8 +23,7 @@ public class Post {
 	@SequenceGenerator(sequenceName="POST_SEQ", name="PID_GEN")
 	@GeneratedValue(generator="PID_GEN", strategy=GenerationType.SEQUENCE)
 	private Integer postId;
-	@ManyToOne
-	@JoinColumn(name="userid")
+	@Column
 	private Integer userid;
 	@Column
 	private String postTitle;
@@ -35,17 +33,17 @@ public class Post {
 	private String postContent;
 	@Column
 	private Date postDate;
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name="Tag_2_Post", joinColumns=@JoinColumn(name="pid"),
-				inverseJoinColumns=@JoinColumn(name="tid"))
-	private String tag;
+	@OneToOne
+	private Tag tag;
+	@OneToMany
+	private List<Comment> comments;
 	
 	public Post() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Post(Integer userid, String postTitle, String postImgKey, String postContent, Date postDate, String tag) {
+	public Post(Integer userid, String postTitle, String postImgKey, String postContent, Date postDate, Tag tag) {
 		super();
 		this.userid = userid;
 		this.postTitle = postTitle;
@@ -56,7 +54,7 @@ public class Post {
 	}
 
 	public Post(Integer postId, Integer userid, String postTitle, String postImgKey, String postContent, Date postDate,
-			String tag) {
+			Tag tag) {
 		super();
 		this.postId = postId;
 		this.userid = userid;
@@ -115,11 +113,11 @@ public class Post {
 		this.postDate = postDate;
 	}
 
-	public String gettag() {
+	public Tag gettag() {
 		return tag;
 	}
 
-	public void settag(String tag) {
+	public void settag(Tag tag) {
 		this.tag = tag;
 	}
 	

@@ -20,16 +20,16 @@ public class UserServiceTest {
 	
 	
 	
-	
+	/*
 	Users user = new Users("Test", "password", 2, "Chris", "Parsons", "test@gmail.com", 2147483647L, 2147483647L, "Image Location");
 	
 	@Test
-	public void testUserLogin() 
+	public void testUserLogin()
 	{
 		when(userDaoImplMock.selectUserByUsername("Test")).thenReturn(user);
 		UserService us = new UserService();
 		us.setUD(userDaoImplMock);
 		assertTrue(us.userLogin("Test", "password"));
-	}
+	}*/
 
 }

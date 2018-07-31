@@ -167,10 +167,6 @@ public class UserDaoImpl implements UserDao {
 				if(user.getPhone()!=null){
 					u.setPhone(u.getPhone());
 				}
-				if(user.getCreditCardNumber()!=null)
-				{
-					u.setCreditCardNumber(u.getCreditCardNumber());
-				}
 				if(user.getProfileImgKey()!=null)
 				{
 					u.setProfileImgKey(u.getProfileImgKey());
