@@ -16,7 +16,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-public class Comment {
+@Table(name = "Comments")
+public class Comments {
 	@Id
 	@SequenceGenerator(sequenceName="COM_SEQ", name="COM_GEN")
 	@GeneratedValue(generator="COM_GEN", strategy=GenerationType.SEQUENCE)
@@ -28,12 +29,12 @@ public class Comment {
 	
 	
 	
-	public Comment() {
+	public Comments() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Comment(Integer cid, String commentContent, List<Reply> replies) {
+	public Comments(Integer cid, String commentContent, List<Reply> replies) {
 		super();
 		this.cid = cid;
 		this.commentContent = commentContent;

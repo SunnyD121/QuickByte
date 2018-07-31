@@ -15,14 +15,14 @@ public class UserService {
 	public static Boolean userLogin(String username, String password)
 	{
 
-		Users user = new Users();
+		byte [] passbyte = password.getBytes();
+		Users user = null;
 		user = ud.selectUserByUsername(username);
 
-		if(user.getPassword().equals(password))
+		if(user.getPassword() == passbyte)
 		{
 			return true;
 		}
-		
 		return false;
 	}
 	

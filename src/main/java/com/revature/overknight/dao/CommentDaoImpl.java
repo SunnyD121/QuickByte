@@ -6,12 +6,12 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.revature.overknight.beans.Comment;
+import com.revature.overknight.beans.Comments;
 import com.revature.overknight.utils.HibernateUtil;
 
 public class CommentDaoImpl implements CommentDao {
 
-	public Integer insertComment(Comment comment) {
+	public Integer insertComment(Comments comment) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		Integer id = null;
@@ -33,8 +33,8 @@ public class CommentDaoImpl implements CommentDao {
 		return id;
 	}
 
-	public List<Comment> selectAllComments() {
-		List<Comment> comments = null; 
+	public List<Comments> selectAllComments() {
+		List<Comments> comments = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		
@@ -53,8 +53,8 @@ public class CommentDaoImpl implements CommentDao {
 		return comments;	
 	}
 	
-	public List<Comment> selectAllCommentsByPId(Integer pid) {
-		List<Comment> comments = null; 
+	public List<Comments> selectAllCommentsByPId(Integer pid) {
+		List<Comments> comments = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		
@@ -73,8 +73,8 @@ public class CommentDaoImpl implements CommentDao {
 		return comments;	
 	}
 	
-	public List<Comment> selectAllCommentsByuserid(Integer userid){
-		List<Comment> comments = null; 
+	public List<Comments> selectAllCommentsByuserid(Integer userid){
+		List<Comments> comments = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		
@@ -93,15 +93,15 @@ public class CommentDaoImpl implements CommentDao {
 		return comments;	
 	}
 
-	public Comment selectCommentById(Integer id) {
+	public Comments selectCommentById(Integer id) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
-		Comment comment = null;
+		Comments comment = null;
 		
 		try {
 			trans = session.beginTransaction();
 			
-			comment = (Comment)session.get(Comment.class, id);
+			comment = (Comments)session.get(Comments.class, id);
 			
 			trans.commit();
 		} catch (Exception e) {
@@ -117,14 +117,14 @@ public class CommentDaoImpl implements CommentDao {
 	}
 
 	public Boolean deleteCommentById(Integer id) {
-		Comment comment = null;
+		Comments comment = null;
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		Boolean result = false;
 
 		try{
 			trans = session.beginTransaction();
-			comment = (Comment)session.get(Comment.class, id);
+			comment = (Comments)session.get(Comments.class, id);
 			if(comment!=null){
 				session.delete(comment);
 				result = true;
@@ -142,14 +142,14 @@ public class CommentDaoImpl implements CommentDao {
 		return result;
 	}
 
-	public Comment updateComment(Comment comment) {
-		Comment c = null;
+	public Comments updateComment(Comments comment) {
+		Comments c = null;
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 
 		try{
 			trans = session.beginTransaction();
-			c = (Comment)session.get(Comment.class, comment.getCid());
+			c = (Comments)session.get(Comments.class, comment.getCid());
 			if(null != c){
 				if(comment.getCommentContent()!=null){
 					c.setCommentContent(c.getCommentContent());

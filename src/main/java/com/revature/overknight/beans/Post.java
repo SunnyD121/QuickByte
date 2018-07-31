@@ -36,7 +36,7 @@ public class Post {
 	@OneToOne
 	private Tag tag;
 	@OneToMany
-	private List<Comment> comments;
+	private List<Comments> comments;
 	
 	public Post() {
 		super();
