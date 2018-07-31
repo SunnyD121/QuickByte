@@ -548,7 +548,6 @@ var LoginPageComponent = /** @class */ (function () {
     };
     LoginPageComponent.prototype.testFunction2 = function () {
         //console.log("commented out.");
-        console.log(this.username);
         this.userService.checkCredentials(this.username, this.password).subscribe(function (user) { return console.log(user); });
     };
     LoginPageComponent = __decorate([
@@ -821,6 +820,26 @@ var SignupPageComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/objects/User.ts":
+/*!*********************************!*\
+  !*** ./src/app/objects/User.ts ***!
+  \*********************************/
+/*! exports provided: User */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
+var User = /** @class */ (function () {
+    function User() {
+    }
+    return User;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/routing.ts":
 /*!****************************!*\
   !*** ./src/app/routing.ts ***!
@@ -892,6 +911,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return UserService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _objects_User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../objects/User */ "./src/app/objects/User.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -901,6 +921,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 var UserService = /** @class */ (function () {
@@ -918,8 +939,11 @@ var UserService = /** @class */ (function () {
     };
     UserService.prototype.checkCredentials = function (username, password) {
         console.log("Posting:");
+        var user = new _objects_User__WEBPACK_IMPORTED_MODULE_2__["User"]();
+        user.username = username;
+        user.password = password;
         // return this.http.post<User>("http://localhost:8081/LoginServlet", username, this.httpOptions);
-        return this.http.post("http://localhost:8081/LoginServlet", username);
+        return this.http.post("http://localhost:8081/LoginServlet", user);
     };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -994,7 +1018,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Chris\Documents\Repos\QuickByte\Angular\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Eric\Code\Revature\Project 2\QuickByte\Angular\src\main.ts */"./src/main.ts");
 
 
 /***/ })

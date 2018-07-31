@@ -57,7 +57,6 @@ export class LoginPageComponent implements OnInit {
   userList: Array<User>;    /*Not sure why I need this, but it was on Angular.io*/
   testFunction2(){
       //console.log("commented out.");
-      console.log(this.username);
       this.userService.checkCredentials(this.username, this.password).subscribe(
           user => console.log(user));
   }

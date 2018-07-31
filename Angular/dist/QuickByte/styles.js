@@ -580,8 +580,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Chris\Documents\Repos\QuickByte\Angular\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-module.exports = __webpack_require__(/*! C:\Users\Chris\Documents\Repos\QuickByte\Angular\src\styles.css */"./src/styles.css");
+__webpack_require__(/*! C:\Users\Eric\Code\Revature\Project 2\QuickByte\Angular\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+module.exports = __webpack_require__(/*! C:\Users\Eric\Code\Revature\Project 2\QuickByte\Angular\src\styles.css */"./src/styles.css");
 
 
 /***/ })

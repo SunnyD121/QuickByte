@@ -7,6 +7,7 @@ import java.util.Iterator;
 
 import javax.json.Json;
 import javax.json.JsonObject;
+import javax.json.JsonReader;
 import javax.json.stream.JsonParser;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,8 +39,15 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+        String json = request.getReader().readLine();
+        CustomJsonParser parser = new CustomJsonParser(json);
+        JsonReader reader = Json.createReader(new StringReader(json));
 
-        CustomJsonParser parser = new CustomJsonParser(request.getReader().readLine());
+        JsonObject personObject = reader.readObject();
+        System.out.println(personObject.getString("username"));
+        System.out.println(personObject.getString("password"));
+        reader.close();
+
 
 		//TODO: get valid parameters from Angular when we figure out exactly how.
 		String username = parser.getParameter("username");

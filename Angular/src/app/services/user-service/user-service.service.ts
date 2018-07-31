@@ -23,7 +23,10 @@ export class UserService {
 
   checkCredentials(username: string, password: string): Observable<any>{
       console.log("Posting:");
+      let user = new User();
+      user.username = username;
+      user.password = password;
       // return this.http.post<User>("http://localhost:8081/LoginServlet", username, this.httpOptions);
-      return this.http.post("http://localhost:8081/LoginServlet", username);
+      return this.http.post("http://localhost:8081/LoginServlet", user);
   }
 }

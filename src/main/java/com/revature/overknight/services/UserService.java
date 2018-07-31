@@ -12,10 +12,10 @@ public class UserService {
 		this.ud = ud;
 	}
 	
-	public Boolean userLogin(String username, String password)
+	public static Boolean userLogin(String username, String password)
 	{
 		User user = new User();
-		user = ud.selectUserByUsername(username);
+		user = new UserDaoImpl().selectUserByUsername(username);
 		
 		if(user.getPassword().equals(password))
 		{
