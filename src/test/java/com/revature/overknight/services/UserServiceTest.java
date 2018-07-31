@@ -28,8 +28,8 @@ public class UserServiceTest {
 	{
 		when(userDaoImplMock.selectUserByUsername("Test")).thenReturn(user);
 		UserService us = new UserService();
-		
-		assertTrue(UserService.userLogin("Test", "password"));
+		us.setUD(userDaoImplMock);
+		assertTrue(us.userLogin("Test", "password"));
 		
 		
 	}

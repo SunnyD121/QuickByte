@@ -15,20 +15,31 @@ public class UserDaoImpl implements UserDao {
 	public Integer insertUser(User user) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
+		trans = session.beginTransaction();
 		Integer id = null;
 		
-		try{
-			trans = session.beginTransaction();
-			id = (Integer)session.save(user);
-			trans.commit();
-			
-		}catch(HibernateException e){
-			if(trans!=null){
+		
+		
+			try
+			{
+				
+				
+				id = (Integer)session.save(user);
+				trans.commit();
+				
+			}
+			catch(HibernateException e)
+			{
+				if(trans!=null)
+				{
 				trans.rollback();
 			}
 			e.printStackTrace();
-		}finally{
+		}
+		finally
+		{
 			session.close();
+			
 		}
 		
 		return id;
@@ -178,15 +189,14 @@ public class UserDaoImpl implements UserDao {
 		return user; 
 	}
 
-    public User selectUserByUserName(String username){
+   /* public User selectUserByUserName(String username){
         Session session = HibernateUtil.getSession();
         Query query = session.getNamedQuery("getUserByUsername");
-
         query.setParameter("username", username);
 
         System.out.println(query.list());
         return null;
-    }
+    }*/
 
 	
 

@@ -2,9 +2,8 @@ package com.revature.overknight.beans;
 
 import javax.persistence.*;
 
-@NamedQueries({
-        @NamedQuery(name = "getUserByUsername", query = "FROM Users WHERE username = :username")
-})
+/*@NamedQueries({
+        @NamedQuery(name = "getUserByUsername", query = "FROM Users WHERE username = :username")*/
 @Entity
 @Table(name="Users")
 public class User {
