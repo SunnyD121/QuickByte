@@ -5,13 +5,17 @@ import com.revature.overknight.dao.UserDaoImpl;
 
 public class UserService {
 	
+	private UserDaoImpl ud = new UserDaoImpl();
 	
-	public static Boolean userLogin(String username, String password)
+	public void setUD(UserDaoImpl ud)
 	{
-		UserDaoImpl ud = new UserDaoImpl();
+		this.ud = ud;
+	}
+	
+	public Boolean userLogin(String username, String password)
+	{
 		User user = new User();
-		
-		user = ud.selectUserByUserName(username);
+		user = ud.selectUserByUsername(username);
 		
 		if(user.getPassword().equals(password))
 		{
