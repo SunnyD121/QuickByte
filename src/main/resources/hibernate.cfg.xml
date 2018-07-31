@@ -69,7 +69,7 @@
 		<!--</property>-->
 
 		<!-- <mapping resource="person.hbm.xml" /> -->
-		<mapping class="com.revature.overknight.beans.User"/>
+		<mapping class="com.revature.overknight.beans.Users"/>
 		<!--<mapping class="com.revature.overknight.beans.Item"/>-->
 		<!--<mapping class="com.revature.overknight.beans.Shop"/>-->
 		<!--<mapping class="com.revature.overknight.beans.Npc"/>-->
