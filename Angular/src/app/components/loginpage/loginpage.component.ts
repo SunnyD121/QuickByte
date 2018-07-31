@@ -14,6 +14,7 @@ export class LoginPageComponent implements OnInit {
     username = "";
     password = "";
     credentialCheck = false;
+    displayError = "none";
 
   constructor( private router: Router, private userService: UserService) { }
 
@@ -21,14 +22,22 @@ export class LoginPageComponent implements OnInit {
   }
 
   public validateCredentials(){
+      this.toggleError(false);
       this.userService.checkCredentials(this.username, this.password).subscribe(
           loginBoolean => {
               this.credentialCheck = loginBoolean;
               if (loginBoolean) this.router.navigate(['/homepage']);
-              else {console.log("Invalid Credentials.")}
+              else {
+                  console.log("Invalid Credentials.");
+                  this.toggleError(true);
+              }
           },
           error =>{console.log(error)}
       );
+  }
+
+  public toggleError(display){
+      this.displayError =  (display) ? "block" : "none";
   }
 
 }
