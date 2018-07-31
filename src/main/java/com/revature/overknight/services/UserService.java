@@ -27,7 +27,8 @@ public class UserService {
 	
 	public static Boolean deleteUser(Users user)
 	{
-		
+		user.setUserStatus(4);
+		ud.updateUser(user);
 		
 		return true;
 	}
