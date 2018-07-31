@@ -1,6 +1,6 @@
 package com.revature.overknight.utils;
 
-import com.revature.overknight.beans.User;
+import com.revature.overknight.beans.Users;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;

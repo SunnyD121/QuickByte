@@ -1,11 +1,11 @@
 package com.revature.overknight.services;
 
-import com.revature.overknight.beans.User;
+import com.revature.overknight.beans.Users;
 import com.revature.overknight.dao.UserDaoImpl;
 
 public class UserService {
 	
-	private UserDaoImpl ud = new UserDaoImpl();
+	private static UserDaoImpl ud = new UserDaoImpl();
 	
 	public void setUD(UserDaoImpl ud)
 	{
@@ -14,15 +14,23 @@ public class UserService {
 	
 	public static Boolean userLogin(String username, String password)
 	{
-		User user = new User();
-		user = new UserDaoImpl().selectUserByUsername(username);
-		
+
+		Users user = new Users();
+		user = ud.selectUserByUsername(username);
+
 		if(user.getPassword().equals(password))
 		{
 			return true;
 		}
 		
 		return false;
+	}
+	
+	public static Boolean deleteUser(Users user)
+	{
+		
+		
+		return true;
 	}
 
 }

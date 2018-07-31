@@ -329,7 +329,7 @@ module.exports = "\r\n/* Remove the navbar's default margin-bottom and rounded b
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-nav-bar></app-nav-bar>\r\n\r\n<div class=\"container-fluid text-center\">\r\n  <div class=\"row content\">\r\n    <div class=\"col-sm-2 sidenav\">\r\n        <h3>Helpful Links</h3>\r\n        <br>\r\n        <p><a href=\"#\">Become a Premium Member!</a></p>\r\n        <p><a href=\"#\">Subscribe to our Newsletter!</a></p>\r\n        <p><a href=\"#\">Become a Premium Member!</a></p>\r\n        <p><a href=\"#\">Become a Premium Member!</a></p>\r\n    </div>\r\n    <div class=\"col-sm-8 text-left\">\r\n      <h1>{{headerTitle}}</h1>\r\n      <p style=\"white-space:pre-wrap\">{{headerMessage}}</p>\r\n      <div *ngIf=\"searchedPosts; else elseBlock1\"> <!-- if there are posts (search results) -->\r\n          <div *ngFor=\"let post of searchedPosts\"> <!-- loop over all posts -->\r\n              <app-media-post [postPic]=\"post.img\" [postComments]=\"post.comments[0].commentContent\" [postRecipe]=\"post.recipe\"></app-media-post>\r\n          </div>\r\n      </div>  <!-- end *ngIf -->\r\n      <ng-template #elseBlock1>\r\n          <hr>\r\n      </ng-template>\r\n    </div>\r\n    <div class=\"col-sm-2 sidenav\">\r\n\r\n        <!-- loops the ad -->\r\n        <div *ngFor=\"let element of array\">\r\n            <div class=\"well\">\r\n                <a href=\"https://revature.com\" ><img class=\"ad\" src=\"../assets/images/ad_revature.png\" style=\"max-width: 100%\"></a>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<footer class=\"container-fluid text-center\">\r\n<p>Down here are even more words! However, the words here probably shouldn't be these words but rather links to some fancy\r\nplaces. Hopefully the links are safe, but who knows, its all just words.</p>\r\n</footer>\r\n"
+module.exports = "<app-nav-bar></app-nav-bar>\r\n\r\n<div class=\"container-fluid text-center\">\r\n  <div class=\"row content\">\r\n    <div class=\"col-sm-2 sidenav\">\r\n        <h3>Helpful Links</h3>\r\n        <br>\r\n        <p><a href=\"#\">Become a Premium Member!</a></p>\r\n        <p><a href=\"#\">Subscribe to our Newsletter!</a></p>\r\n        <p><a href=\"#\">Become a Premium Member!</a></p>\r\n        <p><a href=\"#\">Become a Premium Member!</a></p>\r\n    </div>\r\n    <div class=\"col-sm-8 text-left\">\r\n      <h1>{{headerTitle}}</h1>\r\n      <p style=\"white-space:pre-wrap\">{{headerMessage}}</p>\r\n      <div *ngIf=\"searchedPosts; else elseBlock1\"> <!-- if there are posts (search results) -->\r\n          <div *ngFor=\"let post of searchedPosts\"> <!-- loop over all posts -->\r\n              <app-media-post [postPic]=\"post.img\" [postComments]=\"post.comments[0].commentContent\" [postRecipe]=\"post.recipe\"></app-media-post>\r\n          </div>\r\n      </div>  <!-- end *ngIf -->\r\n      <ng-template #elseBlock1>\r\n          <hr>\r\n      </ng-template>\r\n    </div>\r\n    <div class=\"col-sm-2 sidenav\">\r\n\r\n        <!-- loops the ad -->\r\n        <div *ngFor=\"let element of array\">\r\n            <div class=\"well\">\r\n                <a href=\"https://revature.com\" ><img class=\"ad\" src=\"../../assets/images/ad_revature.png\" style=\"max-width: 100%\"></a>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<footer class=\"container-fluid text-center\">\r\n<p>Down here are even more words! However, the words here probably shouldn't be these words but rather links to some fancy\r\nplaces. Hopefully the links are safe, but who knows, its all just words.</p>\r\n</footer>\r\n"
 
 /***/ }),
 
@@ -411,22 +411,22 @@ var HomePageComponent = /** @class */ (function () {
         var posts;
         if (searchQuery.toLowerCase() == "trending")
             posts = [
-                { img: "../assets/images/food1.jpg",
+                { img: "../../assets/images/food1.jpg",
                     recipe: "Step 1: Take out of box \nStep 2: put in oven \nStep 3: Take out of oven \nStep 4: Eat while hot.",
                     comments: [{ cid: 1, pid: 2, uid: 3, commentContent: "Hello World" }]
                 },
-                { img: "../assets/images/food2.jpg",
+                { img: "../../assets/images/food2.jpg",
                     recipe: this.testString,
                     comments: [{ cid: 4, pid: 5, uid: 6, commentContent: "I am saying words and you are reading words." }]
                 },
-                { img: "../assets/images/food4.jpg",
+                { img: "../../assets/images/food4.jpg",
                     recipe: "HelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld\nHelloWorld",
                     comments: [{ cid: 7, pid: 8, uid: 9, commentContent: "This is a comment!" }]
                 }
             ];
         else if (searchQuery.toLowerCase() == "french")
             posts = [
-                { img: "../assets/images/food3.jpg",
+                { img: "../../assets/images/food3.jpg",
                     recipe: "Eat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,\nEat,Eat,Eat,",
                     comments: [{ cid: 10, pid: 11, uid: 12, commentContent: "I can't believe you." }]
                 }
@@ -548,7 +548,7 @@ var LoginPageComponent = /** @class */ (function () {
     };
     LoginPageComponent.prototype.testFunction2 = function () {
         //console.log("commented out.");
-        this.userService.checkCredentials(this.username, this.password).subscribe(function (user) { return console.log(user); });
+        this.userService.checkCredentials(this.username, this.password).subscribe(function (user) { console.log(user); }, function (error) { console.log(error); });
     };
     LoginPageComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

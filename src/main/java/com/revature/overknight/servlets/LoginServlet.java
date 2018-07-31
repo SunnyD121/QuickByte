@@ -44,37 +44,26 @@ public class LoginServlet extends HttpServlet {
         JsonReader reader = Json.createReader(new StringReader(json));
 
         JsonObject personObject = reader.readObject();
-        System.out.println(personObject.getString("username"));
-        System.out.println(personObject.getString("password"));
         reader.close();
 
-
-		//TODO: get valid parameters from Angular when we figure out exactly how.
-		String username = parser.getParameter("username");
-		String password = parser.getParameter("password");
-
+		String username = personObject.getString("username");
+		String password = personObject.getString("password");
+        System.out.println("In Servlet:");
 		System.out.println(username);
         System.out.println(password);
 		
-		response.setContentType("text/html");
+		response.setContentType("text");
 		PrintWriter out = response.getWriter();
 		HttpSession session = null;
-		
-//		if(UserService.userLogin(username, password))
-//		{
-//			session = request.getSession();
-//			session.setAttribute("username", username);
-//			System.out.println("LOGIN STARTED: " + (String)session.getAttribute("username"));
-//			RequestDispatcher rd = request.getRequestDispatcher("Homepage.html");
-//			rd.forward(request, response);
-//		}
-//		else
-//		{
-//			RequestDispatcher rd = request.getRequestDispatcher("errorpage404");
-//            rd.forward(request, response);
-//		}
-//        response.sendError(200);
-	
+
+        boolean validUserLogin = UserService.userLogin(username, password);
+        if (validUserLogin) {
+            session = request.getSession();
+            session.setAttribute("username", username);
+            System.out.println("LOGIN STARTED: " + session.getAttribute("username"));
+        }
+        out.println(new ObjectMapper().writeValueAsString(validUserLogin));
+
 	}
 
 	/**
