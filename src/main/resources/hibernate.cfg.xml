@@ -46,10 +46,10 @@
 
 		<!-- hibernate mapping to data definition language -->
 		<property name="hibernate.hbm2ddl.auto">
-			create
+			update
 		</property>
 		<!-- There are 4 different states youc an place it as:
-		 create: Wipe anye existing database tables and create it from scratch
+		 create: Wipe any existing database tables and create it from scratch
 		 update: perform hibernate actions on existing database
 		 validate: creates the schema, destroying old data
 		 create-drop: database is cleared and emptied upon server shutdown.-->
@@ -69,12 +69,12 @@
 		<!--</property>-->
 
 		<!-- <mapping resource="person.hbm.xml" /> -->
-		<mapping class="com.revature.overnight.beans.Users"/>
-		<mapping class="com.revature.overnight.beans.Post"/>
-		<mapping class="com.revature.overnight.beans.Tag"/>
-		<mapping class="com.revature.overnight.beans.Comment"/>
-		<mapping class="com.revature.overnight.beans.Reply"/>
-		<mapping class="com.revature.overnight.beans.CreditCard"/>
+		<mapping class="com.revature.overknight.beans.Comment"/>
+		<mapping class="com.revature.overknight.beans.CreditCard"/>
+		<mapping class="com.revature.overknight.beans.Post"/>
+		<mapping class="com.revature.overknight.beans.Reply"/>
+		<mapping class="com.revature.overknight.beans.Tag"/>
+		<mapping class="com.revature.overknight.beans.Users"/>
 
 	</session-factory>
 </hibernate-configuration>

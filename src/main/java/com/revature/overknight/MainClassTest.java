@@ -1,12 +1,12 @@
 package com.revature.overknight;
 
-import com.revature.overknight.beans.User;
+import com.revature.overknight.beans.Users;
 import com.revature.overknight.dao.UserDaoImpl;
 
 public class MainClassTest {
     public static void main(String[] args){
         UserDaoImpl dao = new UserDaoImpl();
-        dao.insertUser(new User(1,
+        dao.insertUser(new Users(1,
                 "username",
                 "password",
                 2,
@@ -16,7 +16,7 @@ public class MainClassTest {
                 4564564562L,
                 1234432112344321L,
                 "profileImgKey"));
-        dao.insertUser(new User(2,
+        dao.insertUser(new Users(2,
                 "usernombre",
                 "password",
                 2,
@@ -26,7 +26,7 @@ public class MainClassTest {
                 4564564562L,
                 1234432112344321L,
                 "profileImgKey"));
-        dao.insertUser(new User(3,
+        dao.insertUser(new Users(3,
                 "userNAMEname",
                 "password",
                 2,
@@ -36,7 +36,7 @@ public class MainClassTest {
                 4564564562L,
                 1234432112344321L,
                 "profileImgKey"));
-        dao.insertUser(new User(4,
+        dao.insertUser(new Users(4,
                 "Bobbertha",
                 "password",
                 2,
@@ -46,5 +46,7 @@ public class MainClassTest {
                 4564564562L,
                 1234432112344321L,
                 "profileImgKey"));
+        
+        dao.selectUserByUsername("username");
     }
 }

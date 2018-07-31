@@ -1,17 +1,10 @@
 package com.revature.overknight.beans;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 
 @Entity
 @Table(name="Users")
-public class User {
+public class Users {
 	@Id
 	@Column(name="user_id")
 	@SequenceGenerator(sequenceName="USER_SEQ", name="UID_GEN")
@@ -22,7 +15,7 @@ public class User {
 	@Column
 	private String password;
 	@Column
-	private Integer userStatus; //0 = banned, 1 = free user, 2 = premium user, 3 = admin
+	private Integer userStatus; //0 = banned, 1 = free user, 2 = premium user, 3 = admin, 4 = "deleted"
 	@Column
 	private String fName;
 	@Column
@@ -39,12 +32,12 @@ public class User {
 	private Integer isDeleted;	//0 = not deleted, 1=deleted
 	
 
-	public User() {
+	public Users() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String username, String password, Integer userStatus, String fName, String lName, String email,
+	public Users(String username, String password, Integer userStatus, String fName, String lName, String email,
 			Long phone, Long creditCardNumber, String profileImgKey) {
 		super();
 		this.username = username;
@@ -59,7 +52,7 @@ public class User {
 		this.isDeleted = 0;
 	}
 
-	public User(Integer id, String username, String password, Integer userStatus, String fName, String lName,
+	public Users(Integer id, String username, String password, Integer userStatus, String fName, String lName,
 			String email, Long phone, Long creditCardNumber, String profileImgKey) {
 		super();
 		this.id = id;

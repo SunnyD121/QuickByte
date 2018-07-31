@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.revature.overknight.beans.User;
+import com.revature.overknight.beans.Users;
 import com.revature.overknight.dao.UserDaoImpl;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -21,17 +21,15 @@ public class UserServiceTest {
 	
 	
 	
-	User user = new User("Test", "password", 2, "Chris", "Parsons", "test@gmail.com", 2147483647L, 2147483647L, "Image Location");
+	Users user = new Users("Test", "password", 2, "Chris", "Parsons", "test@gmail.com", 2147483647L, 2147483647L, "Image Location");
 	
 	@Test
 	public void testUserLogin() 
 	{
 		when(userDaoImplMock.selectUserByUsername("Test")).thenReturn(user);
 		UserService us = new UserService();
-		
-		assertTrue(UserService.userLogin("Test", "password"));
-		
-		
+		us.setUD(userDaoImplMock);
+		assertTrue(us.userLogin("Test", "password"));
 	}
 
 }
