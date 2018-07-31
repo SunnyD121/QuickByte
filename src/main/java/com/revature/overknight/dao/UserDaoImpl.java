@@ -50,19 +50,12 @@ public class UserDaoImpl implements UserDao {
 		try
 		{
 			trans = session.beginTransaction();
-<<<<<<< HEAD
-			users = session.createQuery("FROM User WHERE isDeleted = 0").list();
-						
-		}catch(HibernateException e){
-			if(trans!=null){
-=======
 			users = session.createQuery("FROM User").list();				
 		}
 		catch(HibernateException e)
 		{
 			if(trans!=null)
 			{
->>>>>>> c5861c969399da7a3e412d05c149dbfa44724463
 				trans.rollback();
 			}
 			e.printStackTrace();
@@ -83,13 +76,7 @@ public class UserDaoImpl implements UserDao {
 		try 
 		{
 			tx = session.beginTransaction();
-<<<<<<< HEAD
-			
-			user = (User)session.get(User.class, id);
-				
-=======
 			user = (Users)session.get(Users.class, id);
->>>>>>> c5861c969399da7a3e412d05c149dbfa44724463
 			tx.commit();
 		} 
 		catch (Exception e) 
@@ -122,18 +109,10 @@ public class UserDaoImpl implements UserDao {
 		try
 		{
 			trans = session.beginTransaction();
-<<<<<<< HEAD
-			user = (User)session.get(User.class, id);
-			if(user!=null){
-				if(user.getIsDeleted()!=null) {
-					user.setIsDeleted(1);
-				}
-=======
 			user = (Users)session.get(Users.class, id);
 			if(user!=null)
 			{
 				session.delete(user);
->>>>>>> c5861c969399da7a3e412d05c149dbfa44724463
 				result = true;
 			}
 			trans.commit();
@@ -162,17 +141,11 @@ public class UserDaoImpl implements UserDao {
 
 		try{
 			trans = session.beginTransaction();
-<<<<<<< HEAD
-			u = (User)session.get(User.class, user.getId());
-			if(null != u && u.getIsDeleted()!=1){
-				if(user.getUsername()!=null){
-=======
 			u = (Users)session.get(Users.class, user.getId());
 			if(null != u)
 			{
 				if(user.getUsername()!=null)
 				{
->>>>>>> c5861c969399da7a3e412d05c149dbfa44724463
 					u.setUsername(u.getUsername());
 				}
 				if(user.getPassword()!=null)
@@ -246,24 +219,6 @@ public class UserDaoImpl implements UserDao {
 			//System.out.println(query.uniqueResult());
 			//System.out.println("user = " + user.getfName());
 		
-<<<<<<< HEAD
-		try {
-			trans = session.beginTransaction();
-			
-			user = (User)session.get(User.class, username);
-			
-			trans.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if(trans!=null){
-				trans.rollback();
-			}
-		}finally {
-			session.close();
-		}
-		if (user.getIsDeleted()!=1) {	
-=======
->>>>>>> c5861c969399da7a3e412d05c149dbfa44724463
 		return user; 
 		}else {
 			return null;
