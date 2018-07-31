@@ -69,11 +69,11 @@
 		<!--</property>-->
 
 		<!-- <mapping resource="person.hbm.xml" /> -->
-		<mapping class="com.revature.overknight.beans.Comment"/>
-		<mapping class="com.revature.overknight.beans.CreditCard"/>
-		<mapping class="com.revature.overknight.beans.Post"/>
-		<mapping class="com.revature.overknight.beans.Reply"/>
-		<mapping class="com.revature.overknight.beans.Tag"/>
+		<!--<mapping class="com.revature.overknight.beans.Comment"/>-->
+		<!--<mapping class="com.revature.overknight.beans.CreditCard"/>-->
+		<!--<mapping class="com.revature.overknight.beans.Post"/>-->
+		<!--<mapping class="com.revature.overknight.beans.Reply"/>-->
+		<!--<mapping class="com.revature.overknight.beans.Tag"/>-->
 		<mapping class="com.revature.overknight.beans.Users"/>
 
 	</session-factory>
