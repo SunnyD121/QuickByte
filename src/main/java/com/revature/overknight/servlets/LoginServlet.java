@@ -60,19 +60,19 @@ public class LoginServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		HttpSession session = null;
 		
-		if(UserService.userLogin(username, password))
-		{
-			session = request.getSession();
-			session.setAttribute("username", username);
-			System.out.println("LOGIN STARTED: " + (String)session.getAttribute("username"));
-			RequestDispatcher rd = request.getRequestDispatcher("Homepage.html");
-			rd.forward(request, response);
-		}
-		else
-		{
-			RequestDispatcher rd = request.getRequestDispatcher("errorpage404");
-            rd.forward(request, response);
-		}
+//		if(UserService.userLogin(username, password))
+//		{
+//			session = request.getSession();
+//			session.setAttribute("username", username);
+//			System.out.println("LOGIN STARTED: " + (String)session.getAttribute("username"));
+//			RequestDispatcher rd = request.getRequestDispatcher("Homepage.html");
+//			rd.forward(request, response);
+//		}
+//		else
+//		{
+//			RequestDispatcher rd = request.getRequestDispatcher("errorpage404");
+//            rd.forward(request, response);
+//		}
 //        response.sendError(200);
 	
 	}
