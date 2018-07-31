@@ -29,7 +29,7 @@ public class UserService {
 	{
 		user.setUserStatus(4);
 		ud.updateUser(user);
-		
+		System.out.println("This user's status code is now:" + user.getUserStatus());
 		return true;
 	}
 

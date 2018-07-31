@@ -73,14 +73,14 @@ public class CommentDaoImpl implements CommentDao {
 		return comments;	
 	}
 	
-	public List<Comment> selectAllCommentsByUid(Integer uid){
+	public List<Comment> selectAllCommentsByuserid(Integer userid){
 		List<Comment> comments = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		
 		try{
 			trans = session.beginTransaction();
-			comments = session.createQuery("FROM Comment WHERE uid = "+uid).list();
+			comments = session.createQuery("FROM Comment WHERE userid = "+userid).list();
 						
 		}catch(HibernateException e){
 			if(trans!=null){
@@ -154,8 +154,8 @@ public class CommentDaoImpl implements CommentDao {
 				if(comment.getPid()!=null){
 					c.setPid(c.getPid());
 				}
-				if(comment.getUid()!=null){
-					c.setUid(c.getUid());
+				if(comment.getuserid()!=null){
+					c.setuserid(c.getuserid());
 				}
 				if(comment.getCommentContent()!=null){
 					c.setCommentContent(c.getCommentContent());

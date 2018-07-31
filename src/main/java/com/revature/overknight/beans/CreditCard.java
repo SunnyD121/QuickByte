@@ -16,8 +16,8 @@ public class CreditCard {
 	@Column(name="ccn")
 	private Integer creditCardNumber;
 	@ManyToOne
-	@JoinColumn(name="uid")
-	private Integer uid;
+	@JoinColumn(name="userid")
+	private Integer userid;
 	@Column
 	private String cHName;
 	@Column
@@ -34,11 +34,11 @@ public class CreditCard {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CreditCard(Integer creditCardNumber, Integer uid, String cHName, Date expirationDate, Integer cVV2,
+	public CreditCard(Integer creditCardNumber, Integer userid, String cHName, Date expirationDate, Integer cVV2,
 			String bAddress, String eSign) {
 		super();
 		this.creditCardNumber = creditCardNumber;
-		this.uid = uid;
+		this.userid = userid;
 		this.cHName = cHName;
 		this.expirationDate = expirationDate;
 		this.cVV2 = cVV2;
@@ -54,12 +54,12 @@ public class CreditCard {
 		this.creditCardNumber = creditCardNumber;
 	}
 
-	public Integer getUid() {
-		return uid;
+	public Integer getuserid() {
+		return userid;
 	}
 
-	public void setUid(Integer uid) {
-		this.uid = uid;
+	public void setuserid(Integer userid) {
+		this.userid = userid;
 	}
 
 	public String getcHName() {
@@ -104,7 +104,7 @@ public class CreditCard {
 
 	@Override
 	public String toString() {
-		return "CreditCard [creditCardNumber=" + creditCardNumber + ", uid=" + uid + ", cHName=" + cHName
+		return "CreditCard [creditCardNumber=" + creditCardNumber + ", userid=" + userid + ", cHName=" + cHName
 				+ ", expirationDate=" + expirationDate + ", cVV2=" + cVV2 + ", bAddress=" + bAddress + ", eSign="
 				+ eSign + "]";
 	}

@@ -56,14 +56,14 @@ public class PostDaoImpl implements PostDao {
 		
 	}
 	
-	public List<Post> selectAllPostsByUid(Integer uid) {
+	public List<Post> selectAllPostsByuserid(Integer userid) {
 		List<Post> posts = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		
 		try{
 			trans = session.beginTransaction();
-			posts = session.createQuery("FROM Post WHERE uid ="+uid).list();
+			posts = session.createQuery("FROM Post WHERE userid ="+userid).list();
 						
 		}catch(HibernateException e){
 			if(trans!=null){
@@ -155,8 +155,8 @@ public class PostDaoImpl implements PostDao {
 			trans = session.beginTransaction();
 			p = (Post)session.get(Post.class, post.getPostId());
 			if(null != p){
-				if(post.getUid()!=null){
-					p.setUid(p.getUid());
+				if(post.getuserid()!=null){
+					p.setuserid(p.getuserid());
 				}
 				if(post.getPostTitle()!=null){
 					p.setPostTitle(p.getPostTitle());

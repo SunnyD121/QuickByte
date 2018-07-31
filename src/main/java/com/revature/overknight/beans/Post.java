@@ -20,13 +20,13 @@ import javax.persistence.Table;
 @Table(name="Post")
 public class Post {
 	@Id
-	@Column(name="pid")
+	@Column( name="pid" )
 	@SequenceGenerator(sequenceName="POST_SEQ", name="PID_GEN")
 	@GeneratedValue(generator="PID_GEN", strategy=GenerationType.SEQUENCE)
 	private Integer postId;
 	@ManyToOne
-	@JoinColumn(name="uid")
-	private Integer uid;
+	@JoinColumn(name="userid")
+	private Integer userid;
 	@Column
 	private String postTitle;
 	@Column
@@ -38,33 +38,33 @@ public class Post {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="Tag_2_Post", joinColumns=@JoinColumn(name="pid"),
 				inverseJoinColumns=@JoinColumn(name="tid"))
-	private List<Tag> tags;
+	private String tag;
 	
 	public Post() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Post(Integer uid, String postTitle, String postImgKey, String postContent, Date postDate, List<Tag> tags) {
+	public Post(Integer userid, String postTitle, String postImgKey, String postContent, Date postDate, String tag) {
 		super();
-		this.uid = uid;
+		this.userid = userid;
 		this.postTitle = postTitle;
 		this.postImgKey = postImgKey;
 		this.postContent = postContent;
 		this.postDate = postDate;
-		this.tags = tags;
+		this.tag = tag;
 	}
 
-	public Post(Integer postId, Integer uid, String postTitle, String postImgKey, String postContent, Date postDate,
-			List<Tag> tags) {
+	public Post(Integer postId, Integer userid, String postTitle, String postImgKey, String postContent, Date postDate,
+			String tag) {
 		super();
 		this.postId = postId;
-		this.uid = uid;
+		this.userid = userid;
 		this.postTitle = postTitle;
 		this.postImgKey = postImgKey;
 		this.postContent = postContent;
 		this.postDate = postDate;
-		this.tags = tags;
+		this.tag = tag;
 	}
 
 	public Integer getPostId() {
@@ -75,12 +75,12 @@ public class Post {
 		this.postId = postId;
 	}
 
-	public Integer getUid() {
-		return uid;
+	public Integer getuserid() {
+		return userid;
 	}
 
-	public void setUid(Integer uid) {
-		this.uid = uid;
+	public void setuserid(Integer userid) {
+		this.userid = userid;
 	}
 
 	public String getPostTitle() {
@@ -115,12 +115,12 @@ public class Post {
 		this.postDate = postDate;
 	}
 
-	public List<Tag> getTags() {
-		return tags;
+	public String gettag() {
+		return tag;
 	}
 
-	public void setTags(List<Tag> tags) {
-		this.tags = tags;
+	public void settag(String tag) {
+		this.tag = tag;
 	}
 	
 	

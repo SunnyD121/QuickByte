@@ -22,8 +22,8 @@ public class Reply {
 	@JoinColumn(name="cid")
 	private Integer cid;
 	@ManyToOne
-	@JoinColumn(name="uid")
-	private String uid;
+	@JoinColumn(name="userid")
+	private String userid;
 	@Column
 	private String replyContent;
 	
@@ -34,19 +34,19 @@ public class Reply {
 	}
 
 
-	public Reply(Integer cid, String uid, String replyContent) {
+	public Reply(Integer cid, String userid, String replyContent) {
 		super();
 		this.cid = cid;
-		this.uid = uid;
+		this.userid = userid;
 		this.replyContent = replyContent;
 	}
 
 
-	public Reply(Integer rid, Integer cid, String uid, String replyContent) {
+	public Reply(Integer rid, Integer cid, String userid, String replyContent) {
 		super();
 		this.rid = rid;
 		this.cid = cid;
-		this.uid = uid;
+		this.userid = userid;
 		this.replyContent = replyContent;
 	}
 
@@ -71,13 +71,13 @@ public class Reply {
 	}
 
 
-	public String getUid() {
-		return uid;
+	public String getuserid() {
+		return userid;
 	}
 
 
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setuserid(String userid) {
+		this.userid = userid;
 	}
 
 
@@ -93,7 +93,7 @@ public class Reply {
 
 	@Override
 	public String toString() {
-		return "Reply [rid=" + rid + ", cid=" + cid + ", uid=" + uid + ", replyContent=" + replyContent + "]";
+		return "Reply [rid=" + rid + ", cid=" + cid + ", userid=" + userid + ", replyContent=" + replyContent + "]";
 	}
 	
 		

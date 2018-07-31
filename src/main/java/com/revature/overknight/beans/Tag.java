@@ -25,7 +25,7 @@ public class Tag {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="Tag_2_Post", joinColumns=@JoinColumn(name="tid"),
 				inverseJoinColumns=@JoinColumn(name="pid"))
-	private List<Post> posts;
+	private Integer pid;
 	@Column
 	private String tag;
 	
@@ -34,16 +34,16 @@ public class Tag {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tag(List<Post> posts, String tag) {
+	public Tag(Integer pid, String tag) {
 		super();
-		this.posts = posts;
+		this.pid = pid;
 		this.tag = tag;
 	}
 
-	public Tag(Integer tid, List<Post> posts, String tag) {
+	public Tag(Integer tid, Integer pid, String tag) {
 		super();
 		this.tid = tid;
-		this.posts = posts;
+		this.pid = pid;
 		this.tag = tag;
 	}
 
@@ -55,12 +55,12 @@ public class Tag {
 		this.tid = tid;
 	}
 
-	public List<Post> getPosts() {
-		return posts;
+	public Integer getpid() {
+		return pid;
 	}
 
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
+	public void setpid(Integer pid) {
+		this.pid = pid;
 	}
 
 	public String getTag() {
@@ -73,7 +73,7 @@ public class Tag {
 
 	@Override
 	public String toString() {
-		return "Tag [tid=" + tid + ", posts=" + posts + ", tag=" + tag + "]";
+		return "Tag [tid=" + tid + ", pid=" + pid + ", tag=" + tag + "]";
 	}
 	
 	

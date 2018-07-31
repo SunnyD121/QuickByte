@@ -2,6 +2,7 @@ package com.revature.overknight.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,12 +19,12 @@ public class Comment {
 	@SequenceGenerator(sequenceName="COM_SEQ", name="COM_GEN")
 	@GeneratedValue(generator="COM_GEN", strategy=GenerationType.SEQUENCE)
 	private Integer cid;
-	@ManyToOne
-	@JoinColumn(name="pid")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn( name= "pid" )
 	private Integer pid;
 	@ManyToOne
-	@JoinColumn(name="uid")
-	private Integer uid;
+	@JoinColumn(name="userid")
+	private Integer userid;
 	@Column
 	private String commentContent;
 	
@@ -32,18 +33,18 @@ public class Comment {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Comment(Integer pid, Integer uid, String commentContent) {
+	public Comment(Integer pid, Integer userid, String commentContent) {
 		super();
 		this.pid = pid;
-		this.uid = uid;
+		this.userid = userid;
 		this.commentContent = commentContent;
 	}
 
-	public Comment(Integer cid, Integer pid, Integer uid, String commentContent) {
+	public Comment(Integer cid, Integer pid, Integer userid, String commentContent) {
 		super();
 		this.cid = cid;
 		this.pid = pid;
-		this.uid = uid;
+		this.userid = userid;
 		this.commentContent = commentContent;
 	}
 
@@ -63,12 +64,12 @@ public class Comment {
 		this.pid = pid;
 	}
 
-	public Integer getUid() {
-		return uid;
+	public Integer getuserid() {
+		return userid;
 	}
 
-	public void setUid(Integer uid) {
-		this.uid = uid;
+	public void setuserid(Integer userid) {
+		this.userid = userid;
 	}
 
 	public String getCommentContent() {
@@ -81,7 +82,7 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [cid=" + cid + ", pid=" + pid + ", uid=" + uid + ", commentContent=" + commentContent + "]";
+		return "Comment [cid=" + cid + ", pid=" + pid + ", userid=" + userid + ", commentContent=" + commentContent + "]";
 	}
 	
 	
