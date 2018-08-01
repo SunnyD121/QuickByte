@@ -18,4 +18,8 @@ export class RegisterService {
     checkUniqueUsername(username: string): Observable<any>{
         return this.http.post("http://localhost:8081/UniqueUsernameServlet", {username: username});
     }
+
+    checkValidCardNumber(cardNum: number): Observable<any>{
+        return this.http.post("http://localhost:8081/CreditCardVerfificationServlet", {creditCardNumber: cardNum.toString()})
+    }
 }

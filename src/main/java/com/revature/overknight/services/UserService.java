@@ -3,10 +3,15 @@ package com.revature.overknight.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import com.revature.overknight.beans.CreditCard;
 import com.revature.overknight.beans.Users;
 import com.revature.overknight.dao.CreditCardDaoImpl;
 import com.revature.overknight.dao.UserDaoImpl;
+import com.revature.overknight.utils.HibernateUtil;
 
 
 
@@ -71,6 +76,16 @@ public class UserService {
 		// ADD CREDIT CARD TO CREDIT CARD TABLE LINKED TO THE USER
 		CreditCard cc = new CreditCard(pass2, salt2, users);
 		cd.insertCreditCard(cc);
+		
+		return true;
+	}
+	
+	public static Boolean verifyUniqueUsername(String username)
+	{
+		if(ud.selectUserByUsername(username) != null)
+		{
+			return false;
+		}
 		
 		return true;
 		

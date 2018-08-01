@@ -45,6 +45,12 @@ export class SignupPageComponent implements OnInit {
 
   public checkValidCardNumber(){
       if (!this.cardNum) this.validCardCheck = false;
+      this.registerService.checkValidCardNumber(this.creditCardNum).subscribe(
+          returnValue => {
+              this.validCardCheck = returnValue;
+              this.displayErrorCardNum = (this.validCardCheck) ? 'none' : 'block';
+          }, error => {console.log(error)}
+      );
       if (this.cardNum < 1000000000000 || this.cardNum >= 10000000000000000){ //between 13 and 16 digits
           this.validCardCheck = false;
       }

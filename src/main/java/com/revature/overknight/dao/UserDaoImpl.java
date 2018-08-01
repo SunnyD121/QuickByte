@@ -211,10 +211,27 @@ public class UserDaoImpl implements UserDao {
 		session.close();
 			//System.out.println(query.uniqueResult());
 			//System.out.println("user = " + user.getfName());
-		
-		return user; 
+		return user;
 	}
 
+	public List<Users> selectUsersByUsername(String username) 
+	{
+		// Setup
+		Session session = HibernateUtil.getSession();
+		List<Users> users = null;
+		String hql;
+		Query query;
+		
+		// Actually query the database
+		hql = "FROM Users WHERE username = :username";
+		query = session.createQuery(hql);
+		query.setParameter("username", username);
+		users = (List<Users>)query.list();
+		session.close();
+			//System.out.println(query.uniqueResult());
+			//System.out.println("user = " + user.getfName());
+		return users;
+	}
 
 	@Override
 	public Boolean deleteUserById(Integer id) {
