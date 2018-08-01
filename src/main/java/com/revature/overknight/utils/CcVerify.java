@@ -34,7 +34,7 @@ public class CcVerify {
 	  * 
 	  *  
 	  *  */
-	public static boolean isValid(long number)
+	public static Boolean isValid(long number)
 	{
 		int sumEven = 0;
 		int sumOdd = 0;
