@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -22,10 +23,6 @@ public class Tag {
 	@SequenceGenerator(sequenceName="TAG_SEQ", name="TAG_GEN")
 	@GeneratedValue(generator="TAG_GEN", strategy=GenerationType.SEQUENCE)
 	private Integer tid;
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name="Tag_2_Post", joinColumns=@JoinColumn(name="tid"),
-				inverseJoinColumns=@JoinColumn(name="pid"))
-	private List<Post> posts;
 	@Column
 	private String tag;
 	
@@ -34,16 +31,14 @@ public class Tag {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tag(List<Post> posts, String tag) {
+	public Tag(Integer pid, String tag) {
 		super();
-		this.posts = posts;
 		this.tag = tag;
 	}
 
-	public Tag(Integer tid, List<Post> posts, String tag) {
+	public Tag(Integer tid, Integer pid, String tag) {
 		super();
 		this.tid = tid;
-		this.posts = posts;
 		this.tag = tag;
 	}
 
@@ -53,14 +48,6 @@ public class Tag {
 
 	public void setTid(Integer tid) {
 		this.tid = tid;
-	}
-
-	public List<Post> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
 	}
 
 	public String getTag() {
@@ -73,7 +60,7 @@ public class Tag {
 
 	@Override
 	public String toString() {
-		return "Tag [tid=" + tid + ", posts=" + posts + ", tag=" + tag + "]";
+		return "Tag [tid=" + tid + ", tag=" + tag + "]";
 	}
 	
 	

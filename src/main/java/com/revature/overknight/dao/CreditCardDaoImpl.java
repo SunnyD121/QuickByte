@@ -91,8 +91,8 @@ public class CreditCardDaoImpl implements CreditCardDao {
 				if(cc.getCreditCardNumber()!=null){
 					c.setCreditCardNumber(c.getCreditCardNumber());
 				}
-				if(cc.getUid()!=null){
-					c.setUid(c.getUid());
+				if(cc.getusers() !=null){
+					c.setusers(c.getusers());
 				}
 				if(cc.getcHName()!=null){
 					c.setcHName(c.getcHName());

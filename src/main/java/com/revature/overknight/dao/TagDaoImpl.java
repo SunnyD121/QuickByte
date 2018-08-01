@@ -132,9 +132,6 @@ public class TagDaoImpl implements TagDao {
 			trans = session.beginTransaction();
 			t = (Tag)session.get(Tag.class, tag.getTid());
 			if(null != t){
-				if(tag.getPosts()!=null){
-					t.setPosts(t.getPosts());
-				}
 				if(tag.getTag()!=null){
 					t.setTag(t.getTag());
 				}

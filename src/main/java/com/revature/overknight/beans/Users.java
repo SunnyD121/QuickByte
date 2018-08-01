@@ -13,7 +13,9 @@ public class Users {
 	@Column
 	private String username;
 	@Column
-	private String password;
+	private byte[] password;
+	@Column
+	private byte[] saltpass;
 	@Column
 	private Integer userStatus; //0 = banned, 1 = free user, 2 = premium user, 3 = admin, 4 = "deleted"
 	@Column
@@ -25,44 +27,43 @@ public class Users {
 	@Column
 	private Long phone;
 	@Column
-	private Long creditCardNumber;
-	@Column
 	private String profileImgKey;
 	
 
-	public Users() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 
-	public Users(String username, String password, Integer userStatus, String fName, String lName, String email,
-			Long phone, Long creditCardNumber, String profileImgKey) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.userStatus = userStatus;
-		this.fName = fName;
-		this.lName = lName;
-		this.email = email;
-		this.phone = phone;
-		this.creditCardNumber = creditCardNumber;
-		this.profileImgKey = profileImgKey;
-	}
 
-	public Users(Integer id, String username, String password, Integer userStatus, String fName, String lName,
-			String email, Long phone, Long creditCardNumber, String profileImgKey) {
+	public Users(Integer id, String username, byte[] password, byte[] saltpass, Integer userStatus, String fName,
+			String lName, String email, Long phone, String profileImgKey) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
+		this.saltpass = saltpass;
 		this.userStatus = userStatus;
 		this.fName = fName;
 		this.lName = lName;
 		this.email = email;
 		this.phone = phone;
-		this.creditCardNumber = creditCardNumber;
 		this.profileImgKey = profileImgKey;
 	}
+	
+	
+
+	public Users(String username, byte[] password, byte[] saltpass, Integer userStatus, String fName, String lName,
+			String email, Long phone, String profileImgKey) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.saltpass = saltpass;
+		this.userStatus = userStatus;
+		this.fName = fName;
+		this.lName = lName;
+		this.email = email;
+		this.phone = phone;
+		this.profileImgKey = profileImgKey;
+	}
+
 
 
 	public Integer getId() {
@@ -81,11 +82,11 @@ public class Users {
 		this.username = username;
 	}
 
-	public String getPassword() {
+	public byte[] getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(byte[] password) {
 		this.password = password;
 	}
 
@@ -129,14 +130,6 @@ public class Users {
 		this.phone = phone;
 	}
 
-	public Long getCreditCardNumber() {
-		return creditCardNumber;
-	}
-
-	public void setCreditCardNumber(Long creditCardNumber) {
-		this.creditCardNumber = creditCardNumber;
-	}
-
 	public String getProfileImgKey() {
 		return profileImgKey;
 	}
@@ -149,7 +142,7 @@ public class Users {
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", userStatus=" + userStatus
 				+ ", fName=" + fName + ", lName=" + lName + ", email=" + email + ", phone=" + phone
-				+ ", creditCardNumber=" + creditCardNumber + ", profileImgKey=" + profileImgKey + "]";
+				+  ", profileImgKey=" + profileImgKey + "]";
 	}
 	
 	
