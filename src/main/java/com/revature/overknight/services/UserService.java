@@ -16,13 +16,17 @@ public class UserService {
 	public static boolean userLogin(String username, String password)
 	{
 		Users user = ud.selectUserByUsername(username);
-		byte[] actual = user.getPassword();
-		char[] attempt = password.toCharArray();
-		// We do not need password anymore so allow it to be garbage collected.
-		password = null;
-		byte[] salt = user.getSaltpass();
+		if (user != null) {
+            System.out.println(user.toString());
+            byte[] actual = user.getPassword();
+            char[] attempt = password.toCharArray();
+            // We do not need password anymore so allow it to be garbage collected.
+            password = null;
+            byte[] salt = user.getSaltpass();
 
-		return kdf.checkPassword(actual, attempt, salt);
+            return kdf.checkPassword(actual, attempt, salt);
+        }
+        else return false;
 	}
 	
 	public static Boolean deleteUser(Users user)

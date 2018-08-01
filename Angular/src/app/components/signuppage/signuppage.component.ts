@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RegisterService } from '../../services/register-service/register-service.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-signuppage',
@@ -14,10 +16,11 @@ export class SignupPageComponent implements OnInit {
     authenticationCheck: boolean;
     uniquenessCheck: boolean;
     validCardCheck: boolean;
+    serverSideCheck: string;
     displayErrorPasswords = "none";
     displayErrorUsername = "none";
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private registerService: RegisterService, private cookie: CookieService) { }
 
   ngOnInit() {
   }
@@ -48,16 +51,30 @@ export class SignupPageComponent implements OnInit {
       this.checkIfUsernameTaken();
   }
 
-  public submit(){
-      this.router.navigate(['/homepage']);
-  }
-
   public authenticateAndSubmit(){
       this.authenticate();
       if (this.authenticationCheck && this.uniquenessCheck && this.validCardCheck){
-          this.submit();
+          this.registerUser();
       }
       else{}
+  }
+
+  private registerUser(){
+      this.toggleError(false);
+      this.registerService.registerUser(this.username, this.password, this.cardNum).subscribe(
+          returnValue => {
+              //whaterver gets returned.
+              this.serverSideCheck = returnValue;
+              if (this.serverSideCheck == 'true') {
+                  cookie.set("LoggedIn", 'true');
+                  this.router.navigate(['/homepage']);
+              }
+              else {
+                  //One of the fields was invalid
+              }
+          },
+          error => {console.log(error)}
+      );
   }
 
 }
