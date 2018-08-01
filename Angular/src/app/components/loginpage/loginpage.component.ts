@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 import { UserService } from '../../services/user-service/user-service.service';
 import { User } from '../../objects/User';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-loginpage',
@@ -15,8 +16,9 @@ export class LoginPageComponent implements OnInit {
     password = "";
     credentialCheck = false;
     displayError = "none";
+    cookieValue: string;
 
-  constructor( private router: Router, private userService: UserService) { }
+  constructor( private router: Router, private userService: UserService, private cookieService: CookieService) { }
 
   ngOnInit() {
   }
@@ -26,7 +28,10 @@ export class LoginPageComponent implements OnInit {
       this.userService.checkCredentials(this.username, this.password).subscribe(
           loginBoolean => {
               this.credentialCheck = loginBoolean;
-              if (loginBoolean) this.router.navigate(['/homepage']);
+              if (loginBoolean){
+                  this.cookieService.set('LoggedIn', 'true');
+                  this.router.navigate(['/homepage']);
+              }
               else {
                   console.log("Invalid Credentials.");
                   this.toggleError(true);
