@@ -80,9 +80,11 @@ public class CcVerify {
 		{
 			if(numberString.charAt(i) != pString.charAt(i))
 			{
+				System.out.println("Number is not the correct length");
 				return false;
 			}
 		}
+		System.out.println("Number is the correct length. Congrats!");
 		return true;
 	}
 	
