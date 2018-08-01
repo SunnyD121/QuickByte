@@ -8,9 +8,9 @@ import com.revature.overknight.utils.HibernateUtil;
 
 public class DBTest {
 	
-	@Test
-	public void sessionTest() {
-		assertNotNull("Failed to get session", HibernateUtil.getSession());
-	}
+//	@Test
+//	public void sessionTest() {
+//		assertNotNull("Failed to get session", HibernateUtil.getSession());
+//	}
 
 }
