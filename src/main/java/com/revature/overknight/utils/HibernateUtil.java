@@ -1,5 +1,7 @@
 package com.revature.overknight.utils;
 
+import java.util.*;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -12,11 +14,22 @@ public class HibernateUtil {
 	
 	public static SessionFactory configureSessionFactory() 
 	{
+		String props[] = System.getenv("DBArgs").split(";");
 	    Configuration configuration = new Configuration();
+	    configuration.setProperty("hibernate.connection.driver_class",
+	    						  props[0]);
+        configuration.setProperty("hibernate.dialect", props[1]);
+        configuration.setProperty("hibernate.connection.url",props[2]);
+        configuration.setProperty("hibernate.connection.username", props[3]);
+        configuration.setProperty("hibernate.connection.password", props[4]);
 	    configuration.configure();
-
-	    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+	    StandardServiceRegistryBuilder ssrb = 
+	    		new StandardServiceRegistryBuilder();
+	    Properties p = configuration.getProperties();
+	    ServiceRegistry serviceRegistry = ssrb.applySettings(p).build();
+//	    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 	    SessionFactory factory = configuration.buildSessionFactory(serviceRegistry);
+	    
 	    return factory;
 	}
 	
@@ -30,8 +43,6 @@ public class HibernateUtil {
 	{
 		factory.close();
 	}
-	
-	
 	
 	
 	

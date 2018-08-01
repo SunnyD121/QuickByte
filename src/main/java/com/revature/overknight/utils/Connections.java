@@ -42,8 +42,7 @@ public class Connections {
 //					prop.getProperty("username"),
 //					prop.getProperty("password"));
 			
-			//String props[] = System.getenv("DBProps").split(";");
-			String props[]="oracle.jdbc.driver.OracleDriver;jdbc:oracle:thin:@examplesandbox.c7gydzn7nvzj.us-east-1.rds.amazonaws.com:1521:orcl;dbauser;supersecret".split(";");
+			String props[] = System.getenv("DBArgs").split(";");
 			Class.forName(props[0]);
 			conn = DriverManager.getConnection(props[1],props[2],props[3]);
 

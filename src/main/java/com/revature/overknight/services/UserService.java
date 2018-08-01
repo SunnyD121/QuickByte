@@ -6,24 +6,23 @@ import com.revature.overknight.dao.UserDaoImpl;
 public class UserService {
 	
 	private static UserDaoImpl ud = new UserDaoImpl();
+	private static KDF kdf = new KDF();
 	
 	public void setUD(UserDaoImpl ud)
 	{
 		this.ud = ud;
 	}
 	
-	public static Boolean userLogin(String username, String password)
+	public static boolean userLogin(String username, String password)
 	{
+		Users user = ud.selectUserByUsername(username);
+		byte[] actual = user.getPassword();
+		char[] attempt = password.toCharArray();
+		// We do not need password anymore so allow it to be garbage collected.
+		password = null;
+		byte[] salt = user.getSaltpass();
 
-		byte [] passbyte = password.getBytes();
-		Users user = null;
-		user = ud.selectUserByUsername(username);
-
-		if(user.getPassword() == passbyte)
-		{
-			return true;
-		}
-		return false;
+		return kdf.checkPassword(actual, attempt, salt);
 	}
 	
 	public static Boolean deleteUser(Users user)

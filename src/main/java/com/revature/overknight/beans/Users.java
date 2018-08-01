@@ -29,7 +29,9 @@ public class Users {
 	@Column
 	private String profileImgKey;
 	
-
+	public Users() {
+		super();
+	}
 	
 
 
@@ -88,6 +90,14 @@ public class Users {
 
 	public void setPassword(byte[] password) {
 		this.password = password;
+	}
+	
+	public byte[] getSaltpass() {
+		return saltpass;
+	}
+
+	public void setSaltpass(byte[] saltpass) {
+		this.saltpass = saltpass;
 	}
 
 	public Integer getUserStatus() {

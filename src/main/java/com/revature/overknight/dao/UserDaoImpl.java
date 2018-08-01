@@ -50,7 +50,7 @@ public class UserDaoImpl implements UserDao {
 		try
 		{
 			trans = session.beginTransaction();
-			users = session.createQuery("FROM User").list();				
+			users = session.createQuery("FROM Users").list();				
 		}
 		catch(HibernateException e)
 		{
