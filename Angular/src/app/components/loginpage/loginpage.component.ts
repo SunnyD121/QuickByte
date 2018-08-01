@@ -23,6 +23,10 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  public checkPasswordMatch() {
+    
+  }
+
   public validateCredentials(){
       this.toggleError(false);
       this.userService.checkCredentials(this.username, this.password).subscribe(
