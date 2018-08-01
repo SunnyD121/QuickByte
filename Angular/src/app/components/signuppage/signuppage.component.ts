@@ -19,6 +19,8 @@ export class SignupPageComponent implements OnInit {
     serverSideCheck: string;
     displayErrorPasswords = "none";
     displayErrorUsername = "none";
+    displayErrorCardNum = "none";
+    displayGeneralError = "none";
 
     constructor(private router: Router, private registerService: RegisterService, private cookie: CookieService) { }
 
@@ -33,7 +35,7 @@ export class SignupPageComponent implements OnInit {
 
   public checkIfUsernameTaken(){
       alert("TODO: checkIfUsernameTaken(): NOT IMPLEMENTED YET.");
-      this.uniquenessCheck = false;
+      this.uniquenessCheck = true;
       this.displayErrorUsername = (this.uniquenessCheck) ? 'none' : 'block';
 
   }
@@ -43,6 +45,7 @@ export class SignupPageComponent implements OnInit {
           this.validCardCheck = false;
       }
       else this.validCardCheck = true;
+      this.displayErrorCardNum = this.validCardCheck ? "none" : "block";
   }
 
 
@@ -56,7 +59,7 @@ export class SignupPageComponent implements OnInit {
       if (this.authenticationCheck && this.uniquenessCheck && this.validCardCheck){
           this.registerUser();
       }
-      else{}
+      else{console.log("One of the frontend checks failed.")}
   }
 
   private registerUser(){
@@ -71,10 +74,16 @@ export class SignupPageComponent implements OnInit {
               }
               else {
                   //One of the fields was invalid
+                  console.log("An expected error occurred during registration.");
+                  this.toggleError(true);
               }
           },
           error => {console.log(error)}
       );
+  }
+
+  public toggleError(display){
+      this.displayGeneralError =  (display) ? "block" : "none";
   }
 
 }
