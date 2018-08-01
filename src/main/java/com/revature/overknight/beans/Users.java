@@ -28,6 +28,8 @@ public class Users {
 	private Long phone;
 	@Column
 	private String profileImgKey;
+	@Column
+	private Integer isDeleted;	//0 = not deleted, 1=deleted
 	
 	public Users() {
 		super();
@@ -48,6 +50,7 @@ public class Users {
 		this.email = email;
 		this.phone = phone;
 		this.profileImgKey = profileImgKey;
+		this.isDeleted = 0;
 	}
 	
 	
@@ -64,6 +67,7 @@ public class Users {
 		this.email = email;
 		this.phone = phone;
 		this.profileImgKey = profileImgKey;
+		this.isDeleted = 0;
 	}
 
 
@@ -148,12 +152,24 @@ public class Users {
 		this.profileImgKey = profileImgKey;
 	}
 
+	
+	
+	public Integer getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Integer isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", userStatus=" + userStatus
 				+ ", fName=" + fName + ", lName=" + lName + ", email=" + email + ", phone=" + phone
 				+  ", profileImgKey=" + profileImgKey + "]";
 	}
+
+	
 	
 	
 	

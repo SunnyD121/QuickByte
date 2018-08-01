@@ -17,7 +17,8 @@
           <button type="submit" (click)="search()" class="btn btn-default" style="background-color:red; color:white">Submit</button>
         </form>
       <li><a routerLink="/signuppage"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a routerLink="/loginpage"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <!-- <li><a routerLink="/loginpage"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+      <li><a (click)="logInOrOut()"><span class="glyphicon glyphicon-log-in"></span> {{logInOrOutText}}</a></li>
     </ul>
   </div>
 </nav>

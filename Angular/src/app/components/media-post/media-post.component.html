@@ -13,15 +13,14 @@
               <h3>Recipe</h3>
               <app-expandable-pane>{{postRecipe}}</app-expandable-pane>
           </div>
-
       </div>
   </div>
 
-  <span>
-      <a class="post-badge" style="padding-left:150px"><span class="glyphicon glyphicon-heart"><span class="glyph-text">Favorite</span></span></a>
-      <a class="post-badge"><span class="glyphicon glyphicon-thumbs-up"><span class="glyph-text">Like</span></span></a>
-      <a class="post-badge"><span class="glyphicon glyphicon-thumbs-down"><span class="glyph-text">Dislike</span></span></a>
-      <a class="post-badge"><span class="glyphicon glyphicon-share-alt"><span class="glyph-text">Share</span></span></a>
+  <span style="padding:181px">
+      <span style="padding:2px"><button class="button" style="background-color:#FF5468" (click)="favoriteClicked()"><span class="glyphicon glyphicon-heart"><span class="glyph-text">Favorite</span></span></button></span>
+      <span style="padding:2px"><button class="button" style="background-color:#3F69FF" (click)="likeClicked()"><span class="glyphicon glyphicon-thumbs-up"><span class="glyph-text">{{likeCounter}}</span></span></button></span>
+      <span style="padding:2px"><button class="button" style="background-color:#FF6156"(click)="dislikeClicked()"><span class="glyphicon glyphicon-thumbs-down"><span class="glyph-text">{{dislikeCounter}}</span></span></button></span>
+      <span style="padding:2px"><button class="button" style="background-color:#14FFB8"(click)="shareClicked()"><span class="glyphicon glyphicon-share-alt"><span class="glyph-text">Share</span></span></button></span>
   </span>
   <br><br>
   <app-expandable-pane width="50%" min_height="128px">

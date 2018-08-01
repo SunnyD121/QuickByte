@@ -91,8 +91,12 @@ public class UserDaoImpl implements UserDao {
 		{
 			session.close();
 		}
-			
-		return user; 
+		if(user.getIsDeleted()==0) {
+			return user;
+		}else {
+			return null;
+		}
+		 
 	}
 
 	public Boolean deleteUserById(Integer id) 
@@ -212,6 +216,9 @@ public class UserDaoImpl implements UserDao {
 			//System.out.println("user = " + user.getfName());
 		
 		return user; 
+		}else {
+			return null;
+		}
 	}
 
 	

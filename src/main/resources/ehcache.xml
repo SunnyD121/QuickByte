@@ -12,7 +12,7 @@
 		memoryStoreEvictionPolicy="LRU" statistics="true">
 	</defaultCache>
 	
-	<cache name="npc"
+	<cache name="user"
 	eternal="false"
 	timeToIdleSeconds="30"
 	timeToLiveSeconds="30">

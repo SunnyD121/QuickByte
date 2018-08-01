@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { LowerCasePipe } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class HomePageComponent implements OnInit {
     validCriteria = ["American", "British", "Carribean", "Chinese", "French", "German", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Portuguese", "Spanish", "Thai"];
     isInitialized: boolean;
     searchedPosts: Array<Object>;
+    premium: boolean;
 
     //TODO: delete this, for testing purposes only
     testString = "Voilà! In view, a humble vaudevillian veteran, cast vicariously as both victim and villian"
@@ -29,7 +31,7 @@ export class HomePageComponent implements OnInit {
     +" that it is my very good honor to meet you and you may call me V.\n     -V for Vendetta";
 
 
-    constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+    constructor(private activatedRoute: ActivatedRoute, private router: Router, private cookieService: CookieService) {
     /* This part will only be accessable on load only. So, it will not be accessable on Reload. */
         this.activatedRoute.queryParams.subscribe(queryParams => {
         /* This part will be accessable on Reload */
@@ -39,6 +41,8 @@ export class HomePageComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.premium = (this.cookieService.get("LoggedIn") == 'true');
+
         if (!this.isInitialized) {
             this.isInitialized = true;
 

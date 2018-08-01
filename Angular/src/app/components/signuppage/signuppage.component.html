@@ -7,16 +7,16 @@
       <p>Please fill in this form to create an account.</p>
       <br>
       <input type="text" placeholder="Enter Username" (blur)="checkIfUsernameTaken()" [(ngModel)]="username" class="form-control" name="username" required>
+      <div class="alert alert-danger form-control" [style.display]=displayErrorUsername>Username already taken.</div>
       <br>
       <input type="password" placeholder="Enter Password" (blur)="checkPasswordMatch()" [(ngModel)]="password" class="form-control" name="password" required>
       <input type="password" placeholder="Confirm Password" (blur)="checkPasswordMatch()" [(ngModel)]="passwordConfirm" class="form-control" name="passwordConfirm" required>
-      <div class="alert alert-danger form-control" [ngStyle]=displayError id="error-passwords">Passwords do not match!</div>
-      <input type="number" placeholder="Credit Card Number" (blur)="checkValidCardNumber()" [(ngModel)]="cardNum" class="form-control" name="cardNumber" required>
-      <!-- <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label> -->
+      <div class="alert alert-danger form-control" [style.display]=displayErrorPasswords id="error-passwords">Passwords do not match!</div>
 
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+      <input type="number" placeholder="Credit Card Number" (blur)="checkValidCardNumber()" [(ngModel)]="cardNum" class="form-control" name="cardNumber" required>
+
+
+      <p>By creating an account you agree to our <a href="https://xkcd.com/1998/" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       <div class="clearfix">
           <button type="submit" (click)="authenticateAndSubmit()" class="signupbtn">Sign Up</button>

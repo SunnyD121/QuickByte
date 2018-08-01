@@ -2,23 +2,13 @@
     color:grey;
 }
 
+.button {
+    /* border:solid; */
+}
+
 .glyph-text {
     font-size: 18px;
     padding-left: 8px;
-}
-
-.glyphicon {
-    font-size: 12px;
-    border: solid;
-    border-style: solid;
-    padding: 5px;
-    color: black;
-    background-color: lightgrey;
-    border-color: black;
-}
-
-.post-badge {
-    padding-right: 2px
 }
 
 .glyphicon:hover {
