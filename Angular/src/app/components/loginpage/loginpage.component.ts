@@ -18,7 +18,7 @@ export class LoginPageComponent implements OnInit {
     displayError = "none";
     cookieValue: string;
 
-  constructor( private router: Router, private userService: UserService, private cookieService: CookieService) { }
+  constructor( private router: Router, private userService: UserService, private cookie: CookieService) { }
 
   ngOnInit() {
   }
@@ -30,7 +30,7 @@ export class LoginPageComponent implements OnInit {
           loginBoolean => {
               this.credentialCheck = loginBoolean;
               if (loginBoolean){
-                  this.cookieService.set('LoggedIn', 'true');
+                  this.cookie.set('LoggedIn', 'true');
                   this.router.navigate(['/homepage']);
               }
               else {
