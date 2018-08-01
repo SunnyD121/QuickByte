@@ -1,4 +1,4 @@
-package com.revature.overknight.tests;
+/*package com.revature.overknight.tests;
 
 import static org.junit.Assert.*;
 
@@ -14,3 +14,4 @@ public class DBTest {
 //	}
 
 }
+*/

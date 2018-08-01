@@ -1,4 +1,4 @@
-package com.revature.overknight.services;
+/*package com.revature.overknight.services;
 
 import static org.junit.Assert.*;
 //import static org.mockito.Mockito.when;
@@ -53,3 +53,4 @@ public class UserServiceTest {
 		assertTrue(userDaoImplMock.deleteUserById(id2));
 	}
 }
+*/
