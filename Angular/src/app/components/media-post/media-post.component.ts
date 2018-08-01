@@ -17,7 +17,7 @@ export class MediaPostComponent implements OnInit {
 
     img1Path: string;
 
-  constructor(private cookieService: CookieService) {
+  constructor(private cookie: CookieService) {
       //TODO: Delete, these pictures are for testing only
       this.img1Path = 'assets/images/img_avatar1.png';
       // this.testImage = 'assets/images/testImage.png';
@@ -27,7 +27,6 @@ export class MediaPostComponent implements OnInit {
 
   public favoriteClicked(){
       alert("TODO: favoriteClicked() not implemented yet.");
-      console.log("Value: "+this.cookieService.get("LoggedIn"));
   }
   public likeClicked(){
       this.likeCounter++;

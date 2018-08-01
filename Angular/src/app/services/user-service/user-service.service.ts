@@ -23,7 +23,6 @@ export class UserService {
   }
 
     checkCredentials(username: string, password: string): Observable<any>{
-      console.log("Posting:");
       let user = new User();
       user.username = username;
       user.password = password;

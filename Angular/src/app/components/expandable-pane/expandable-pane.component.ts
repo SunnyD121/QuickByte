@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-expandable-pane',
@@ -16,19 +17,26 @@ export class ExpandablePaneComponent implements OnInit {
     clickTitle = "Click to Expand";
 
     public customClick(){
-        if (this.expanded = !this.expanded){
-            this.overflow = "visible";
-            this.height = "auto";
-            this.clickTitle = "Less";
+        if (this.cookie.get("LoggedIn") == 'true'){
+            if (this.expanded = !this.expanded){
+                this.overflow = "visible";
+                this.height = "auto";
+                this.clickTitle = "Less";
+            }
+            else{
+                this.overflow = "hidden";
+                this.height = (this.min_height) ? this.min_height : "64px";
+                this.clickTitle = "Click to Expand";
+            }
         }
-        else{
-            this.overflow = "hidden";
-            this.height = (this.min_height) ? this.min_height : "64px";
-            this.clickTitle = "Click to Expand";
+        else {
+            this.clickTitle = "Locked: Content Only Available to Premium Members";
         }
     }
 
-  constructor() {}
+  constructor(private cookie: CookieService) {
+      if (this.cookie.get("LoggedIn") != 'true') this.clickTitle = "Locked: Content Only Available to Premium Members";
+  }
 
   ngOnInit() {
       this.height = (this.min_height) ? this.min_height : "64px";

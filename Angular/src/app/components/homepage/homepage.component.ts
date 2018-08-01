@@ -18,6 +18,7 @@ export class HomePageComponent implements OnInit {
     isInitialized: boolean;
     searchedPosts: Array<Object>;
     premium: boolean;
+    favoritedPosts_TEST = ["Pumpkin Pie", "Pheasant Under Glass", "Peach Cobbler", "Homemade Brownies"];
 
     //TODO: delete this, for testing purposes only
     testString = "Voilà! In view, a humble vaudevillian veteran, cast vicariously as both victim and villian"
@@ -31,7 +32,7 @@ export class HomePageComponent implements OnInit {
     +" that it is my very good honor to meet you and you may call me V.\n     -V for Vendetta";
 
 
-    constructor(private activatedRoute: ActivatedRoute, private router: Router, private cookieService: CookieService) {
+    constructor(private activatedRoute: ActivatedRoute, private router: Router, private cookie: CookieService) {
     /* This part will only be accessable on load only. So, it will not be accessable on Reload. */
         this.activatedRoute.queryParams.subscribe(queryParams => {
         /* This part will be accessable on Reload */
@@ -41,7 +42,7 @@ export class HomePageComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.premium = (this.cookieService.get("LoggedIn") == 'true');
+        this.premium = (this.cookie.get("LoggedIn") == 'true');
 
         if (!this.isInitialized) {
             this.isInitialized = true;

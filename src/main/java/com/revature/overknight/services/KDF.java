@@ -12,6 +12,8 @@ public class  KDF {
 	 * variable anymore, we can overwrite this sensitive information in memory
 	 * with Arrays.fill(variable, some_value).
 	 */
+
+	private byte[] salt;
 	
 	public static void main(String[] args) {
 		KDF kdf = new KDF();
@@ -94,6 +96,10 @@ public class  KDF {
 	}
 
     public byte[] encryptPassword(String password){
-        return new KDF().hashPassword(password.toCharArray(), generateSalt());
+        return new KDF().hashPassword(password.toCharArray(), salt = generateSalt());
+    }
+
+    public byte[] getSalt(){
+	    return salt;
     }
 }

@@ -12,7 +12,7 @@ export class NavBarComponent implements OnInit {
     searchResults = null;
     logInOrOutText: string;
 
-    constructor(private router:Router, private cookieService: CookieService) { this.getLogInOrOutText();}
+    constructor(private router:Router, private cookie: CookieService) { this.getLogInOrOutText();}
 
     public search(){
         //TODO: call the database with searchQuery and see if it matches a tag, return the collection of posts
@@ -24,16 +24,16 @@ export class NavBarComponent implements OnInit {
     }
 
     public logInOrOut(){
-        if (!this.cookieService.get("LoggedIn")) this.router.navigate(['/loginpage']);
-        else if (this.cookieService.get("LoggedIn") == 'true') {
-            this.cookieService.deleteAll();
+        if (!this.cookie.get("LoggedIn")) this.router.navigate(['/loginpage']);
+        else if (this.cookie.get("LoggedIn") == 'true') {
+            this.cookie.deleteAll();
             alert("You have been logged out.");
             this.router.navigate(['/homepage']);
         }
     }
 
     public getLogInOrOutText(){
-        this.logInOrOutText = (this.cookieService.get('LoggedIn') == 'true') ? "Log Out" : "Log In"
+        this.logInOrOutText = (this.cookie.get('LoggedIn') == 'true') ? "Log Out" : "Log In"
     }
 
 
