@@ -14,20 +14,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.revature.overknight.dao.UserDaoImpl;
-import com.revature.overknight.services.UserService;
+import com.revature.overknight.utils.CcVerify;
 
 /**
- * Servlet implementation class UniqueUsername
+ * Servlet implementation class CreditCardVerificationServlet
  */
-@WebServlet("/UniqueUsernameServlet")
-public class UniqueUsernameServlet extends HttpServlet {
+@WebServlet("/CreditCardVerificationServlet")
+public class CreditCardVerificationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UniqueUsernameServlet() {
+    public CreditCardVerificationServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -54,16 +53,16 @@ public class UniqueUsernameServlet extends HttpServlet {
         reader.close();
 
 		//GET USERNAME
-        String username = personObject.getString("username");
+        String creditCardNumberString = personObject.getString("creditCardNumber");
 		
 		//SETUP RESPONSE
 		response.setContentType("text");
 		PrintWriter out = response.getWriter();
 		HttpSession session = null;
 		
-		//VERIFY THE USERNAME IS UNIQUE
-		out.println(UserService.verifyUniqueUsername(username).toString());
-		
+		//PARSE CREDITCARD NUMBER AND VERIFY VALIDITY
+		creditCardNumber = Long.parseLong(creditCardNumberString);
+		out.println(CcVerify.isValid(creditCardNumber).toString());
 	}
 
 }
