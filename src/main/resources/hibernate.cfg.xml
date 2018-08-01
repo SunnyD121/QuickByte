@@ -33,6 +33,7 @@
 			3
 		</property>
 		<property name="show_sql">
+<<<<<<< HEAD
 			true
 		</property>
 		<property name="hibernate.hbm2ddl.auto">
@@ -47,6 +48,22 @@
 		<property name="hibernate.cache.use_query_cache">
 			true
 		</property> -->
+=======
+			false
+		</property>
+		<!--<property name="hibernate.hbm2ddl.auto">-->
+			<!--create-->
+		<!--</property>-->
+		<!--<property name="hibernate.cache.region.factory_class">-->
+			<!--org.hibernate.cache.ehcache.EhCacheRegionFactory-->
+		<!--</property>-->
+		<!--<property name="hibernate.cache.use_second_level_cache">-->
+			<!--true-->
+		<!--</property>-->
+		<!--<property name="hibernate.cache.use_query_cache">-->
+			<!--true-->
+		<!--</property>-->
+>>>>>>> 1272cfc6da31725a7d41ff212d3047d627838c4e
 		<mapping class="com.revature.overknight.beans.Comments"/>
 		<mapping class="com.revature.overknight.beans.CreditCard"/>
 		<mapping class="com.revature.overknight.beans.Post"/>

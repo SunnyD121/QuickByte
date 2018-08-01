@@ -6,7 +6,7 @@ import java.util.Arrays;
 import javax.crypto.*;
 import javax.crypto.spec.*;
 
-public class KDF {
+public class  KDF {
 	/*
 	 * Suppose variable is an array that holds a password. When we do not need
 	 * variable anymore, we can overwrite this sensitive information in memory
@@ -73,7 +73,7 @@ public class KDF {
 		return null;
 	}
 	
-	private byte[] generateSalt() {
+	public byte[] generateSalt() {
 		SecureRandom sr = null;
 		
 		try {
@@ -92,4 +92,8 @@ public class KDF {
 		
 		return null;
 	}
+
+    public byte[] encryptPassword(String password){
+        return new KDF().hashPassword(password.toCharArray(), generateSalt());
+    }
 }
