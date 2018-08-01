@@ -70,6 +70,15 @@ public class Users {
 		this.isDeleted = 0;
 	}
 
+	
+
+	public Users(String username, byte[] password, byte[] saltpass) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.saltpass = saltpass;
+	}
+
 
 
 	public Integer getId() {

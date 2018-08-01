@@ -39,29 +39,37 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-        String json = request.getReader().readLine();
-        CustomJsonParser parser = new CustomJsonParser(json);
+        //SETUP
+		String json = request.getReader().readLine();
         JsonReader reader = Json.createReader(new StringReader(json));
 
+        // READ INCOMING JSON OBJECT
         JsonObject personObject = reader.readObject();
         reader.close();
 
-		String username = personObject.getString("username");
+		//GET USERNAME AND PASSWORD FIELDS
+        String username = personObject.getString("username");
 		String password = personObject.getString("password");
-        System.out.println("In Servlet:");
+      
+		// TODO: Convert to Logger
+		/* System.out.println("In Servlet:");
 		System.out.println(username);
-        System.out.println(password);
+        System.out.println(password);*/
 		
+		//SETUP REPLY
 		response.setContentType("text");
 		PrintWriter out = response.getWriter();
 		HttpSession session = null;
 
-        boolean validUserLogin = UserService.userLogin(username, password);
+        // ACTUAL CREDENTIAL CHECKS
+		boolean validUserLogin = UserService.userLogin(username, password);
         if (validUserLogin) {
             session = request.getSession();
             session.setAttribute("username", username);
             System.out.println("LOGIN STARTED: " + session.getAttribute("username"));
         }
+        
+        // RESPONSE SENT BACK
         out.println(new ObjectMapper().writeValueAsString(validUserLogin));
 
 	}
