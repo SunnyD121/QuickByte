@@ -15,6 +15,7 @@ public class HibernateUtil {
 	public static SessionFactory configureSessionFactory() 
 	{
 		String props[] = System.getenv("DBARGS").split(";");
+		System.err.println("props: " + Arrays.toString(props));
 	    Configuration configuration = new Configuration();
 	    configuration.setProperty("hibernate.connection.driver_class",
 	    						  props[0]);
@@ -23,12 +24,17 @@ public class HibernateUtil {
         configuration.setProperty("hibernate.connection.username", props[3]);
         configuration.setProperty("hibernate.connection.password", props[4]);
 	    configuration.configure();
+	    System.err.println("configuration: " + configuration);
 	    StandardServiceRegistryBuilder ssrb = 
 	    		new StandardServiceRegistryBuilder();
+	    System.err.println("builder: " + ssrb);
 	    Properties p = configuration.getProperties();
+	    System.err.println("properties: " + p);
 	    ServiceRegistry serviceRegistry = ssrb.applySettings(p).build();
+	    System.err.println("registry: " + serviceRegistry);
 //	    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 	    SessionFactory factory = configuration.buildSessionFactory(serviceRegistry);
+	    System.err.println("factory: " + factory);
 	    
 	    return factory;
 	}
