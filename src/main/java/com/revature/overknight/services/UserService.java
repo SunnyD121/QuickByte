@@ -32,5 +32,14 @@ public class UserService {
 		System.out.println("This user's status code is now:" + user.getUserStatus());
 		return true;
 	}
+	
+	public static Integer registerNewUser(String username, String password, Long ccn)    
+ 	{
+		
+		
+		Users user = new Users(username, password);
+		return (ud.insertUser(user));
+		
+	}
 
 }
