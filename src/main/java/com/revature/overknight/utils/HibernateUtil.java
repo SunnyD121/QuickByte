@@ -14,7 +14,7 @@ public class HibernateUtil {
 	
 	public static SessionFactory configureSessionFactory() 
 	{
-		String props[] = System.getenv("DBArgs").split(";");
+		String props[] = System.getenv("DBARGS").split(";");
 	    Configuration configuration = new Configuration();
 	    configuration.setProperty("hibernate.connection.driver_class",
 	    						  props[0]);
