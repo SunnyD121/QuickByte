@@ -18,12 +18,8 @@ public class Reply {
 	@SequenceGenerator(sequenceName="REP_SEQ", name="REP_GEN")
 	@GeneratedValue(generator="REP_GEN", strategy=GenerationType.SEQUENCE)
 	private Integer rid;
-	@ManyToOne
-	@JoinColumn(name="cid")
-	private Integer cid;
-	@ManyToOne
-	@JoinColumn(name="uid")
-	private String uid;
+	@Column
+	private String userid;
 	@Column
 	private String replyContent;
 	
@@ -34,19 +30,17 @@ public class Reply {
 	}
 
 
-	public Reply(Integer cid, String uid, String replyContent) {
+	public Reply(String userid, String replyContent) {
 		super();
-		this.cid = cid;
-		this.uid = uid;
+		this.userid = userid;
 		this.replyContent = replyContent;
 	}
 
 
-	public Reply(Integer rid, Integer cid, String uid, String replyContent) {
+	public Reply(Integer rid, String userid, String replyContent) {
 		super();
 		this.rid = rid;
-		this.cid = cid;
-		this.uid = uid;
+		this.userid = userid;
 		this.replyContent = replyContent;
 	}
 
@@ -61,23 +55,13 @@ public class Reply {
 	}
 
 
-	public Integer getCid() {
-		return cid;
+	public String getuserid() {
+		return userid;
 	}
 
 
-	public void setCid(Integer cid) {
-		this.cid = cid;
-	}
-
-
-	public String getUid() {
-		return uid;
-	}
-
-
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setuserid(String userid) {
+		this.userid = userid;
 	}
 
 
@@ -93,8 +77,11 @@ public class Reply {
 
 	@Override
 	public String toString() {
-		return "Reply [rid=" + rid + ", cid=" + cid + ", uid=" + uid + ", replyContent=" + replyContent + "]";
+		return "Reply [rid=" + rid + ", userid=" + userid + ", replyContent=" + replyContent + "]";
 	}
+
+
+	
 	
 		
 }

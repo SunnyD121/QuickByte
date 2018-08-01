@@ -14,11 +14,19 @@ public class CustomJsonParser {
 
     public CustomJsonParser(String json){
         this.json = json;
-        map = new HashMap<>();
-        parse(json);
+        if (this.json == null || this.json.equals("")){
+            map = null;
+        }
+        else if (this.json.equals("{}")) map = new HashMap<>();
+
+        else{
+            map = new HashMap<>();
+            parse(json);
+        }
     }
 
     public String[] getParameters(){
+        if (map == null) return null;
         String[] keys = new String[map.keySet().size()];
         Iterator<String> it = map.keySet().iterator();
         int i = 0;
@@ -27,10 +35,48 @@ public class CustomJsonParser {
     }
 
     public String getParameter(String param){
+        if (map == null) return null;
         return map.get(param);
     }
 
-    public void parse(String json){
+    /*
+    Use Cases:
+    {a: b}
+    {a: [b,c]}
+    {a: {b: c}}
+    [a,b]
+    [{a: b, c: d}, {e: f, g: h}]
+     */
+    private void parse(String json){
+        json = json.replaceAll("\\s", "");  //removes whitespace
+        map = parseKeyValuePairs(json);
+
+//        char firstChar = json.charAt(0);
+//        json = json.substring(1);   //index 1 -> end
+//        if (firstChar == '{'){
+//            //Json object
+//            if (json.charAt(json.length()-1) != '}') throw new InvalidJsonException("Invalid Final Character");
+//            json = json.substring(0, json.length()-1);  //remove ending '}'
+//            char at = json.charAt(0);
+//            switch(at){
+//                case '{': parseObject(json); break;
+//                case '[': parseArray(json); break;
+//                default:
+//
+//            }
+//        }
+//        else if (firstChar == '['){
+//            if (json.charAt(json.length()-1) != ']') throw new InvalidJsonException("Invalid Final Character");
+//            //TODO: Conditional on json array
+//        }
+//        else {
+//            throw new InvalidJsonException("Not a valid character at position 0: "+json.charAt(0));
+//        }
+    }
+
+    private HashMap<String, String> parseKeyValuePairs(String json){
+        System.out.println(json);
+        HashMap<String, String> localMap = new HashMap<>();
         json = json.substring(1, json.length()-1);
         String[] array = json.split(",");
         for (String s : array){
@@ -39,15 +85,19 @@ public class CustomJsonParser {
             String value = pair[1].trim();
             key = key.replace("\"","");
             value = value.replace("\"","");
-            map.put(key, value);
+            System.out.println("\'"+key+"\'");
+            System.out.println("\'"+value+"\'");
+            localMap.put(key, value);
         }
+        return localMap;
     }
 
-    private String recurse(String json, int level){
-        return null;
-    }
-    private void storePair(String pair){
-        String[] array = pair.split(":");
-        map.put(array[0].trim(), array[1].trim());
+    protected class InvalidJsonException extends RuntimeException{
+        public InvalidJsonException(){
+            super();
+        }
+        public InvalidJsonException(String message){
+            super(message);
+        }
     }
 }

@@ -8,18 +8,40 @@
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {height: 450px}
 
+.sidenav-left {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #FF0010;
+    overflow-x: hidden;
+    padding-top: 40px;
+    border:solid;
+}
+
+.sidenav-left a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #f1f1f1;
+    display: block;
+}
+.sidenav-left h3{
+    color: #f1f1f1;
+}
+
+.sidenav-left a:hover {
+    color: #818181;
+}
+
+
 /* Set gray background color and 100% height */
 .sidenav {
   padding-top: 20px;
   background-color: #f1f1f1;
   height: 300%; /* This setting sets the size of the grayish background on the sidebar */
-}
-
-/* Set black background color, white text and some padding */
-footer {
-  background-color: #555;
-  color: white;
-  padding: 15px;
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
@@ -33,6 +55,22 @@ footer {
 
 .ad:hover {
     cursor:pointer;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+  padding-left:250px !important;
+}
+
+.free-tier{
+    display:block;
+}
+
+.premium {
+    display:none;
 }
 
 /* Uncomment this if you want the ads to be REALLY annoying */

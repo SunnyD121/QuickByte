@@ -14,25 +14,25 @@ export class SignupPageComponent implements OnInit {
     authenticationCheck: boolean;
     uniquenessCheck: boolean;
     validCardCheck: boolean;
+    displayErrorPasswords = "none";
+    displayErrorUsername = "none";
 
     constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  displayError = {
-      display: 'none',
-  }
-
 
   public checkPasswordMatch(){
-     this.displayError.display = (this.password != this.passwordConfirm) ? 'block' : 'none';
+     this.displayErrorPasswords = (this.password != this.passwordConfirm) ? 'block' : 'none';
      this.authenticationCheck = (this.password == this.passwordConfirm) ? true : false;
   }
 
   public checkIfUsernameTaken(){
       alert("TODO: checkIfUsernameTaken(): NOT IMPLEMENTED YET.");
-      this.uniquenessCheck = true;
+      this.uniquenessCheck = false;
+      this.displayErrorUsername = (this.uniquenessCheck) ? 'none' : 'block';
+
   }
 
   public checkValidCardNumber(){
@@ -49,7 +49,7 @@ export class SignupPageComponent implements OnInit {
   }
 
   public submit(){
-    //   this.router.navigate(['/homepage']);
+      this.router.navigate(['/homepage']);
   }
 
   public authenticateAndSubmit(){

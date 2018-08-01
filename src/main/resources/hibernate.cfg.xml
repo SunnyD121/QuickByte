@@ -46,7 +46,7 @@
 
 		<!-- hibernate mapping to data definition language -->
 		<property name="hibernate.hbm2ddl.auto">
-			update
+			create
 		</property>
 		<!-- There are 4 different states youc an place it as:
 		 create: Wipe any existing database tables and create it from scratch
@@ -69,11 +69,11 @@
 		<!--</property>-->
 
 		<!-- <mapping resource="person.hbm.xml" /> -->
-		<mapping class="com.revature.overknight.beans.Comment"/>
+		<mapping class="com.revature.overknight.beans.Comments"/>
 		<mapping class="com.revature.overknight.beans.CreditCard"/>
 		<mapping class="com.revature.overknight.beans.Post"/>
 		<mapping class="com.revature.overknight.beans.Reply"/>
-		<mapping class="com.revature.overknight.beans.Tag"/>
+		<mapping class="com.revature.overknight.beans.Tag"/> 
 		<mapping class="com.revature.overknight.beans.Users"/>
 
 	</session-factory>

@@ -1,50 +1,44 @@
 package com.revature.overknight.beans;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Comment")
-public class Comment {
+@Table(name = "Comments")
+public class Comments {
 	@Id
-	@Column(name="cid")
 	@SequenceGenerator(sequenceName="COM_SEQ", name="COM_GEN")
 	@GeneratedValue(generator="COM_GEN", strategy=GenerationType.SEQUENCE)
 	private Integer cid;
-	@ManyToOne
-	@JoinColumn(name="pid")
-	private Integer pid;
-	@ManyToOne
-	@JoinColumn(name="uid")
-	private Integer uid;
-	@Column
 	private String commentContent;
+	@OneToMany
+	private List<Reply> replies;
 	
-	public Comment() {
+	
+	
+	
+	public Comments() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Comment(Integer pid, Integer uid, String commentContent) {
-		super();
-		this.pid = pid;
-		this.uid = uid;
-		this.commentContent = commentContent;
-	}
-
-	public Comment(Integer cid, Integer pid, Integer uid, String commentContent) {
+	public Comments(Integer cid, String commentContent, List<Reply> replies) {
 		super();
 		this.cid = cid;
-		this.pid = pid;
-		this.uid = uid;
 		this.commentContent = commentContent;
+		this.replies = replies;
 	}
 
 	public Integer getCid() {
@@ -53,22 +47,6 @@ public class Comment {
 
 	public void setCid(Integer cid) {
 		this.cid = cid;
-	}
-
-	public Integer getPid() {
-		return pid;
-	}
-
-	public void setPid(Integer pid) {
-		this.pid = pid;
-	}
-
-	public Integer getUid() {
-		return uid;
-	}
-
-	public void setUid(Integer uid) {
-		this.uid = uid;
 	}
 
 	public String getCommentContent() {
@@ -81,7 +59,7 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [cid=" + cid + ", pid=" + pid + ", uid=" + uid + ", commentContent=" + commentContent + "]";
+		return "Comment [cid=" + cid + ", commentContent=" + commentContent + "]";
 	}
 	
 	
