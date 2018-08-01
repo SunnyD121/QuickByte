@@ -5,10 +5,10 @@
     <div class="col-sm-2 sidenav-left">
         <h3>Helpful Links</h3>
         <br>
-        <p><a routerLink="/signuppage">Become a Premium Member!</a></p>
+        <p [style.display]="premium ? 'none' : 'block'"><a routerLink="/signuppage">Become a Premium Member!</a></p>
         <p><a href="#">Subscribe to our Newsletter!</a></p>
-        <p><a routerLink="/signuppage">Become a Premium Member!</a></p>
-        <p><a routerLink="/signuppage">Become a Premium Member!</a></p>
+        <p [style.display]="premium ? 'none' : 'block'"><a routerLink="/signuppage">Become a Premium Member!</a></p>
+        <p [style.display]="premium ? 'none' : 'block'"><a routerLink="/signuppage">Become a Premium Member!</a></p>
     </div>
     <div class="col-sm-2 sidenav-left-under"></div>
     <div class="col-sm-8 text-left">
@@ -23,7 +23,7 @@
           <hr>
       </ng-template>
     </div>
-    <div class="col-sm-2 sidenav">
+    <div class="col-sm-2 sidenav" [style.display]="premium ? 'none' : 'block'">
 
         <!-- loops the ad -->
         <div *ngFor="let element of array">

@@ -65,6 +65,14 @@ footer {
   padding-left:250px !important;
 }
 
+.free-tier{
+    display:block;
+}
+
+.premium {
+    display:none;
+}
+
 /* Uncomment this if you want the ads to be REALLY annoying */
 /*
 @keyframes blink {
