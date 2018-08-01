@@ -1,11 +1,19 @@
 package com.revature.overknight.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.overknight.beans.CreditCard;
 import com.revature.overknight.beans.Users;
+import com.revature.overknight.dao.CreditCardDaoImpl;
 import com.revature.overknight.dao.UserDaoImpl;
+
+
 
 public class UserService {
 	
 	private static UserDaoImpl ud = new UserDaoImpl();
+	private static CreditCardDaoImpl cd = new CreditCardDaoImpl();
 	private static KDF kdf = new KDF();
 	
 	public void setUD(UserDaoImpl ud)
@@ -37,12 +45,34 @@ public class UserService {
 		return true;
 	}
 	
-	public static Integer registerNewUser(String username, String password, Long ccn)    
+	public static Boolean registerNewUser(String username, String password, Long ccn)    
  	{
+		// ENCRYPT PASSWORD
+		KDF kdf = new KDF(); 
+		byte[] pass = kdf.encryptPassword(password);
+		byte[] salt = kdf.getSalt();
+		kdf = null;
 		
+		// INSERT NEW USER INTO USERS TABLE
+		Users user = new Users(username, pass, salt);
+		int id = ud.insertUser(user);
 		
-		Users user = new Users(username, password);
-		return (ud.insertUser(user));
+		// ENCRYPT CREDIT CARD NUMBER
+		kdf = new KDF(); 
+		byte[] pass2 = kdf.encryptPassword(ccn.toString());
+		byte[] salt2 = kdf.getSalt();
+		kdf = null;
+		
+		// CREATE "LIST" OF USERS FOR CREDIT CARD CONSTRUCTOR
+		List<Users> users = new ArrayList<>();
+		user = ud.selectUserById(id);
+		users.add(user);
+		
+		// ADD CREDIT CARD TO CREDIT CARD TABLE LINKED TO THE USER
+		CreditCard cc = new CreditCard(pass2, salt2, users);
+		cd.insertCreditCard(cc);
+		
+		return true;
 		
 	}
 

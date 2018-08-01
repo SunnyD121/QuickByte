@@ -36,6 +36,17 @@ public class CreditCard {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public CreditCard(byte[] creditCardNumber, byte[] saltcc, List<Users> users) {
+		super();
+		this.creditCardNumber = creditCardNumber;
+		this.saltcc = saltcc;
+		this.users = users;
+	}
+
+
 
 	public CreditCard(byte[] creditCardNumber, List<Users> users, String cHName, Date expirationDate, Integer cVV2,
 			String bAddress, String eSign) {

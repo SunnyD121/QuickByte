@@ -223,6 +223,13 @@ public class UserDaoImpl implements UserDao {
 		return user; 
 	}
 
+
+	@Override
+	public Boolean deleteUserById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

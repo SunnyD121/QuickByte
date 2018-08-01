@@ -72,8 +72,12 @@ public class RegisterServlet extends HttpServlet {
 		
 		if(verify.isValid(creditCardNumber))
 		{
-			dao.insertUser
+			boolean validUserRegistration = UserService.registerNewUser(
+						username, password, Long.parseLong(cc));
+			out.println("{returnValue:" + validUserRegistration + "}" );
 		}
+		
+		
 		
 		
       
