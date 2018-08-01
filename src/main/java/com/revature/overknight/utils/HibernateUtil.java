@@ -14,26 +14,29 @@ public class HibernateUtil {
 	
 	public static SessionFactory configureSessionFactory() 
 	{
-		String props[] = System.getenv("DBARGS").split(";");
-		System.err.println("props: " + Arrays.toString(props));
-	    return new Configuration()
-	    		.setProperty("hibernate.connection.driver_class", props[0])
-	    		.setProperty("hibernate.dialect", props[1])
-	    		.setProperty("hibernate.connection.url",props[2])
-	    		.setProperty("hibernate.connection.username", props[3])
-	    		.setProperty("hibernate.connection.password", props[4])
-	    		.configure().buildSessionFactory();
-//	    System.err.println("configuration: " + configuration);
-//	    StandardServiceRegistryBuilder ssrb = 
-//	    		new StandardServiceRegistryBuilder();
-//	    System.err.println("builder: " + ssrb);
-//	    Properties p = configuration.getProperties();
-//	    System.err.println("properties: " + p);
-//	    ServiceRegistry serviceRegistry = ssrb.applySettings(p).build();
-//	    System.err.println("registry: " + serviceRegistry);
-////	    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-//	    SessionFactory factory = configuration.buildSessionFactory(serviceRegistry);
-//	    System.err.println("factory: " + factory);
+		try {
+			String props[] = System.getenv("DBARGS").split(";");
+		    Configuration configuration = new Configuration();
+		    configuration.setProperty("hibernate.connection.driver_class",
+		    						  props[0]);
+	        configuration.setProperty("hibernate.dialect", props[1]);
+	        configuration.setProperty("hibernate.connection.url",props[2]);
+	        configuration.setProperty("hibernate.connection.username", props[3]);
+	        configuration.setProperty("hibernate.connection.password", props[4]);
+		    configuration.configure();
+		    StandardServiceRegistryBuilder ssrb = 
+		    		new StandardServiceRegistryBuilder();
+		    Properties p = configuration.getProperties();
+		    ServiceRegistry serviceRegistry = ssrb.applySettings(p).build();
+	//	    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+		    SessionFactory factory = configuration.buildSessionFactory(serviceRegistry);
+		}
+		
+		catch(Throwable t) {
+			System.err.println(t);
+		}
+	    
+	    return factory;
 	}
 	
 	
