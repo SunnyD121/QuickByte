@@ -216,9 +216,6 @@ public class UserDaoImpl implements UserDao {
 			//System.out.println("user = " + user.getfName());
 		
 		return user; 
-		}else {
-			return null;
-		}
 	}
 
 	
