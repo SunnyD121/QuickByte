@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 //import static org.mockito.Mockito.when;
 
 import org.junit.*;
-import org.junit.runner.*;
+//import org.junit.runner.*;
 //import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+//import org.mockito.runners.MockitoJUnitRunner;
 
 import com.revature.overknight.beans.*;
 import com.revature.overknight.dao.*;
 
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 
 public class UserServiceTest {
 	static Integer id1 = null;
