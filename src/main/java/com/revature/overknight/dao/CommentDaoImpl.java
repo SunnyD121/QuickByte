@@ -11,22 +11,29 @@ import com.revature.overknight.utils.HibernateUtil;
 
 public class CommentDaoImpl implements CommentDao {
 
-	public Integer insertComment(Comments comment) {
+	public Integer insertComment(Comments comment) 
+	{	
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
+		trans = session.beginTransaction();
 		Integer id = null;
 		
-		try{
-			trans = session.beginTransaction();
+		try
+		{
 			id = (Integer)session.save(comment);
 			trans.commit();
 			
-		}catch(HibernateException e){
-			if(trans!=null){
+		}
+		catch(HibernateException e)
+		{
+			if(trans!=null)
+			{
 				trans.rollback();
 			}
 			e.printStackTrace();
-		}finally{
+		}
+		finally
+		{
 			session.close();
 		}
 		
@@ -37,86 +44,59 @@ public class CommentDaoImpl implements CommentDao {
 		List<Comments> comments = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
+		trans = session.beginTransaction();
 		
-		try{
-			trans = session.beginTransaction();
-			comments = session.createQuery("FROM Comment").list();
+		try
+		{
+			comments = session.createQuery("FROM Comments").list();
 						
-		}catch(HibernateException e){
-			if(trans!=null){
+		}
+		catch(HibernateException e)
+		{
+			if(trans!=null)
+			{
 				trans.rollback();
 			}
 			e.printStackTrace();
-		}finally{
+		}
+		finally
+		{
 			session.close();
 		}
-		return comments;	
-	}
-	
-	public List<Comments> selectAllCommentsByPId(Integer pid) {
-		List<Comments> comments = null; 
-		Session session = HibernateUtil.getSession();
-		Transaction trans = null;
 		
-		try{
-			trans = session.beginTransaction();
-			comments = session.createQuery("FROM Comment WHERE pid = "+pid).list();
-						
-		}catch(HibernateException e){
-			if(trans!=null){
-				trans.rollback();
-			}
-			e.printStackTrace();
-		}finally{
-			session.close();
-		}
-		return comments;	
-	}
-	
-	public List<Comments> selectAllCommentsByuserid(Integer userid){
-		List<Comments> comments = null; 
-		Session session = HibernateUtil.getSession();
-		Transaction trans = null;
-		
-		try{
-			trans = session.beginTransaction();
-			comments = session.createQuery("FROM Comment WHERE userid = "+userid).list();
-						
-		}catch(HibernateException e){
-			if(trans!=null){
-				trans.rollback();
-			}
-			e.printStackTrace();
-		}finally{
-			session.close();
-		}
 		return comments;	
 	}
 
-	public Comments selectCommentById(Integer id) {
+	public Comments selectCommentById(Integer id) 
+	{
+		Comments comment = null;
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
-		Comments comment = null;
+		trans = session.beginTransaction();
 		
-		try {
-			trans = session.beginTransaction();
-			
+		
+		try 
+		{
 			comment = (Comments)session.get(Comments.class, id);
-			
 			trans.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if(trans!=null){
+		} 
+		catch (Exception e) 
+		{
+			if(trans!=null)
+			{
 				trans.rollback();
 			}
-		}finally {
+			e.printStackTrace();
+		}
+		finally 
+		{
 			session.close();
 		}
 			
 		return comment; 
 	}
 
-	public Boolean deleteCommentById(Integer id) {
+	public Boolean deleteCommentById(Comments comments) {
 		Comments comment = null;
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
@@ -124,7 +104,7 @@ public class CommentDaoImpl implements CommentDao {
 
 		try{
 			trans = session.beginTransaction();
-			comment = (Comments)session.get(Comments.class, id);
+			comment = (Comments)session.get(Comments.class, comments.getCid());
 			if(comment!=null){
 				session.delete(comment);
 				result = true;
@@ -150,22 +130,30 @@ public class CommentDaoImpl implements CommentDao {
 		try{
 			trans = session.beginTransaction();
 			c = (Comments)session.get(Comments.class, comment.getCid());
-			if(null != c){
-				if(comment.getCommentContent()!=null){
+			if(null != c)
+			{
+				if(comment.getCommentContent()!=null)
+				{
 					c.setCommentContent(c.getCommentContent());
 				}
 				session.save(c);
 			}
 			trans.commit();
 			
-		}catch(HibernateException e){
-			if(trans!=null){
+		}
+		catch(HibernateException e)
+		{
+			if(trans!=null)
+			{
 				trans.rollback();
 			}
 			e.printStackTrace();
-		}finally{
+		}
+		finally
+		{
 			session.close(); 
 		}
+		
 		return comment;
 	}
 

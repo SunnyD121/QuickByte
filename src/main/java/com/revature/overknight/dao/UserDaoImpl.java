@@ -46,10 +46,10 @@ public class UserDaoImpl implements UserDao {
 		List<Users> users = null; 
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
+		trans = session.beginTransaction();
 		
 		try
 		{
-			trans = session.beginTransaction();
 			users = session.createQuery("FROM Users").list();				
 		}
 		catch(HibernateException e)
@@ -91,15 +91,19 @@ public class UserDaoImpl implements UserDao {
 		{
 			session.close();
 		}
-		if(user.getIsDeleted()==0) {
+		
+		if(user.getIsDeleted()==0) 
+		{
 			return user;
-		}else {
+		}
+		else 
+		{
 			return null;
 		}
 		 
 	}
 
-	public Boolean deleteUserById(Integer id) 
+	public Boolean removeUserById(Integer id) 
 	{
 		Users user = null;
 		Session session = HibernateUtil.getSession();
@@ -139,7 +143,8 @@ public class UserDaoImpl implements UserDao {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 
-		try{
+		try
+		{
 			trans = session.beginTransaction();
 			u = (Users)session.get(Users.class, user.getId());
 			if(null != u)
