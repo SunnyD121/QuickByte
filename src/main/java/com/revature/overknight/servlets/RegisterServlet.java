@@ -56,11 +56,14 @@ public class RegisterServlet extends HttpServlet {
 		//GET USERNAME, PASSWORD AND CC# FIELDS
         String username = personObject.getString("username");
 		String password = personObject.getString("password");
-		String cc = personObject.getString("creditCardNumber");
-		if(cc != null)
+		try {
+            String ccn = personObject.getString("creditCardNumber");
+            creditCardNumber = Long.parseLong(ccn);
+        }
+		catch (NumberFormatException e)
 		{	
-			creditCardNumber = Long.parseLong(cc);
-		}  
+			e.printStackTrace();
+		}
 		
 		//SETUP REPLY
 		response.setContentType("text");
@@ -68,14 +71,20 @@ public class RegisterServlet extends HttpServlet {
 		HttpSession session = null;
 		
 		// CHECK CC AND IF VALID, ADD USER TO TABLE
-		CcVerify verify = new CcVerify();
-		
-		if(verify.isValid(creditCardNumber))
+        System.out.println(creditCardNumber);
+		if(CcVerify.isValid(creditCardNumber))
 		{
 			boolean validUserRegistration = UserService.registerNewUser(
-						username, password, Long.parseLong(cc));
-			out.println("{returnValue:" + validUserRegistration + "}" );
+						username, password, creditCardNumber);
+//			System.out.println(validUserRegistration);
+
+			//out.println("{\"returnValue\":" + validUserRegistration + "}" );
+            if (validUserRegistration) out.println("true");
+            else out.println("false");
 		}
+		else{
+		    out.println("false");
+        }
 		
 		
 		

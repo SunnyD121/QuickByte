@@ -91,15 +91,7 @@ public class UserDaoImpl implements UserDao {
 		{
 			session.close();
 		}
-		
-		if(user.getIsDeleted()==0) 
-		{
-			return user;
-		}
-		else 
-		{
-			return null;
-		}
+		return user;
 		 
 	}
 

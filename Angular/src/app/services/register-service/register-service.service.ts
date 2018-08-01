@@ -11,7 +11,11 @@ export class RegisterService {
     constructor(private http: HttpClient) { }
 
       registerUser(username: string, password: string, creditCardNum: number): Observable<any>{
-        return this.http.post("http://localhost:8081/LoginServlet",
-            {username: username, password: password, creditCardNumber: creditCardNum});
+        return this.http.post("http://localhost:8081/RegisterServlet",
+            {username: username, password: password, creditCardNumber: creditCardNum.toString()});
+    }
+
+    checkUniqueUsername(username: string): Observable<any>{
+        return this.http.post("http://localhost:8081/UniqueUsernameServlet", {username: username});
     }
 }

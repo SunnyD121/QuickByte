@@ -34,13 +34,17 @@ export class SignupPageComponent implements OnInit {
   }
 
   public checkIfUsernameTaken(){
-      alert("TODO: checkIfUsernameTaken(): NOT IMPLEMENTED YET.");
-      this.uniquenessCheck = true;
-      this.displayErrorUsername = (this.uniquenessCheck) ? 'none' : 'block';
+      this.registerService.checkUniqueUsername(this.username).subscribe(
+          returnValue => {
+              this.uniquenessCheck = returnValue;
+              this.displayErrorUsername = (this.uniquenessCheck) ? 'none' : 'block';
+          }, error => {console.log(error);}
+      );
 
   }
 
   public checkValidCardNumber(){
+      if (!this.cardNum) this.validCardCheck = false;
       if (this.cardNum < 1000000000000 || this.cardNum >= 10000000000000000){ //between 13 and 16 digits
           this.validCardCheck = false;
       }
@@ -52,6 +56,7 @@ export class SignupPageComponent implements OnInit {
   public authenticate(){
       this.checkPasswordMatch();
       this.checkIfUsernameTaken();
+      this.checkValidCardNumber();
   }
 
   public authenticateAndSubmit(){
@@ -68,17 +73,21 @@ export class SignupPageComponent implements OnInit {
           returnValue => {
               //whaterver gets returned.
               this.serverSideCheck = returnValue;
-              if (this.serverSideCheck == 'true') {
-                  cookie.set("LoggedIn", 'true');
+              console.log("Return Value: " + returnValue);
+              if (this.serverSideCheck) {
+                  this.cookie.set("LoggedIn", 'true');
                   this.router.navigate(['/homepage']);
               }
               else {
                   //One of the fields was invalid
                   console.log("An expected error occurred during registration.");
+                  console.log(returnValue);
                   this.toggleError(true);
               }
           },
-          error => {console.log(error)}
+          error => {
+              console.log("error:");
+              console.log(error)}
       );
   }
 
