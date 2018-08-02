@@ -10,10 +10,10 @@ export class UserPostService {
   constructor(private http: HttpClient) { }
 
   getPost(){
-      //return this.http.get("http://localhost:8085/", {});
+      //return this.http.get("http://localhost:8081/", {});
   }
 
-  createComment(username, commentBody){
-      return this.http.get("http://localhost:8085/createCommentServlet", {username: username, text: commentBody}); //user NAME, Text
+  public createComment(username, commentBody){
+      return this.http.post("http://localhost:8081/CreateCommentServlet", {username: username, text: commentBody}); //user NAME, Text
   }
 }

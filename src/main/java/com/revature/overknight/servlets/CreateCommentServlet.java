@@ -47,7 +47,6 @@ public class CreateCommentServlet extends HttpServlet {
 		 //SETUP
 		String json = request.getReader().readLine();
         JsonReader reader = Json.createReader(new StringReader(json));
-        Long creditCardNumber = -1L;
 
         // READ INCOMING JSON OBJECT
         JsonObject personObject = reader.readObject();
@@ -56,19 +55,10 @@ public class CreateCommentServlet extends HttpServlet {
 		//GET USERNAME, PASSWORD AND CC# FIELDS
         String username = personObject.getString("username");
 		String text = personObject.getString("text");
-		try {
-            String ccn = personObject.getString("creditCardNumber");
-            creditCardNumber = Long.parseLong(ccn);
-        }
-		catch (NumberFormatException e)
-		{	
-			e.printStackTrace();
-		}
 		
 		//SETUP REPLY
 		response.setContentType("text");
 		PrintWriter out = response.getWriter();
-		HttpSession session = null;
 		
 		//CREATE COMMENT
 		
