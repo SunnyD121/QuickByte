@@ -25,36 +25,27 @@
   <br><br>
   <app-expandable-pane width="50%" min_height="128px">
   <div class="media">
-    <div class="media-left">
-      <img src={{img1Path}} class="media-object" style="width:45px">
-    </div>
-    <div class="media-body">
-      <h4 class="media-heading">Eric <small><i>Posted on February 19, 2016</i></small></h4>
-      <p>Check out this turtle!</p>
-
-      <!-- Nested media object -->
-      <div class="media">
-        <div class="media-left">
+      <div class="media-left">
           <img src={{img1Path}} class="media-object" style="width:45px">
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading">Walter <small><i>Posted on February 19, 2016</i></small></h4>
-          <p>{{postComments}}</p>
-        </div>
-
-          <div class="media">
-            <div class="media-left">
-              <img src={{img1Path}} class="media-object" style="width:45px">
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Chris <small><i>Posted on February 19, 2016</i></small></h4>
-              <p>Stop fooling around, we have a website to make.</p>
-            </div>
-          </div>
-        </div>
       </div>
+      <div class="media-body">
+          <h4 class="media-heading">Eric <small><i>Posted on february 19, 2016</i></small></h4>
+          <p>Check out this turtle!</p>
 
+          <div *ngFor="let comment of commentList">
+              <div class="media">
+                  <div class="media-left">
+                      <img src="{{img1Path}}" class="media-object" style="width:45px">
+                  </div>
+                  <div class="media-body">
+                      <h4 class="media-heading">{{comment.username}} <small><i>Posted on {{comment.date.month.toLowerCase()}} {{comment.date.dayOfMonth}}, {{comment.date.year}}</i></small></h4>
+                      <p>{{comment.message}}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
+  
   </app-expandable-pane>
   <div *ngIf="createCommentDisplay">
       <div><textarea [(ngModel)]="commentBody" rows=8 cols=78></textarea></div>

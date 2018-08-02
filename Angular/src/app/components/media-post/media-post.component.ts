@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { UserPostService } from '../../services/post-service/user-post.service';
+import { Comment } from '../../objects/Comment'
 
 @Component({
   selector: 'app-media-post',
@@ -14,6 +15,7 @@ export class MediaPostComponent implements OnInit {
 
     commentBody = "";
     createCommentDisplay: boolean;
+    commentList: Comment[] = new Array();
 
     //TODO: initialize with values from the database
     likeCounter = 0;
@@ -45,13 +47,19 @@ export class MediaPostComponent implements OnInit {
       console.log(this.commentBody);
       this.postService.createComment(this.cookie.get('username'), this.commentBody).subscribe(
           returnValue => {
-              console.log("returnValue: " + returnValue);
-          }, error => {console.log(error)}
+              console.log(returnValue);
+              this.commentList.push(new Comment(this.cookie.get('username'), returnValue, this.commentBody));
+              this.createCommentDisplay = false;
+          }, error => {
+              console.log("ERROR");
+              console.log(error);}
       );
   }
 
   ngOnInit() {
       this.createCommentDisplay = false;
+
+
   }
 
 }

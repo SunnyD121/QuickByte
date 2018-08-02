@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.revature.overknight.services.CommentService;
+import org.codehaus.jackson.map.ObjectMapper;
 
 /**
  * Servlet implementation class CreateCommentServlet
@@ -57,15 +58,19 @@ public class CreateCommentServlet extends HttpServlet {
 		String text = personObject.getString("text");
 		
 		//SETUP REPLY
-		response.setContentType("text");
+		response.setContentType("text/json");
 		PrintWriter out = response.getWriter();
 		
 		//CREATE COMMENT
 		
 		if(CommentService.createNewComment(username, text))
 		{
-			out.println(LocalDate.now().toString());
+            out.println(new ObjectMapper().writeValueAsString(LocalDate.now()));
+
 		}
+		else {
+		    out.println(new ObjectMapper().writeValueAsString(null));
+        }
 		
 	}
 
