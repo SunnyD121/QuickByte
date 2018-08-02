@@ -15,7 +15,7 @@
                             <li>
                                 <label for="postInput">Select Image: </label>
                                 <input type="file" id="postInput" class="form-control" name="postInput" (change)="fileChange($event)" accept=".png">
-                                <button type="button" class="btn btn-success" (click)="uploadPost()">Upload</button><span>   </span>
+                                <button type="button" class="button" (click)="uploadPost()">Upload</button><span>   </span>
                                 <button type="button" (click)="showModal()">Preview</button>
                             </li>
                             <li><br/></li>
@@ -33,7 +33,7 @@
                     <div id="myModal" class="modal" [style.display]="displayModal">
                         <!-- TODO: functionize this. -->
                         <span class="close" (click)=closeModal()>&times;</span>
-                        <img id="img01" class="modal-content" src="">
+                        <img id="img01" class="modal-content" [src]="imgsrc">
                     </div>
                     <!-- for the modal -->
                     <!-- Handled by TypeScript -->

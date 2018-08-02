@@ -26,6 +26,7 @@ export class CreatePostComponent implements OnInit {
     image:any;
     fileList:any;
     data:any;
+    imgsrc = "";
 
     public onSubmitClicked(){
         //send data to Service Layer
@@ -36,13 +37,22 @@ export class CreatePostComponent implements OnInit {
         //if file exists
         if(this.fileList.length>0){
           let file: File = this.fileList[0];
-          this.displayModal = "block";
+          let reader = new FileReader();
+          reader.readAsDataURL(file);
+          console.log("reading started.");
+          reader.onload = new function(){
+              console.log("reading complete.");
+              this.displayModal = "block";
+              this.imgsrc=file;
+          }
+
         }
 
     }
 
     public closeModal(){
-        //"div.style.display='none';img1.src=''"
+        this.displayModal = "none";
+        this.imgsrc = "";
     }
 
     fileChange(e){
@@ -62,6 +72,13 @@ export class CreatePostComponent implements OnInit {
           console.log(file);
           console.log(file.name);
           console.log(file.size);
+          let reader = new FileReader();
+          reader.onloadend = function () {
+    console.log(reader.result);
+    let thing = reader.readAsBinaryString(file);
+    console.log(thing);
+
+  }
 
           this.postService.createPost(formData).subscribe(
               data =>{

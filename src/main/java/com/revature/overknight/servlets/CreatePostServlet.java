@@ -1,8 +1,17 @@
 package com.revature.overknight.servlets;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringReader;
+import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import java.io.*;
+import java.util.List;
+import java.util.UUID;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -40,28 +49,8 @@ public class CreatePostServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 // SETUP
-        String json = "";
-        StringBuilder sb = new StringBuilder();
-        while ((json = request.getReader().readLine()) != null) sb.append(json);
-		json = sb.toString();
-        JsonReader reader = Json.createReader(new StringReader(json));
-
-        // READ INCOMING JSON OBJECT
-        JsonObject personObject = reader.readObject();
-        reader.close();
-
-		// GET DATA
-        String uploadFile = personObject.getString("uploadFile");
-       
-		// SETUP REPLY
-		response.setContentType("text");
-		PrintWriter out = response.getWriter();
-		HttpSession session = null;
-		
-		// CREATE NEW POST
-		System.out.println(uploadFile);
+        response.getWriter().println("false");
 	}
-
 }
