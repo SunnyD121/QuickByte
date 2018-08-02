@@ -45,7 +45,7 @@ export class SignupPageComponent implements OnInit {
 
   public checkValidCardNumber(){
       if (!this.cardNum) this.validCardCheck = false;
-      this.registerService.checkValidCardNumber(this.creditCardNum).subscribe(
+      this.registerService.checkValidCardNumber(this.cardNum).subscribe(
           returnValue => {
               this.validCardCheck = returnValue;
               this.displayErrorCardNum = (this.validCardCheck) ? 'none' : 'block';
@@ -82,6 +82,7 @@ export class SignupPageComponent implements OnInit {
               console.log("Return Value: " + returnValue);
               if (this.serverSideCheck) {
                   this.cookie.set("LoggedIn", 'true');
+                  this.cookie.set("username", this.username);
                   this.router.navigate(['/homepage']);
               }
               else {

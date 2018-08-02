@@ -20,6 +20,6 @@ export class RegisterService {
     }
 
     checkValidCardNumber(cardNum: number): Observable<any>{
-        return this.http.post("http://localhost:8081/CreditCardVerfificationServlet", {creditCardNumber: cardNum.toString()})
+        return this.http.post("http://localhost:8081/CreditCardVerificationServlet", {creditCardNumber: cardNum.toString()})
     }
 }

@@ -20,7 +20,7 @@
       <span style="padding:2px"><button class="button" style="background-color:#FF5468" (click)="favoriteClicked()"><span class="glyphicon glyphicon-heart"><span class="glyph-text">Favorite</span></span></button></span>
       <span style="padding:2px"><button class="button" style="background-color:#3F69FF" (click)="likeClicked()"><span class="glyphicon glyphicon-thumbs-up"><span class="glyph-text">{{likeCounter}}</span></span></button></span>
       <span style="padding:2px"><button class="button" style="background-color:#FF6156"(click)="dislikeClicked()"><span class="glyphicon glyphicon-thumbs-down"><span class="glyph-text">{{dislikeCounter}}</span></span></button></span>
-      <span style="padding:2px"><button class="button" style="background-color:#14FFB8"(click)="shareClicked()"><span class="glyphicon glyphicon-share-alt"><span class="glyph-text">Share</span></span></button></span>
+      <span style="padding:2px"><button class="button" style="background-color:#14FFB8"(click)="commentClicked()"><span class="glyphicon glyphicon-share-alt"><span class="glyph-text">Comment</span></span></button></span>
   </span>
   <br><br>
   <app-expandable-pane width="50%" min_height="128px">
@@ -56,4 +56,8 @@
 
   </div>
   </app-expandable-pane>
+  <div *ngIf="createCommentDisplay">
+      <textarea [(ngModel)]="commentBody" rows=8 cols=78></textarea>
+      <button (click)="submitComment()">Create response</button>
+  </div>
 </div>
