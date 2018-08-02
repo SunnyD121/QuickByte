@@ -1,0 +1,41 @@
+<div class="container-fluid">
+            <div class="col-sm-6">
+                <div class="bordered-section1">
+                    <h1>New Post</h1>
+                    <hr>    <!-- Line separator -->
+                    <form> <!-- action="Reimbursement.Servlet" method="Post" -->
+                        <ul style="list-style-type:none">
+                            <li><b>Post Name</b></li>
+                            <li><input type="text" name="postName" size=43></li>
+                            <li><br/></li>
+                            <li><b>Recipe</b></li>
+                            <li><textarea type="text" name="recipe" rows=8 cols=46></textarea></li>
+                            <li><br/></li>
+                            <li><b>Picture</b></li>
+                            <li>
+                                <label for="postInput">Select Image: </label>
+                                <input type="file" id="postInput" class="form-control" name="postInput" (change)="fileChange($event)" accept=".png">
+                                <button type="button" class="btn btn-success" (click)="uploadPost()">Upload</button><span>   </span>
+                            </li>
+                            <li><br/></li>
+                            <li><b>Description</b></li>
+                            <li><textarea type="text" name="comment" rows=8 cols=46></textarea></li>
+                            <li><button type="button" (click)="onSubmitClicked()">Submit</button>
+                                <input type="reset" value="Reset">
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div id="output">
+                    <div id="myModal" class="modal" [style.display]="displayModal">
+                        <!-- TODO: functionize this. -->
+                        <span class="close" (click)="div.style.display='none';img1.src=''">&times;</span>
+                        <img id="img01" class="modal-content" src="">
+                    </div>
+                    <!-- for the modal -->
+                    <!-- Handled by TypeScript -->
+                </div>
+            </div>
+        </div>

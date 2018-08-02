@@ -20,6 +20,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
 
 import { APP_BASE_HREF } from '@angular/common';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { APP_BASE_HREF } from '@angular/common';
     LoginPageComponent,
     SignupPageComponent,
     ErrorPage404Component,
-    ExpandablePaneComponent
+    ExpandablePaneComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
