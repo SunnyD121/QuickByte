@@ -57,7 +57,7 @@
   </div>
   </app-expandable-pane>
   <div *ngIf="createCommentDisplay">
-      <textarea [(ngModel)]="commentBody" rows=8 cols=78></textarea>
-      <button (click)="submitComment()">Create response</button>
+      <div><textarea [(ngModel)]="commentBody" rows=8 cols=78></textarea></div>
+      <button (click)="submitComment()">Create reply</button>
   </div>
 </div>
