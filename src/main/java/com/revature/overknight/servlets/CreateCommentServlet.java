@@ -3,6 +3,7 @@ package com.revature.overknight.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
+import java.time.LocalDate;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -14,20 +15,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.revature.overknight.utils.CcVerify;
-import com.revature.overknight.services.UserService;
+import com.revature.overknight.services.CommentService;
 
 /**
- * Servlet implementation class RegisterServlet
+ * Servlet implementation class CreateCommentServlet
  */
-@WebServlet("/RegisterServlet")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/CreateCommentServlet")
+public class CreateCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegisterServlet() {
+    public CreateCommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,6 +36,8 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -53,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
 
 		//GET USERNAME, PASSWORD AND CC# FIELDS
         String username = personObject.getString("username");
-		String password = personObject.getString("password");
+		String text = personObject.getString("text");
 		try {
             String ccn = personObject.getString("creditCardNumber");
             creditCardNumber = Long.parseLong(ccn);
@@ -68,23 +70,13 @@ public class RegisterServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		HttpSession session = null;
 		
-		// CHECK CC AND IF VALID, ADD USER TO TABLE
-        System.out.println(creditCardNumber);
-		if(CcVerify.isValid(creditCardNumber))
+		//CREATE COMMENT
+		
+		if(CommentService.createNewComment(username, text))
 		{
-			boolean validUserRegistration = UserService.registerNewUser(
-						username, password, creditCardNumber);
-            if (validUserRegistration) out.println("true");
-            else out.println("false");
+			out.println(LocalDate.now().toString());
 		}
-		else{
-		    out.println("false");
-        }
 		
-		
-		
-		
-      
 	}
 
 }

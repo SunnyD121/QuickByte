@@ -1,5 +1,6 @@
 package com.revature.overknight.beans;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -22,9 +23,10 @@ public class Comments {
 	@SequenceGenerator(sequenceName="COM_SEQ", name="COM_GEN")
 	@GeneratedValue(generator="COM_GEN", strategy=GenerationType.SEQUENCE)
 	private Integer cid;
-	private String commentContent;
-	@OneToMany
-	private List<Reply> replies;
+	private String commentName;
+	private Date date;
+	private String commentText;
+	private List<Comments> replies;
 	
 	
 	
@@ -34,14 +36,33 @@ public class Comments {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Comments(Integer cid, String commentContent, List<Reply> replies) {
+	
+	public Comments(String commentName, Date date, String commentText) {
+		super();
+		this.commentName = commentName;
+		this.date = date;
+		this.commentText = commentText;
+	}
+
+
+	public Comments(String commentName, String commentText, List<Comments> replies) {
+		super();
+		this.commentName = commentName;
+		this.commentText = commentText;
+		this.replies = replies;
+	}
+	
+	public Comments(Integer cid, String commentName, String commentText, List<Comments> replies) {
 		super();
 		this.cid = cid;
-		this.commentContent = commentContent;
+		this.commentName = commentName;
+		this.commentText = commentText;
 		this.replies = replies;
 	}
 
-	public Integer getCid() {
+
+	public Integer getCid() 
+	{
 		return cid;
 	}
 
@@ -49,18 +70,43 @@ public class Comments {
 		this.cid = cid;
 	}
 
-	public String getCommentContent() {
-		return commentContent;
+	public String getCommentName() {
+		return commentName;
 	}
 
-	public void setCommentContent(String commentContent) {
-		this.commentContent = commentContent;
+	public void setCommentName(String commentName) {
+		this.commentName = commentName;
 	}
 
-	@Override
-	public String toString() {
-		return "Comment [cid=" + cid + ", commentContent=" + commentContent + "]";
+
+	public Date getDate() {
+		return date;
 	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getCommentText() {
+		return commentText;
+	}
+
+
+	public void setCommentText(String commentText) {
+		this.commentText = commentText;
+	}
+
+
+	public List<Comments> getReplies() {
+		return replies;
+	}
+
+
+	public void setReplies(List<Comments> replies) {
+		this.replies = replies;
+	}
+
+	
 	
 	
 }
