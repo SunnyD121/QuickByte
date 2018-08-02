@@ -51,16 +51,15 @@ public class CreatePostServlet extends HttpServlet {
         reader.close();
 
 		// GET USERNAME, PASSWORD
-        String username = personObject.getString("username");
-		String password = personObject.getString("password");
-		
+        String uploadFile = personObject.getString("uploadFile");
+       
 		// SETUP REPLY
 		response.setContentType("text");
 		PrintWriter out = response.getWriter();
 		HttpSession session = null;
 		
 		// CREATE NEW POST
-		
+		System.out.println(uploadFile);
 	}
 
 }
