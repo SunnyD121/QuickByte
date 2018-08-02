@@ -26,7 +26,7 @@ public class Comments {
 	private String commentName;
 	private Date date;
 	private String commentText;
-	private List<Comments> replies;
+	private List<Integer> replies;
 	
 	
 	
@@ -45,14 +45,14 @@ public class Comments {
 	}
 
 
-	public Comments(String commentName, String commentText, List<Comments> replies) {
+	public Comments(String commentName, String commentText, List<Integer> replies) {
 		super();
 		this.commentName = commentName;
 		this.commentText = commentText;
 		this.replies = replies;
 	}
 	
-	public Comments(Integer cid, String commentName, String commentText, List<Comments> replies) {
+	public Comments(Integer cid, String commentName, String commentText, List<Integer> replies) {
 		super();
 		this.cid = cid;
 		this.commentName = commentName;
@@ -97,12 +97,12 @@ public class Comments {
 	}
 
 
-	public List<Comments> getReplies() {
+	public List<Integer> getReplies() {
 		return replies;
 	}
 
 
-	public void setReplies(List<Comments> replies) {
+	public void setReplies(List<Integer> replies) {
 		this.replies = replies;
 	}
 
