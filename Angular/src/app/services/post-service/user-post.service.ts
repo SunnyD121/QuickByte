@@ -16,4 +16,9 @@ export class UserPostService {
   public createComment(username, commentBody){
       return this.http.post("http://localhost:8081/CreateCommentServlet", {username: username, text: commentBody}); //user NAME, Text
   }
+
+  public createPost(formData){
+      return this.http.post("http://localhost:8081/CreatePostServlet", formData);
+  }
+
 }

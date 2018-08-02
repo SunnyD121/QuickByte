@@ -6,8 +6,8 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a routerLink="/homepage"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
+      <!-- <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li> -->
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <form class="navbar-form navbar-left" action="/action_page.php">
@@ -16,8 +16,7 @@
           </div>
           <button type="submit" (click)="search()" class="btn btn-default" style="background-color:red; color:white">Submit</button>
         </form>
-      <li><a routerLink="/signuppage"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <!-- <li><a routerLink="/loginpage"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+      <li><a (click)="signUpOrPost()"><span class={{signUpOrPostGlyph}}></span> {{signUpOrPostText}}</a></li>
       <li><a (click)="logInOrOut()"><span class="glyphicon glyphicon-log-in"></span> {{logInOrOutText}}</a></li>
     </ul>
   </div>

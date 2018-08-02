@@ -5,6 +5,7 @@ import { HomePageComponent } from './components/homepage/homepage.component';
 import { LoginPageComponent } from './components/loginpage/loginpage.component';
 import { SignupPageComponent } from './components/signuppage/signuppage.component';
 import { ErrorPage404Component } from './components/errorpage404/errorpage404.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 
 
 export const approutes: Routes = [
@@ -28,6 +29,10 @@ export const approutes: Routes = [
     {
         path: 'searchResults',
         component: HomePageComponent
+    },
+    {
+        path: 'create-post',
+        component: CreatePostComponent
     },
     {
         //Home page
