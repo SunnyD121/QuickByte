@@ -24,7 +24,7 @@ public class Comments {
 	@GeneratedValue(generator="COM_GEN", strategy=GenerationType.SEQUENCE)
 	private Integer cid;
 	private String commentName;
-	private Date date;
+	private Date comDate;
 	private String commentText;
 	@OneToMany
 	private List<Comments> replies;
@@ -38,10 +38,10 @@ public class Comments {
 	}
 
 	
-	public Comments(String commentName, Date date, String commentText) {
+	public Comments(String commentName, Date comDate, String commentText) {
 		super();
 		this.commentName = commentName;
-		this.date = date;
+		this.comDate = comDate;
 		this.commentText = commentText;
 	}
 
@@ -80,12 +80,12 @@ public class Comments {
 	}
 
 
-	public Date getDate() {
-		return date;
+	public Date getcomDate() {
+		return comDate;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setcomDate(Date comDate) {
+		this.comDate = comDate;
 	}
 
 	public String getCommentText() {
