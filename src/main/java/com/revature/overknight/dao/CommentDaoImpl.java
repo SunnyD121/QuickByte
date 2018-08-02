@@ -132,9 +132,9 @@ public class CommentDaoImpl implements CommentDao {
 			c = (Comments)session.get(Comments.class, comment.getCid());
 			if(null != c)
 			{
-				if(comment.getCommentContent()!=null)
+				if(comment.getCommentText()!=null)
 				{
-					c.setCommentContent(c.getCommentContent());
+					c.setCommentText(c.getCommentText());
 				}
 				session.save(c);
 			}
