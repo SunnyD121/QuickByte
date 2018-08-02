@@ -34,14 +34,15 @@ export class CreatePostComponent implements OnInit {
 
     public showModal(){
         //if file exists
-        console.log(this.picture);
-        var reader = new FileReader();
-        reader.readAsDataURL(this.picture);
-        reader.onload = function(evt){
-            console.log(evt);
-            // let data = evt.target.result;
-            // console.log(data);
-         }
+        if(this.fileList.length>0){
+          let file: File = this.fileList[0];
+          this.displayModal = "block";
+        }
+
+    }
+
+    public closeModal(){
+        //"div.style.display='none';img1.src=''"
     }
 
     fileChange(e){
