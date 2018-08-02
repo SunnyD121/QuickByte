@@ -31,7 +31,7 @@ public class Tag {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tag(Integer pid, String tag) {
+	public Tag(String tag) {
 		super();
 		this.tag = tag;
 	}
