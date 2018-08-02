@@ -26,7 +26,8 @@ public class Comments {
 	private String commentName;
 	private Date date;
 	private String commentText;
-	private List<Integer> replies;
+	@OneToMany
+	private List<Comments> replies;
 	
 	
 	
@@ -45,14 +46,14 @@ public class Comments {
 	}
 
 
-	public Comments(String commentName, String commentText, List<Integer> replies) {
+	public Comments(String commentName, String commentText, List<Comments> replies) {
 		super();
 		this.commentName = commentName;
 		this.commentText = commentText;
 		this.replies = replies;
 	}
 	
-	public Comments(Integer cid, String commentName, String commentText, List<Integer> replies) {
+	public Comments(Integer cid, String commentName, String commentText, List<Comments> replies) {
 		super();
 		this.cid = cid;
 		this.commentName = commentName;
@@ -97,12 +98,12 @@ public class Comments {
 	}
 
 
-	public List<Integer> getReplies() {
+	public List<Comments> getReplies() {
 		return replies;
 	}
 
 
-	public void setReplies(List<Integer> replies) {
+	public void setReplies(List<Comments> replies) {
 		this.replies = replies;
 	}
 

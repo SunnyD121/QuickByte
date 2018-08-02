@@ -1,5 +1,7 @@
 package com.revature.overknight;
 
+import java.time.LocalDate;
+
 import com.revature.overknight.beans.Users;
 import com.revature.overknight.dao.UserDaoImpl;
 import com.revature.overknight.services.KDF;
@@ -12,7 +14,7 @@ public class MainClassTest {
         UserDaoImpl dao = new UserDaoImpl();
         UserService us = new UserService();
 
-
+        System.out.println(LocalDate.now().toString());
 
        dao.insertUser(new Users("Toby", "password".getBytes(), "password".getBytes(), 3,"Toby" , "Lobster", "something@eamil.com", 1234567890L, "Here it is!"));
        KDF kdf = new KDF();
