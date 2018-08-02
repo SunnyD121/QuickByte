@@ -12,9 +12,11 @@ public class CommentService {
 	
 	public static Boolean createNewComment(String name, String text)
 	{
+		//SETUP DATE AND CONVERT IT
 		LocalDate lDate = LocalDate.now();
 		Date date = java.sql.Date.valueOf( lDate );
 		Comments comment = new Comments(name, date, text);
+		
 		
 		if(cd.insertComment(comment) != null)
 		{
