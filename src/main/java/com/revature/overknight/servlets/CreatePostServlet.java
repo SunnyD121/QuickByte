@@ -44,7 +44,6 @@ public class CreatePostServlet extends HttpServlet {
 		 // SETUP
 		String json = request.getReader().readLine();
         JsonReader reader = Json.createReader(new StringReader(json));
-        Long creditCardNumber = -1L;
 
         // READ INCOMING JSON OBJECT
         JsonObject personObject = reader.readObject();
