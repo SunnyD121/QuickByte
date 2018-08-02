@@ -43,7 +43,11 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 //SETUP
-		String json = request.getReader().readLine();
+		 // SETUP
+        String json = "";
+        StringBuilder sb = new StringBuilder();
+        while ((json = request.getReader().readLine()) != null) sb.append(json);
+		json = sb.toString();
         JsonReader reader = Json.createReader(new StringReader(json));
         Long creditCardNumber = -1L;
 

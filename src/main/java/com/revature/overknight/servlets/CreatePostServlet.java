@@ -52,7 +52,7 @@ public class CreatePostServlet extends HttpServlet {
         JsonObject personObject = reader.readObject();
         reader.close();
 
-		// GET USERNAME, PASSWORD
+		// GET DATA
         String uploadFile = personObject.getString("uploadFile");
        
 		// SETUP REPLY
