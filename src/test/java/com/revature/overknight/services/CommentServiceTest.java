@@ -1,14 +1,13 @@
 package com.revature.overknight.services;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mockito.Mockito;
 
-import com.revature.overknight.services.CommentService;
+import com.revature.overknight.dao.CommentDaoImpl;
 
 public class CommentServiceTest {
 	CommentService cs = null;
@@ -25,7 +24,9 @@ public class CommentServiceTest {
 
 	@Test
 	public void test() {
-	assertEquals(0,0);
+		CommentDaoImpl mockCommentDao = Mockito.mock(CommentDaoImpl.class);
+		Mockito.when(mockCommentDao.insertComment(null)).thenReturn(1);
+		cs.setCd(mockCommentDao);
+		assertEquals(true, cs.createNewComment("username", "stuff and things and stuff and things"));
 	}
-
-}
+ }

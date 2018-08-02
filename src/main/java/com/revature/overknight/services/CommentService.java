@@ -32,10 +32,15 @@ public class CommentService {
 		System.out.println("Sorry! You did NOT create this new comment! :(");
 		return false;
 		
-		
-		
-		
-		
+				
+	}
+
+	public static CommentDaoImpl getCd() {
+		return cd;
+	}
+
+	public static void setCd(CommentDaoImpl cd) {
+		CommentService.cd = cd;
 	}
 	
 
