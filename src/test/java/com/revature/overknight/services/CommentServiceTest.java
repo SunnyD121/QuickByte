@@ -1,4 +1,4 @@
-package com.revature.overknight.dao;
+package com.revature.overknight.services;
 
 import static org.junit.Assert.*;
 
@@ -8,22 +8,19 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class UserDaoImplTest {
+import com.revature.overknight.services.CommentService;
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
+public class CommentServiceTest {
+	CommentService cs = null;
+	
 	@Before
 	public void setUp() throws Exception {
+		cs = new CommentService();
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		cs = null;
 	}
 
 	@Test
