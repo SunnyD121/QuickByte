@@ -43,7 +43,7 @@ public class Post {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Post(Integer userid, String postTitle, String postImgKey, String postContent, Date postDate, Tag tag) {
+	public Post(Integer userid, String postTitle, String postImgKey, String postContent, Date postDate, Tag tag, List<Comments> comments) {
 		super();
 		this.userid = userid;
 		this.postTitle = postTitle;
@@ -51,6 +51,7 @@ public class Post {
 		this.postContent = postContent;
 		this.postDate = postDate;
 		this.tag = tag;
+		this.comments = comments;
 	}
 
 	public Post(Integer postId, Integer userid, String postTitle, String postImgKey, String postContent, Date postDate,

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Query;
 import org.hibernate.Transaction;
 
 import com.revature.overknight.beans.Post;
@@ -61,7 +62,7 @@ public class TagDaoImpl implements TagDao {
 		
 		try{
 			trans = session.beginTransaction();
-			tags = session.createQuery("FROM Tags WHERE Post = "+p).list();
+			tags = session.createQuery("FROM Tags WHERE Post = "+ p).list();
 						
 		}catch(HibernateException e){
 			if(trans!=null){
@@ -72,6 +73,27 @@ public class TagDaoImpl implements TagDao {
 			session.close();
 		}
 		return tags;	
+	}
+	
+	public Tag selectTagByName(String tagName) {
+		
+		//SETUP
+		Session session = HibernateUtil.getSession();
+		Tag tag = null;
+		String hql;
+		Query query;
+		
+		// QUERY THE DATABASE
+		hql = "FROM Tag WHERE tag = :tagname";
+		query = session.createQuery(hql);
+		query.setParameter("tagname", tagName);
+		tag = (Tag)query.uniqueResult();
+		session.close();
+		if(tag != null)
+		{
+			return tag;
+		}
+		 return null;
 	}
 
 	public Tag selectTagById(Integer id) {
