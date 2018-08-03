@@ -62,7 +62,6 @@ public class CreatePostServlet extends HttpServlet {
 	    		   .withCredentials(new EnvironmentVariableCredentialsProvider())
 	               .build();
 	       String bucketname = "quickbytes3";
-	       s3client.createBucket(bucketname);
 	       response.setContentType("text");
 	       String fileKey = UUID.randomUUID().toString();
 	       Item jsonItem = null;

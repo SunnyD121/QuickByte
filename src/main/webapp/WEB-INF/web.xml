@@ -23,7 +23,7 @@
   </filter>
   <filter-mapping>
     <filter-name>CorsFilter</filter-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>localhost:4200</url-pattern>
   </filter-mapping>
   <filter>
     <display-name>SecurityFilter</display-name>
