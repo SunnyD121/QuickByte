@@ -14,7 +14,6 @@
                             <li><b>Picture</b></li>
                             <li>
                                 <label for="postInput">Select Image: </label>
-                                <input type="file" id="postInput" class="form-control" name="postInput" (change)="fileChange($event)" accept=".png">
                                 <button type="button" class="button" (click)="uploadPost()">Upload</button><span>   </span>
                                 <button type="button" (click)="showModal()">Preview</button>
 
@@ -36,7 +35,7 @@
                         <!-- TODO: functionize this. -->
                         <span class="close" (click)=closeModal()>&times;</span>
                         <img id="img01" class="modal-content" [src]="imgsrc">
-                        <img [src]="url" height="200"> <br/>
+                        <img [src]="url"> <br/>
                     </div>
                     <!-- for the modal -->
                     <!-- Handled by TypeScript -->

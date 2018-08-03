@@ -54,9 +54,6 @@ export class CreatePostComponent implements OnInit {
     }
   }
 
-    fileChange(e){
-    this.fileList = e.target.files;
-  }
 
     uploadPost(){
       //   if(this.fileList.length>0){
