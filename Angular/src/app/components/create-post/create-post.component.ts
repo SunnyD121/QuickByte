@@ -23,9 +23,10 @@ export class CreatePostComponent implements OnInit {
     picture:any;    //TODO: define this
     comment:string
     displayModal:string;
-    image:any;
+    image:File;
     fileList:any;
     data:any;
+    imgsrc = "";
 
     public onSubmitClicked(){
         //send data to Service Layer
@@ -33,34 +34,48 @@ export class CreatePostComponent implements OnInit {
     }
 
     public showModal(){
-        //if file exists
-        console.log(this.picture);
-        var reader = new FileReader();
-        reader.readAsDataURL(this.picture);
-        reader.onload = function(evt){
-            console.log(evt);
-            // let data = evt.target.result;
-            // console.log(data);
-         }
+        this.displayModal = "block";
     }
 
-    fileChange(e){
-    this.fileList = e.target.files;
+    public closeModal(){
+        this.displayModal = "none";
+    }
+
+  url = '';
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+        this.image = <File>event.target.files[0];
+
+      // var reader = new FileReader();
+      //
+      // reader.readAsDataURL(event.target.files[0]); // read file as data url
+      //
+      // reader.onload = (event) => { // called once readAsDataURL is completed
+      //     console.log(event);
+      //     console.log(event.target);
+      //   // this.url = event.target.result;
+      // }
+    }
   }
 
-    uploadPost(){
-        if(this.fileList.length>0){
-          let file: File = this.fileList[0];
-          let formData:FormData = new FormData();
 
-          formData.append('uploadFile', file, file.name);
-          // formData.append('info', new Blob([JSON.stringify(this.model)],
-          //   {
-          //       type: "application/json"
-          //   }));
-          console.log(file);
-          console.log(file.name);
-          console.log(file.size);
+    uploadPost(){
+      //   if(this.fileList.length>0){
+      //     let file: File = this.fileList[0];
+      //     let formData:FormData = new FormData();
+      //
+      //     formData.append('uploadFile', file, file.name);
+      //     // formData.append('info', new Blob([JSON.stringify(this.model)],
+      //     //   {
+      //     //       type: "application/json"
+      //     //   }));
+      //     console.log(file);
+      //     console.log(file.name);
+      //     console.log(file.size);
+      //
+      // }
+      let formData = new FormData();
+      formData.append('file', this.image);
 
           this.postService.createPost(formData).subscribe(
               data =>{
@@ -70,9 +85,3 @@ export class CreatePostComponent implements OnInit {
             )
         }
     }
-
-
-
-
-
-}

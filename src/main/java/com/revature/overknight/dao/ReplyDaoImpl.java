@@ -10,11 +10,7 @@ import com.revature.overknight.beans.Reply;
 import com.revature.overknight.utils.HibernateUtil;
 
 public class ReplyDaoImpl implements ReplyDao {
-	/**
-	 * Inserts an reply into the database
-	 * @param reply - the Reply object that would be persisted into the database
-	 * @return a unique id used to identify the Reply
-	 */
+
 	public Integer insertReply(Reply reply) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
@@ -36,10 +32,7 @@ public class ReplyDaoImpl implements ReplyDao {
 		
 		return id;
 	}
-	/**
-	 * Selects all of the replies that is currently in the database
-	 * @return a list of all the replies
-	 * */
+
 	public List<Reply> selectAllReplies() {
 		List<Reply> replies = null; 
 		Session session = HibernateUtil.getSession();
@@ -59,11 +52,7 @@ public class ReplyDaoImpl implements ReplyDao {
 		}
 		return replies;	
 	}
-	/**
-	 * Selects replies from the database by comment id
-	 * @param cid - the foreign key that connects the replies to the comments table
-	 * @return list of replies that is connected to a comment
-	 */
+
 	public List<Reply> selectAllRepliesByCId(Integer cid) {
 		List<Reply> replies = null; 
 		Session session = HibernateUtil.getSession();
@@ -83,11 +72,7 @@ public class ReplyDaoImpl implements ReplyDao {
 		}
 		return replies;
 	}
-	/**
-	 * Selects replies from the database by user id
-	 * @param cid - the foreign key that connects the replies to the user table
-	 * @return list of replies that is connected to a user
-	 */
+	
 	public List<Reply> selectAllRepliesByUserid(Integer userid) {
 		List<Reply> replies = null; 
 		Session session = HibernateUtil.getSession();
@@ -107,11 +92,7 @@ public class ReplyDaoImpl implements ReplyDao {
 		}
 		return replies;
 	}
-	/**
-	 * Selects an reply from the database by its reply id
-	 * @param id - the primary key reply id
-	 * @return a Reply object that is associated with the id 
-	 */
+
 	public Reply selectReplyById(Integer id) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
@@ -134,11 +115,7 @@ public class ReplyDaoImpl implements ReplyDao {
 			
 		return reply; 
 	}
-	/**
-	 * Removes an reply from the database by its reply id
-	 * @param id - the primary key reply id
-	 * @return true if reply is successfully removed, false otherwise
-	 */
+
 	public Boolean deleteReplyById(Integer id) {
 		Reply reply = null;
 		Session session = HibernateUtil.getSession();
@@ -164,11 +141,7 @@ public class ReplyDaoImpl implements ReplyDao {
 		}
 		return result;
 	}
-	/**
-	 * Updates the reply in the database
-	 * @param reply - the Reply object to be updated
-	 * @return the Reply object that was updated
-	 */
+
 	public Reply updateReply(Reply reply) {
 		Reply r = null;
 		Session session = HibernateUtil.getSession();
@@ -201,11 +174,7 @@ public class ReplyDaoImpl implements ReplyDao {
 		}
 		return reply;
 	}
-	/**
-	 * Selects a reply from the database by username
-	 * @param username
-	 * @return a Reply object that is associated with the username 
-	 */
+
 	public Reply selectReplyByUsername(String username) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
