@@ -8,6 +8,7 @@ import java.util.List;
 import com.revature.overknight.beans.Comments;
 import com.revature.overknight.beans.Post;
 import com.revature.overknight.beans.Tag;
+import com.revature.overknight.dao.CommentDaoImpl;
 import com.revature.overknight.dao.PostDaoImpl;
 import com.revature.overknight.dao.UserDaoImpl;
 
@@ -16,6 +17,7 @@ public class PostService {
 	TagService ts = new TagService();
 	UserDaoImpl ud = new UserDaoImpl();
 	PostDaoImpl pd = new PostDaoImpl();
+	CommentDaoImpl cd = new CommentDaoImpl();
 			
 	
 	public Boolean insertNewPost(String username, String title, String imgKey, String content, String tag)
@@ -35,6 +37,7 @@ public class PostService {
 		// CREATE "LIST" OF COMMENTS FOR POST
 		List<Comments> comments = new ArrayList<>();
 		Comments comment = new Comments();
+		cd.insertComment(comment);
 		comments.add(comment);
 		
 		//INSERT NEW POST INTO DATABASE
