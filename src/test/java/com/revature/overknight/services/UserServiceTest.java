@@ -1,4 +1,4 @@
-package com.revature.overknight.services;
+/*package com.revature.overknight.services;
 
 import static org.junit.Assert.*;
 //import static org.mockito.Mockito.when;
@@ -49,7 +49,8 @@ public class UserServiceTest {
 
 	@AfterClass
 	public static void teardownUserService() {
-		assertTrue(userDaoImplMock.removeUserById(id1));
-		assertTrue(userDaoImplMock.removeUserById(id2));
+		assertTrue(userDaoImplMock.deleteUserById(id1));
+		assertTrue(userDaoImplMock.deleteUserById(id2));
 	}
 }
+*/

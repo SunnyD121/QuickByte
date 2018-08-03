@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserPost } from '../../objects/UserPost';
 
 @Injectable({
@@ -17,8 +17,16 @@ export class UserPostService {
       return this.http.post("http://localhost:8081/CreateCommentServlet", {username: username, text: commentBody}); //user NAME, Text
   }
 
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'my-auth-token'
+    })
+  };
+
   public createPost(formData){
-      return this.http.post("http://localhost:8081/CreatePostServlet", formData);
+      return this.http.post("http://localhost:8081/CreatePostServlet", formData, this.httpOptions);
   }
 
 }

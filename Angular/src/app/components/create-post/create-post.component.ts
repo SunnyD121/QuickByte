@@ -49,7 +49,9 @@ export class CreatePostComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed
-        this.url = event.target.result;
+          console.log(event);
+          console.log(event.target);
+        // this.url = event.target.result;
       }
     }
   }
@@ -79,9 +81,3 @@ export class CreatePostComponent implements OnInit {
             )
         }
     }
-
-
-
-
-
-}

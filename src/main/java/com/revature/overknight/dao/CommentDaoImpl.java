@@ -10,11 +10,7 @@ import com.revature.overknight.beans.Comments;
 import com.revature.overknight.utils.HibernateUtil;
 
 public class CommentDaoImpl implements CommentDao {
-	/**
-	 * Inserts a comment into the database
-	 * @param comment - the Comment object that would be persisted into the database
-	 * @return a unique id used to identify the Comment
-	 */
+
 	public Integer insertComment(Comments comment) 
 	{	
 		Session session = HibernateUtil.getSession();
@@ -43,10 +39,7 @@ public class CommentDaoImpl implements CommentDao {
 		
 		return id;
 	}
-	/**
-	 * Selects all of the comments that is currently in the database
-	 * @return a list of all of the comments
-	 * */
+
 	public List<Comments> selectAllComments() {
 		List<Comments> comments = null; 
 		Session session = HibernateUtil.getSession();
@@ -73,11 +66,7 @@ public class CommentDaoImpl implements CommentDao {
 		
 		return comments;	
 	}
-	/**
-	 * Selects a comment from the database by its user id
-	 * @param id - the primary key id
-	 * @return a Comment object that is associated with the id 
-	 */
+
 	public Comments selectCommentById(Integer id) 
 	{
 		Comments comment = null;
@@ -106,11 +95,7 @@ public class CommentDaoImpl implements CommentDao {
 			
 		return comment; 
 	}
-	/**
-	 * Deletes an comment from the database
-	 * @param comments - the Comments object to be deleted from the database
-	 * @return true if the comment is successfully removed, false otherwise
-	 */
+
 	public Boolean deleteCommentById(Comments comments) {
 		Comments comment = null;
 		Session session = HibernateUtil.getSession();
@@ -136,11 +121,7 @@ public class CommentDaoImpl implements CommentDao {
 		}
 		return result;
 	}
-	/**
-	 * Updates the comment in the database
-	 * @param comment - the Comment object to be updated
-	 * @return the Comment object that was updated
-	 */
+
 	public Comments updateComment(Comments comment) {
 		Comments c = null;
 		Session session = HibernateUtil.getSession();
