@@ -36,8 +36,8 @@ public class AWSObjectIO {
 	        response.setContentType("text");
 	        String fileKey = UUID.randomUUID().toString();
 	        Item jsonItem = null;
-	        StringBuilder sb = new StringBuilder();
-	        String json = "{";
+	        StringBuilder sb = new StringBuilder("{");
+	        String json = "";
 	        try
 	        {
 	            List<FileItem> files = sf.parseRequest(request);
@@ -63,8 +63,7 @@ public class AWSObjectIO {
 	                            .withCannedAcl(CannedAccessControlList.PublicRead));
 	                    is.close();
 	                }
-	                sb.append("}");
-	                json = sb.toString();
+
 	            }
 	        }
 	        catch (Exception e)
@@ -72,7 +71,10 @@ public class AWSObjectIO {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	        }
-	       
+            json = sb.toString();
+            json = json.substring(0, json.lastIndexOf(","));
+            json += "}";
+            System.out.println(json);
 	        return json;
     }
 }
