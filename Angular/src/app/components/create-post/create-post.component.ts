@@ -23,7 +23,7 @@ export class CreatePostComponent implements OnInit {
     picture:any;    //TODO: define this
     comment:string
     displayModal:string;
-    image:any;
+    image:File;
     fileList:any;
     data:any;
     imgsrc = "";
@@ -44,15 +44,17 @@ export class CreatePostComponent implements OnInit {
   url = '';
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
+        this.image = <File>event.target.files[0];
 
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-      reader.onload = (event) => { // called once readAsDataURL is completed
-          console.log(event);
-          console.log(event.target);
-        // this.url = event.target.result;
-      }
+      // var reader = new FileReader();
+      //
+      // reader.readAsDataURL(event.target.files[0]); // read file as data url
+      //
+      // reader.onload = (event) => { // called once readAsDataURL is completed
+      //     console.log(event);
+      //     console.log(event.target);
+      //   // this.url = event.target.result;
+      // }
     }
   }
 
@@ -72,8 +74,10 @@ export class CreatePostComponent implements OnInit {
       //     console.log(file.size);
       //
       // }
+      let formData = new FormData();
+      formData.append('file', this.image);
 
-          this.postService.createPost(this.url).subscribe(
+          this.postService.createPost(formData).subscribe(
               data =>{
                 this.data = data;
                 console.log(this.data);

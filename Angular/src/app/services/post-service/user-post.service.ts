@@ -20,13 +20,13 @@ export class UserPostService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
+      'Content-Type':  'multipart/form-data stream',
 
     })
   };
 
   public createPost(formData){
-      return this.http.post("http://localhost:8081/CreatePostServlet", formData, this.httpOptions);
+      return this.http.post("http://localhost:8081/CreatePostServlet", formData);
   }
 
 }
