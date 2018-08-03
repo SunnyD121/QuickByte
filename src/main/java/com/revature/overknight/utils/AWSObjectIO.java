@@ -25,7 +25,7 @@ public class AWSObjectIO {
 
 	
 
-	public static void uploadFile(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public static String uploadFile(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
 		 ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
 	        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withRegion("us-east-1")
@@ -36,6 +36,8 @@ public class AWSObjectIO {
 	        response.setContentType("text");
 	        String fileKey = UUID.randomUUID().toString();
 	        Item jsonItem = null;
+	        StringBuilder sb = new StringBuilder();
+	        String json = "{";
 	        try
 	        {
 	            List<FileItem> files = sf.parseRequest(request);
@@ -45,13 +47,13 @@ public class AWSObjectIO {
 	                {
 	                    String fieldname = item.getFieldName();
 	                    String fieldvalue = item.getString();
+	                   
 	                    if(fieldname.equals("username")||fieldname.equals("postName")||fieldname.equals("recipe")||fieldname.equals("comment"))
 	                    {
-	                        Gson gson = new Gson();
-	                        jsonItem = gson.fromJson(fieldvalue,Item.class);
+	                    	sb.append(fieldname + ":" + fieldvalue + ", ");
 	                    }
 	                }
-	                else if(item.getName() != "null" && item.getName() != null)
+	                else if(!item.getName().equals("null") && item.getName() != null)
 	                {
 	                    fileKey = fileKey+item.getName();
 	                    System.out.println(fileKey);
@@ -60,7 +62,8 @@ public class AWSObjectIO {
 	                            .withCannedAcl(CannedAccessControlList.PublicRead));
 	                    is.close();
 	                }
-
+	                sb.append("}");
+	                json = sb.toString();
 	            }
 	        }
 	        catch (Exception e)
@@ -68,5 +71,7 @@ public class AWSObjectIO {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	        }
+	       
+	        return json;
     }
 }
