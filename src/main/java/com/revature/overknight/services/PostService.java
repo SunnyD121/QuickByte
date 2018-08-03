@@ -28,7 +28,7 @@ public class PostService {
 		userId = ud.selectUserByUsername(username).getId();
 		
 		// VERIFY THAT TAG EXISTS OR ADD IT IF IT DOESN'T
-		Tag tagT = ts.verifyOrCreateTag(tag);
+		Tag tagT = ts.verifyOrCreateTag(tag.toLowerCase());
 		
 		//SETUP DATE AND CONVERT IT
 		LocalDate lDate = LocalDate.now();
