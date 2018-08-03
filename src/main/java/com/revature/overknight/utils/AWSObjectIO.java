@@ -45,6 +45,7 @@ public class AWSObjectIO {
 	        String imgKey = "";
 	        String content = "";
 	        String tag = "";
+	        String commentText = "";
 	        try
 	        {
 	            List<FileItem> files = sf.parseRequest(request);
@@ -67,6 +68,9 @@ public class AWSObjectIO {
 							break;
 						case "tag":
 							tag = fieldvalue;
+							break;
+						case "comment":
+							commentText = fieldvalue;
 							break;
 						default:
 							break;
@@ -91,7 +95,8 @@ public class AWSObjectIO {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	        }
-           return(ps.insertNewPost(username, title, imgKey, content, tag));
+	        
+           return(ps.insertNewPost(username, title, imgKey, content, tag, commentText));
 	        
     }
 }

@@ -20,7 +20,7 @@ public class PostService {
 	CommentDaoImpl cd = new CommentDaoImpl();
 			
 	
-	public Boolean insertNewPost(String username, String title, String imgKey, String content, String tag)
+	public Boolean insertNewPost(String username, String title, String imgKey, String content, String tag, String commentText)
 	{
 		Integer userId = null;
 		
@@ -36,7 +36,7 @@ public class PostService {
 		
 		// CREATE "LIST" OF COMMENTS FOR POST
 		List<Comments> comments = new ArrayList<>();
-		Comments comment = new Comments();
+		Comments comment = new Comments(username, commentText);
 		cd.insertComment(comment);
 		comments.add(comment);
 		

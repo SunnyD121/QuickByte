@@ -121,6 +121,14 @@ public class Post {
 	public void settag(Tag tag) {
 		this.tag = tag;
 	}
+
+	public List<Comments> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comments> comments) {
+		this.comments = comments;
+	}
 	
 	
 }
