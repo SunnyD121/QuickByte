@@ -38,31 +38,28 @@ public class SearchPostServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		 // SETUP
-        String json = "";
-        StringBuilder sb = new StringBuilder();
-        while ((json = request.getReader().readLine()) != null) sb.append(json);
-		json = sb.toString();
-        JsonReader reader = Json.createReader(new StringReader(json));
-        
-        //SETUP REPLY
-        response.setContentType("text/json");
-        PrintWriter out = response.getWriter();
 
-        // READ INCOMING JSON OBJECT
-        JsonObject personObject = reader.readObject();
-        reader.close();
+		 // SETUP
+        String input = "";
+        StringBuilder sb = new StringBuilder();
+        while ((input = request.getReader().readLine()) != null) sb.append(input);
+		input = sb.toString();
 
 		//GET USERNAME AND PASSWORD FIELDS
-        String tag = personObject.getString("tag");
+        System.out.println(input);
+        String tag = input;
 		
 		//GET POSTS BASED ON TAG
 		PostService ps = new PostService();
 		List<Post> posts = ps.SearchPostByTag(tag);
-		
+
+        //SETUP REPLY
+        response.setContentType("text/json");
+        PrintWriter out = response.getWriter();
+
     	// RETURN THE POSTS
-	    out.println(new ObjectMapper().writeValueAsString(posts));
+        for(Post p: posts) System.out.println(p.gettag());
+        out.println(new ObjectMapper().writeValueAsString(posts));
 	}
 
 	/**

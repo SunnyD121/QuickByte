@@ -102,10 +102,15 @@ export class HomePageComponent implements OnInit {
     }
 
     public getSearchedPosts(tagName){
+        console.log(tagName);
         this.postService.getPostsByTag(tagName).subscribe(
             returnValue => {
                 console.log(returnValue);
-                this.searchedPosts = returnValue;
+                // for (i : returnValue){
+                //
+                //     returnValue[i]
+                // }
+                // this.searchedPosts = returnValue;
             }, error => {console.log(error)}
         );
     }
