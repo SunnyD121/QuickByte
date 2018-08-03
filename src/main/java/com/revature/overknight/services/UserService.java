@@ -21,6 +21,10 @@ public class UserService {
 	private static CreditCardDaoImpl cd = new CreditCardDaoImpl();
 	private static KDF kdf = new KDF();
 	
+	public static void setKdf(KDF kdf) {
+		UserService.kdf = kdf;
+	}
+
 	public void setUD(UserDaoImpl ud)
 	{
 		this.ud = ud;
