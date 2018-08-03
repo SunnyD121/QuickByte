@@ -47,8 +47,24 @@ public class PostService {
 		{
 			return true;
 		}
-		
 		return false;
+	}
+	
+	public List<Post> SearchPostByTag(String tag)
+	{
+		List<Post> posts = new ArrayList<>();
+		Tag tagT = ts.verifyOrCreateTag(tag);
+		
+		if(tag.equals("trending"))
+		{
+			posts = pd.selectAllPosts();
+		}
+		else
+		{
+			posts = pd.selectAllPostsByTag(tagT);
+		}
+		
+		return posts;
 	}
 	
 	
