@@ -42,7 +42,7 @@ export class CreatePostComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]); // read file as data url
       reader.onload = (event) => { // called once readAsDataURL is completed
             console.log(event.srcElement);
-          this.imgSrc = event.srcElement.result;
+          this.imgSrc = event.srcElement["result"];
       }
 
 
