@@ -1,5 +1,3 @@
-// Kudos to Andrew Hwang for helping to get this working properly!
-
 package com.revature.overknight.servlets;
 
 import java.io.IOException;
@@ -28,7 +26,6 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
 import gherkin.deps.com.google.gson.Gson;
-
 /**
  * Servlet implementation class CreatePostServlet
  */
@@ -55,6 +52,7 @@ public class CreatePostServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+<<<<<<< HEAD
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 	       ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
@@ -89,14 +87,52 @@ public class CreatePostServlet extends HttpServlet {
 	                           .withCannedAcl(CannedAccessControlList.PublicRead));
 	                   is.close();
 	               }
+=======
+>>>>>>> 4cab70d9978cf20c7d0c7ead52a1784b6bd8d9a5
 
-	           }
-	       } 
-	       catch (Exception e) 
-	       {
-	           // TODO Auto-generated catch block
-	           e.printStackTrace();
-	       }
-	   }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
+        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withRegion("us-east-1")
+                .withCredentials(new EnvironmentVariableCredentialsProvider())
+                .build();
+        String bucketname = "quickbytes3";
+//        s3client.createBucket(bucketname);
+        response.setContentType("text");
+        String fileKey = UUID.randomUUID().toString();
+        Item jsonItem = null;
+        try
+        {
+            List<FileItem> files = sf.parseRequest(request);
+            for(FileItem item: files)
+            {
+                if (item.isFormField())
+                {
+                    String fieldname = item.getFieldName();
+                    String fieldvalue = item.getString();
+                    if(fieldname.equals("subItem"))
+                    {
+                        Gson gson = new Gson();
+                        jsonItem = gson.fromJson(fieldvalue,Item.class);
+                    }
+                }
+                else if(item.getName() != "null" && item.getName() != null)
+                {
+                    fileKey = fileKey+item.getName()+".png";
+                    System.out.println(fileKey);
+                    InputStream is = item.getInputStream();
+                    s3client.putObject(new PutObjectRequest(bucketname, fileKey,is,new ObjectMetadata())
+                            .withCannedAcl(CannedAccessControlList.PublicRead));
+                    is.close();
+                }
+
+            }
+        }
+        catch (Exception e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
 }
