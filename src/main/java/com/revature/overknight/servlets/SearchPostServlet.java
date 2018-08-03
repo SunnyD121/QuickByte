@@ -54,9 +54,9 @@ public class SearchPostServlet extends HttpServlet {
         JsonObject personObject = reader.readObject();
         reader.close();
 
-		//GET USERNAME AND PASSWORD FIELDS
+		//GET TAG FIELDS
         String tag = personObject.getString("tag");
-		
+		tag = tag.toLowerCase();
 		//GET POSTS BASED ON TAG
 		PostService ps = new PostService();
 		List<Post> posts = ps.SearchPostByTag(tag);
