@@ -10,14 +10,14 @@ public class TagService {
 	
 	public Tag verifyOrCreateTag(String tag)
 	{
-		tempTag = td.selectTagByName(tag);
+		tempTag = td.selectTagByName(tag.toLowerCase());
 		if(tempTag != null)
 		{
 			return tempTag;
 		}
 		else
 		{
-			tempTag = new Tag(tag);
+			tempTag = new Tag(tag.toLowerCase());
 			td.insertTag(tempTag);
 			return tempTag;
 		}
