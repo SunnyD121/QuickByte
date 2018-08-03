@@ -16,9 +16,9 @@ public class PostDaoImpl implements PostDao {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
 		Integer id = null;
+		trans = session.beginTransaction();
 		
 		try{
-			trans = session.beginTransaction();
 			id = (Integer)session.save(post);
 			trans.commit();
 			
