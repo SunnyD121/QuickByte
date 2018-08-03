@@ -67,7 +67,7 @@ public class CreatePostServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 	       ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
-	       AmazonS3 s3client = AmazonS3ClientBuilder.standard().withRegion("US East (N. Virginia)")
+	       AmazonS3 s3client = AmazonS3ClientBuilder.standard().withRegion("us-east-1")
 	    		   .withCredentials(new EnvironmentVariableCredentialsProvider())
 	               .build();
 	       String bucketname = "quickbytes3";
