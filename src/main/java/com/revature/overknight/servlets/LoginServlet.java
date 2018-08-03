@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+        //SETUP
 		 // SETUP
         String json = "";
         StringBuilder sb = new StringBuilder();

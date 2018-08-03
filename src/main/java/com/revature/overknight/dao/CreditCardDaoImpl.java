@@ -11,10 +11,7 @@ import com.revature.overknight.beans.Users;
 import com.revature.overknight.utils.HibernateUtil;
 
 public class CreditCardDaoImpl implements CreditCardDao {
-	/**
-	 * Inserts credit card into the database
-	 * @param cc - The CreditCard object that is presisted to the database
-	 */
+
 	public void insertCreditCard(CreditCard cc) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
@@ -33,10 +30,7 @@ public class CreditCardDaoImpl implements CreditCardDao {
 			session.close();
 		}
 	}
-	/**
-	 * Selects all of the credit cards that is currently in the database
-	 * @return a list of all the credit cards
-	 * */
+
 	public List<CreditCard> selectAllCreditCard() {
 		List<CreditCard> ccs = null; 
 		Session session = HibernateUtil.getSession();
@@ -56,11 +50,7 @@ public class CreditCardDaoImpl implements CreditCardDao {
 		}
 		return ccs;
 	}
-	/**
-	 * Removes a credit card from the database by credit card number
-	 * @param ccn - credit card number; the primary key
-	 * @return true if user is successfully removed, false otherwise
-	 */
+
 	public Boolean deleteCreditCardByCCN(Integer ccn) {
 		CreditCard cc = null;
 		Session session = HibernateUtil.getSession();
@@ -86,11 +76,7 @@ public class CreditCardDaoImpl implements CreditCardDao {
 		}
 		return result;
 	}
-	/**
-	 * Updates the credit card information in the database
-	 * @param cc - the CreditCard object to be updated
-	 * return the CreditCard object that was updated
-	 */
+
 	public CreditCard updateCreditCard(CreditCard cc) {
 		CreditCard c = null;
 		Session session = HibernateUtil.getSession();
@@ -138,11 +124,7 @@ public class CreditCardDaoImpl implements CreditCardDao {
 		}
 		return cc;
 	}
-	/**
-	 * Selects a credit card from the database by its associated uid
-	 * @param uid - a foreign key that links this table to the Users table
-	 * @return a Credit Card object that is associated with the uid 
-	 */
+
 	public CreditCard selectCreditCardByUsername(Integer uid) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
