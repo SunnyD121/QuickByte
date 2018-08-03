@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { LowerCasePipe } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
+import { UserPostService } from '../../services/post-service/user-post.service';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class HomePageComponent implements OnInit {
     +" that it is my very good honor to meet you and you may call me V.\n     -V for Vendetta";
 
 
-    constructor(private activatedRoute: ActivatedRoute, private router: Router, private cookie: CookieService) {
+    constructor(private activatedRoute: ActivatedRoute, private router: Router, private cookie: CookieService, private postService: UserPostService) {
     /* This part will only be accessable on load only. So, it will not be accessable on Reload. */
         this.activatedRoute.queryParams.subscribe(queryParams => {
         /* This part will be accessable on Reload */
@@ -52,7 +53,8 @@ export class HomePageComponent implements OnInit {
                 this.headerTitle = "Welcome";
                 this.headerMessage = "This is some information. There are words here talking about the words that should be here instead of the words that are here,"
                       + " these words. Words words words words words. Did you know that you can type virtually anything onto a webpage?"
-                this.searchedPosts = this.getPostsMatchingSearchCriteria("trending");
+                // this.searchedPosts = this.getPostsMatchingSearchCriteria("trending");
+                this.getSearchedPosts("trending");
             }
             else {
                 this.headerTitle = "Search Results";
@@ -62,10 +64,12 @@ export class HomePageComponent implements OnInit {
                 }
                 else {
                     this.headerMessage = "Showing results for \'" + this.query + "\':";
-                    this.searchedPosts = this.getPostsMatchingSearchCriteria("french");
+                    // this.searchedPosts = this.getPostsMatchingSearchCriteria("french");
+                    this.getSearchedPosts(this.query);
                 }
             }
         }
+        else{}
     }
 
     getPostsMatchingSearchCriteria(searchQuery: string):Array<Object>{
@@ -95,6 +99,15 @@ export class HomePageComponent implements OnInit {
         ];
         else posts = null;
         return posts;
+    }
+
+    public getSearchedPosts(tagName){
+        this.postService.getPostsByTag(tagName).subscribe(
+            returnValue => {
+                console.log(returnValue);
+                this.searchedPosts = returnValue;
+            }, error => {console.log(error)}
+        );
     }
 
     reloadPage() {

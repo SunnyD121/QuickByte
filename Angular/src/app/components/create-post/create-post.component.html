@@ -14,10 +14,11 @@
                             <li><b>Picture</b></li>
                             <li><input type='file' (change)="onSelectFile($event)" required></li>
                             <li><br></li>
+                            <li><button type="button" (click)="showModal()">Preview</button></li>
+                            <li><br></li>
+                            <li><b>Category</b></li>
                             <li>
-                                <button type="button" (click)="showModal()">Preview</button>
-                                <span style="padding:91px"></span>
-                                <select name="type" style="width:50%" required>
+                                <select name="type" (change)="onSelectTag($event)"style="width:50%" required>
                                     <option *ngFor="let option of validCriteria">{{option}}</option>
                                 </select>
                             </li>

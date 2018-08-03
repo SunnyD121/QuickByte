@@ -23,6 +23,7 @@ export class CreatePostComponent implements OnInit {
     postName:string;
     recipe:string;
     comment:string
+    tag:string;
     displayModal:string;
     image:File;
     imgSrc = "";
@@ -35,20 +36,24 @@ export class CreatePostComponent implements OnInit {
         this.displayModal = "none";
     }
 
-  onSelectFile(event) {
-    if (event.target.files && event.target.files[0]) {
-        this.image = <File>event.target.files[0];
+    onSelectFile(event) {
+        if (event.target.files && event.target.files[0]) {
+            this.image = <File>event.target.files[0];
 
-      var reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-      reader.onload = (event) => { // called once readAsDataURL is completed
+            var reader = new FileReader();
+            reader.readAsDataURL(event.target.files[0]); // read file as data url
+            reader.onload = (event) => { // called once readAsDataURL is completed
             // console.log(event.srcElement);
-          this.imgSrc = event.srcElement["result"];
-      }
-
-
+            this.imgSrc = event.srcElement["result"];
+            }
+        }
     }
-  }
+
+    onSelectTag(event){
+        this.tag = event.target.value;
+    }
+
+
 
 
     public onSubmitClicked(){
@@ -59,6 +64,7 @@ export class CreatePostComponent implements OnInit {
         formData.append('postName', this.postName);
         formData.append('recipe', this.recipe);
         formData.append('comment', this.comment);
+        formData.append('tag', this.tag);
         this.postService.createPost(formData).subscribe(
             returnValue =>{
                 console.log(returnValue);
