@@ -257,13 +257,4 @@ public class UserDaoImpl implements UserDao {
 			//System.out.println("user = " + user.getfName());
 		return users;
 	}
-//unimplemented method
-	@Override
-	public Boolean deleteUserById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-
 }
