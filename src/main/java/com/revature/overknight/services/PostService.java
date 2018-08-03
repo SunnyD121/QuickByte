@@ -8,16 +8,21 @@ import java.util.List;
 import com.revature.overknight.beans.Comments;
 import com.revature.overknight.beans.Post;
 import com.revature.overknight.beans.Tag;
-
-import gherkin.formatter.model.Comment;
+import com.revature.overknight.dao.UserDaoImpl;
 
 public class PostService {
 	
 	TagService ts = new TagService();
+	UserDaoImpl ud = new UserDaoImpl();
 			
 	
-	public void insertNewPost(Integer userid, String title, String imgKey, String content, String tag)
+	public void insertNewPost(String username, String title, String imgKey, String content, String tag)
 	{
+		Integer userId = null;
+		
+		//GET USER'S ID
+		userId = ud.selectUserByUsername(username).getId();
+		
 		// VERIFY THAT TAG EXISTS OR ADD IT IF IT DOESN'T
 		Tag tagT = ts.verifyOrCreateTag(tag);
 		
@@ -31,7 +36,7 @@ public class PostService {
 		comments.add(comment);
 		
 		//INSERT NEW POST INTO DATABASE
-		Post post = new Post(userid, title, imgKey, content, date, tagT, comments);
+		Post post = new Post(userId, title, imgKey, content, date, tagT, comments);
 	}
 	
 	
