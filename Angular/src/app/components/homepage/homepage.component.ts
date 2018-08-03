@@ -114,7 +114,7 @@ export class HomePageComponent implements OnInit {
                     post.recipe = returnValue[i].postContent;
                     //post.comments = []
 
-                    searchedPosts.push(post);
+                    this.searchedPosts[i] = post;
                 }
             }, error => {console.log(error)}
         );
