@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { LowerCasePipe } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
 import { UserPostService } from '../../services/post-service/user-post.service';
+import { UserPost } from '../../objects/UserPost'
 
 
 @Component({
@@ -17,9 +18,10 @@ export class HomePageComponent implements OnInit {
     headerMessage: string;
     validCriteria = ["American", "British", "Carribean", "Chinese", "French", "German", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Portuguese", "Spanish", "Thai"];
     isInitialized: boolean;
-    searchedPosts: Array<Object>;
+    searchedPosts: Array<UserPost>;
     premium: boolean;
     favoritedPosts_TEST = ["Pumpkin Pie", "Pheasant Under Glass", "Peach Cobbler", "Homemade Brownies"];
+
 
     //TODO: delete this, for testing purposes only
     testString = "Voilà! In view, a humble vaudevillian veteran, cast vicariously as both victim and villian"
@@ -106,11 +108,14 @@ export class HomePageComponent implements OnInit {
         this.postService.getPostsByTag(tagName).subscribe(
             returnValue => {
                 console.log(returnValue);
-                // for (i : returnValue){
-                //
-                //     returnValue[i]
-                // }
-                // this.searchedPosts = returnValue;
+                for (let i in returnValue){
+                    let post = new UserPost();
+                    post.img = returnValue[i].postImgKey;
+                    post.recipe = returnValue[i].postContent;
+                    //post.comments = []
+
+                    searchedPosts.push(post);
+                }
             }, error => {console.log(error)}
         );
     }

@@ -58,7 +58,7 @@ public class SearchPostServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
     	// RETURN THE POSTS
-        for(Post p: posts) System.out.println(p.gettag());
+        for(Post p: posts) System.out.println(p.);
         out.println(new ObjectMapper().writeValueAsString(posts));
 	}
 
