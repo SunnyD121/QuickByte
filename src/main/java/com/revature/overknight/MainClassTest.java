@@ -56,7 +56,7 @@ public class MainClassTest {
 				"\r\n" + 
 				"3. Bake for 10 minutes per inch of thickness, measured at thickest part, or\r\n" + 
 				"until salmon just flakes when tested with a fork. Serve garnished with\r\n" + 
-				"lemon wedges.", "American");
+				"lemon wedges.", "American", "");
 		ps.insertNewPost("erics", "Armadillo Eggs", "armadilloeggs.png", "Prep Time: 30 Minutes\r\n" + 
 				"Cook Time: 25 Minutes\r\n" + 
 				"Ready In: 55 Minutes\r\n" + 
@@ -84,7 +84,7 @@ public class MainClassTest {
 				"mixture around the jalapenos to form balls.\r\n" + 
 				"\r\n" + 
 				"5. Arrange jalapeno balls on the prepared baking sheet. Bake 25 minutes in\r\n" + 
-				"the preheated oven, until lightly browned.", "American");
+				"the preheated oven, until lightly browned.", "American", "");
 		ps.insertNewPost("robertc", "asparagus Wrapped in Crispy Proscuitto", "asparaguswrappedincrispproscuitto.png", "Prep Time: 5 Minutes\r\n" + 
 				"Cook Time: 15 Minutes\r\n" + 
 				"Ready In: 20 Minutes\r\n" + 
@@ -109,7 +109,7 @@ public class MainClassTest {
 				"4.Bake for 5 minutes in the preheated oven. Remove, and shake the\r\n" + 
 				"pan back and forth to roll the spears over. Return to the oven for\r\n" + 
 				"another 5 minutes, or until asparagus is tender, and prosciutto is\r\n" + 
-				"crisp. Serve immediately.", "American");
+				"crisp. Serve immediately.", "American", "");
 		ps.insertNewPost("walterx", "Baked Asparagus with Balsamic Buttersauce", "bakedasparaguswithbalsamicbuttersauce.PNG", "Prep Time: 10 Minutes\r\n" + 
 				"Cook Time: 12 Minutes\r\n" + 
 				"Ready In: 25 Minutes\r\n" + 
@@ -130,7 +130,7 @@ public class MainClassTest {
 				"3. Bake asparagus 12 minutes in the preheated oven, or until tender.\r\n" + 
 				"4. Lightly brown the butter in a saucepan over medium heat. Remove\r\n" + 
 				"from heat, and stir in soy sauce and balsamic vinegar. Pour over the\r\n" + 
-				"baked asparagus to serve.", "American");
+				"baked asparagus to serve.", "American", "");
 		ps.insertNewPost("xuanzangc", "Beef Lasagna", "beeflasagna.png", "Prep Time: 20 Minutes\r\n" + 
 				"Cook Time: 45 Minutes\r\n" + 
 				"Ready In: 1 Hour 5 Minutes\r\n" + 
@@ -159,7 +159,7 @@ public class MainClassTest {
 				"aluminum foil and bake 30 minutes. Remove foil and\r\n" + 
 				"sprinkle with remaining 1/4 cup Parmesan cheese. Bake\r\n" + 
 				"uncovered an additional 5 minutes. Let stand 10 minutes\r\n" + 
-				"before serving.", "American");
+				"before serving.", "American", "");
 		ps.insertNewPost("wukongs", "Brownies", "brownies.png", "Servings: 12\r\n" + 
 				"\r\n" + 
 				"Ingredients\r\n" + 
@@ -182,7 +182,7 @@ public class MainClassTest {
 				"vanilla. Stir in flour and nuts.\r\n" + 
 				"\r\n" + 
 				"4. Spread in greased 13 x 9 inch pan. Bake for 35 minutes\r\n" + 
-				"(do not overbake).", "American");
+				"(do not overbake).", "American", "");
 		ps.insertNewPost("wunengz", "Bruchetta", "bruchetta.png", "Prep Time: 15 Minutes\r\n" + 
 				"Cook Time: 5 Minutes\r\n" + 
 				"Ready In: 30 Minutes\r\n" + 
@@ -210,7 +210,7 @@ public class MainClassTest {
 				"\r\n" + 
 				"4. Broil for 5 minutes.\r\n" + 
 				"\r\n" + 
-				"5. Divide the tomato mixture evenly over baguette slices. Serve.", "American");
+				"5. Divide the tomato mixture evenly over baguette slices. Serve.", "American", "");
 		ps.insertNewPost("wujings", "Butter Cream Icing", "buttercreamicing.png", "Prep Time: 15 Minutes \r\n" + 
 				"Ready In: 15 Minutes\r\n" + 
 				"Servings: 20\r\n" + 
@@ -228,7 +228,7 @@ public class MainClassTest {
 				"1. In a large bowl, cream together the butter, shortening, and vanilla.\r\n" + 
 				"Blend in the sugar, one cup at a time, beating well after each addition.\r\n" + 
 				"Beat in the milk, and continue mixing until light and fluffy.\r\n" + 
-				"Keep icing covered until ready to decorate.", "American");
+				"Keep icing covered until ready to decorate.", "American", "");
 		ps.insertNewPost("whitedragonhorse", "Cheese Bake Bars", "cheesecakebars.png", "Servings:16\r\n" + 
 				"\r\n" + 
 				"Ingredients:\r\n" + 
@@ -260,7 +260,7 @@ public class MainClassTest {
 				"Spread the mixture over the baked crust and drop tablespoons of the jam on the\r\n" + 
 				"filling. Run a knife back and forth through the filling to distribute the jam, being\r\n" + 
 				"careful not to cut into the crust. Bake for 25 minutes, or until lightly browned.\r\n" + 
-				"Cool completely and cut into 2-inch squares.", "American");
+				"Cool completely and cut into 2-inch squares.", "American", "");
     }
 
 
