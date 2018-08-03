@@ -45,7 +45,7 @@ public class AWSObjectIO {
 	                {
 	                    String fieldname = item.getFieldName();
 	                    String fieldvalue = item.getString();
-	                    if(fieldname.equals("subItem"))
+	                    if(fieldname.equals("username")||fieldname.equals("postName")||fieldname.equals("recipe")||fieldname.equals("comment"))
 	                    {
 	                        Gson gson = new Gson();
 	                        jsonItem = gson.fromJson(fieldvalue,Item.class);
