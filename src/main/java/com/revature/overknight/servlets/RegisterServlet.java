@@ -73,7 +73,6 @@ public class RegisterServlet extends HttpServlet {
 		HttpSession session = null;
 		
 		// CHECK CC AND IF VALID, ADD USER TO TABLE
-        System.out.println(creditCardNumber);
 		if(CcVerify.isValid(creditCardNumber))
 		{
 			boolean validUserRegistration = UserService.registerNewUser(

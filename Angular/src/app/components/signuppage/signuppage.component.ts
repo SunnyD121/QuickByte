@@ -82,7 +82,7 @@ export class SignupPageComponent implements OnInit {
               console.log("Return Value: " + returnValue);
               if (this.serverSideCheck) {
                   this.cookie.set("LoggedIn", 'true');
-                  this.cookie.set("username", this.username);
+                  this.cookie.set("Username", this.username);
                   this.router.navigate(['/homepage']);
               }
               else {

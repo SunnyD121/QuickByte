@@ -55,6 +55,8 @@ public class CreatePostServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        
+
         ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
         AmazonS3 s3client = AmazonS3ClientBuilder.standard().withRegion("us-east-1")
                 .withCredentials(new EnvironmentVariableCredentialsProvider())
@@ -79,7 +81,7 @@ public class CreatePostServlet extends HttpServlet {
                         jsonItem = gson.fromJson(fieldvalue,Item.class);
                     }
                 }
-                else if(item.getName() != "null" && item.getName() != null)
+                else if(!item.getName().equals("null") && item.getName() != null)
                 {
                     fileKey = fileKey+item.getName()+".png";
                     System.out.println(fileKey);
@@ -95,6 +97,7 @@ public class CreatePostServlet extends HttpServlet {
         {
             // TODO Auto-generated catch block
             e.printStackTrace();
+
         }
     }
 

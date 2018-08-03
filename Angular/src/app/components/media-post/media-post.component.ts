@@ -45,10 +45,10 @@ export class MediaPostComponent implements OnInit {
 
   public submitComment(){
       console.log(this.commentBody);
-      this.postService.createComment(this.cookie.get('username'), this.commentBody).subscribe(
+      this.postService.createComment(this.cookie.get('Username'), this.commentBody).subscribe(
           returnValue => {
               console.log(returnValue);
-              this.commentList.push(new Comment(this.cookie.get('username'), returnValue, this.commentBody));
+              this.commentList.push(new Comment(this.cookie.get('Username'), returnValue, this.commentBody));
               this.createCommentDisplay = false;
           }, error => {
               console.log("ERROR");

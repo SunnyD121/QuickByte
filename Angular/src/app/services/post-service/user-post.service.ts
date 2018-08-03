@@ -18,12 +18,7 @@ export class UserPostService {
   }
 
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'multipart/form-data stream',
-
-    })
-  };
+  httpOptions = {headers: new HttpHeaders({'Content-Type':  'multipart/form-data stream'})};
 
   public createPost(formData){
       return this.http.post("http://localhost:8081/CreatePostServlet", formData);

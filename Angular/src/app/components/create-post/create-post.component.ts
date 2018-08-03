@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestOptions } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { UserPostService } from '../../services/post-service/user-post.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-create-post',
@@ -10,7 +11,7 @@ import { UserPostService } from '../../services/post-service/user-post.service';
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor(private http: HttpClient, private postService: UserPostService) { }
+  constructor(private http: HttpClient, private postService: UserPostService, private cookie: CookieService) { }
 
   ngOnInit() {
       this.displayModal = "none";
@@ -20,18 +21,10 @@ export class CreatePostComponent implements OnInit {
 
     postName:string;
     recipe:string;
-    picture:any;    //TODO: define this
     comment:string
     displayModal:string;
     image:File;
-    fileList:any;
-    data:any;
-    imgsrc = "";
-
-    public onSubmitClicked(){
-        //send data to Service Layer
-        //recieve boolean success status
-    }
+    imgSrc = "";
 
     public showModal(){
         this.displayModal = "block";
@@ -41,47 +34,39 @@ export class CreatePostComponent implements OnInit {
         this.displayModal = "none";
     }
 
-  url = '';
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
         this.image = <File>event.target.files[0];
 
-      // var reader = new FileReader();
-      //
-      // reader.readAsDataURL(event.target.files[0]); // read file as data url
-      //
-      // reader.onload = (event) => { // called once readAsDataURL is completed
-      //     console.log(event);
-      //     console.log(event.target);
-      //   // this.url = event.target.result;
-      // }
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+      reader.onload = (event) => { // called once readAsDataURL is completed
+          console.log(event);
+          console.log(event.target);
+          this.imgSrc = event.srcElement.result;
+
+        // this.imgSrc = event.target.result;
+      }
+
+
     }
   }
 
 
-    uploadPost(){
-      //   if(this.fileList.length>0){
-      //     let file: File = this.fileList[0];
-      //     let formData:FormData = new FormData();
-      //
-      //     formData.append('uploadFile', file, file.name);
-      //     // formData.append('info', new Blob([JSON.stringify(this.model)],
-      //     //   {
-      //     //       type: "application/json"
-      //     //   }));
-      //     console.log(file);
-      //     console.log(file.name);
-      //     console.log(file.size);
-      //
-      // }
-      let formData = new FormData();
-      formData.append('file', this.image);
+    public onSubmitClicked(){
 
-          this.postService.createPost(formData).subscribe(
-              data =>{
+        let formData = new FormData();
+        formData.append('file', this.image);
+        // formData.append('username', this.cookie.get('Username'));
+        // formData.append('postName', this.postName);
+        // formData.append('recipe', this.recipe);
+        // formData.append('comment', this.comment);
+
+        this.postService.createPost(formData).subscribe(
+            data =>{
                 this.data = data;
                 console.log(this.data);
-              }, error => console.log(error)
-            )
-        }
+            }, error => {console.log(error)}
+        )
     }
+}

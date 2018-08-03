@@ -31,7 +31,7 @@ export class LoginPageComponent implements OnInit {
               this.credentialCheck = loginBoolean;
               if (loginBoolean){
                   this.cookie.set('LoggedIn', 'true');
-                  this.cookie.set('username', this.username);
+                  this.cookie.set('Username', this.username);
                   this.router.navigate(['/homepage']);
               }
               else {
