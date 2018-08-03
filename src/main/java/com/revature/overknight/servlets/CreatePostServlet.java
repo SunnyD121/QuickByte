@@ -24,6 +24,7 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.revature.overknight.utils.AWSObjectIO;
 
 import gherkin.deps.com.google.gson.Gson;
 /**
@@ -55,9 +56,10 @@ public class CreatePostServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        
+        AWSObjectIO ai = new AWSObjectIO();
+        AWSObjectIO.uploadFile(request, response);
 
-        ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
+    	/*ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
         AmazonS3 s3client = AmazonS3ClientBuilder.standard().withRegion("us-east-1")
                 .withCredentials(new EnvironmentVariableCredentialsProvider())
                 .build();
@@ -83,7 +85,7 @@ public class CreatePostServlet extends HttpServlet {
                 }
                 else if(!item.getName().equals("null") && item.getName() != null)
                 {
-                    fileKey = fileKey+item.getName()+".png";
+                    fileKey = fileKey+item.getName();
                     System.out.println(fileKey);
                     InputStream is = item.getInputStream();
                     s3client.putObject(new PutObjectRequest(bucketname, fileKey,is,new ObjectMetadata())
@@ -98,7 +100,8 @@ public class CreatePostServlet extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
 
-        }
+        }*/
+
     }
 
 }
