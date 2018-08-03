@@ -49,9 +49,11 @@ public class AWSObjectIO {
 	                    {
 	                        Gson gson = new Gson();
 	                        jsonItem = gson.fromJson(fieldvalue,Item.class);
-	                    }
+                            System.out.println(jsonItem.toString());
+
+                        }
 	                }
-	                else if(item.getName() != "null" && item.getName() != null)
+	                else if(!item.getName().equals("null") && item.getName() != null)
 	                {
 	                    fileKey = fileKey+item.getName();
 	                    System.out.println(fileKey);

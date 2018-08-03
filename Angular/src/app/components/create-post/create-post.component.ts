@@ -41,11 +41,7 @@ export class CreatePostComponent implements OnInit {
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]); // read file as data url
       reader.onload = (event) => { // called once readAsDataURL is completed
-          console.log(event);
-          console.log(event.target);
           this.imgSrc = event.srcElement.result;
-
-        // this.imgSrc = event.target.result;
       }
 
 
@@ -57,15 +53,10 @@ export class CreatePostComponent implements OnInit {
 
         let formData = new FormData();
         formData.append('file', this.image);
-        console.log(this.cookie.get('Username'));
-        console.log(this.postName);
-        console.log(this.recipe);
-        console.log(this.comment);
         formData.append('username', this.cookie.get('Username'));
         formData.append('postName', this.postName);
         formData.append('recipe', this.recipe);
         formData.append('comment', this.comment);
-        console.log(formData);
         this.postService.createPost(formData).subscribe(
             data =>{
                 this.data = data;

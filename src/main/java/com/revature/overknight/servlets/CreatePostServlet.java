@@ -43,17 +43,17 @@ public class CreatePostServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-    	 //SETUP
-		String json = request.getReader().readLine();
-        JsonReader reader = Json.createReader(new StringReader(json));
-
-        // READ INCOMING JSON OBJECT
-        JsonObject personObject = reader.readObject();
-        reader.close();
-
-		//GET INFO
-        String username = personObject.getString("username");
-		String text = personObject.getString("text");
+//    	 //SETUP
+//		String json = request.getReader().readLine();
+//        JsonReader reader = Json.createReader(new StringReader(json));
+//
+//        // READ INCOMING JSON OBJECT
+//        JsonObject personObject = reader.readObject();
+//        reader.close();
+//
+//		//GET INFO
+//        String username = personObject.getString("username");
+//		String text = personObject.getString("text");
 		
 		//SETUP REPLY
 		response.setContentType("text/json");
@@ -65,7 +65,7 @@ public class CreatePostServlet extends HttpServlet {
         
         // ADD POST TO THE DATABASE
 
-
+        out.println("This is a placeholder");
     }
 
 }
