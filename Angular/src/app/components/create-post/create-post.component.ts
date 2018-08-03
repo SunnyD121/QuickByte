@@ -57,11 +57,15 @@ export class CreatePostComponent implements OnInit {
 
         let formData = new FormData();
         formData.append('file', this.image);
-        // formData.append('username', this.cookie.get('Username'));
-        // formData.append('postName', this.postName);
-        // formData.append('recipe', this.recipe);
-        // formData.append('comment', this.comment);
-
+        console.log(this.cookie.get('Username'));
+        console.log(this.postName);
+        console.log(this.recipe);
+        console.log(this.comment);
+        formData.append('username', this.cookie.get('Username'));
+        formData.append('postName', this.postName);
+        formData.append('recipe', this.recipe);
+        formData.append('comment', this.comment);
+        console.log(formData);
         this.postService.createPost(formData).subscribe(
             data =>{
                 this.data = data;

@@ -6,10 +6,10 @@
                     <form> <!-- action="Reimbursement.Servlet" method="Post" -->
                         <ul style="list-style-type:none">
                             <li><b>Post Name</b></li>
-                            <li><input type="text" name="postName" size=43></li>
+                            <li><input type="text" name="postName" [(ngModel)]="postName" size=43></li>
                             <li><br/></li>
                             <li><b>Recipe</b></li>
-                            <li><textarea type="text" name="recipe" rows=8 cols=46></textarea></li>
+                            <li><textarea type="text" name="recipe" [(ngModel)]="recipe" rows=8 cols=46></textarea></li>
                             <li><br/></li>
                             <li><b>Picture</b></li>
                             <li><input type='file' (change)="onSelectFile($event)"></li>
@@ -17,7 +17,7 @@
                             <li><button type="button" (click)="showModal()">Preview</button></li>
                             <li><br/></li>
                             <li><b>Description</b></li>
-                            <li><textarea type="text" name="comment" rows=8 cols=46></textarea></li>
+                            <li><textarea type="text" name="comment" [(ngModel)]="comment" rows=8 cols=46></textarea></li>
                             <li><button type="button" (click)="onSubmitClicked()">Submit</button>
                                 <input type="reset" value="Reset">
                             </li>
