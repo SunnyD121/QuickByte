@@ -3,11 +3,13 @@ package com.revature.overknight.dao;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.revature.overknight.beans.Post;
 import com.revature.overknight.beans.Tag;
+import com.revature.overknight.beans.Users;
 import com.revature.overknight.utils.HibernateUtil;
 
 public class PostDaoImpl implements PostDao {
@@ -78,22 +80,17 @@ public class PostDaoImpl implements PostDao {
 	}
 
 	public List<Post> selectAllPostsByTag(Tag t) {
+		String tag = t.getTag();
 		List<Post> posts = null; 
 		Session session = HibernateUtil.getSession();
-		Transaction trans = null;
+		String hql;
+		Query query;
 		
-		try{
-			trans = session.beginTransaction();
-			posts = session.createQuery("FROM Post WHERE Tag ="+t).list();
-						
-		}catch(HibernateException e){
-			if(trans!=null){
-				trans.rollback();
-			}
-			e.printStackTrace();
-		}finally{
-			session.close();
-		}
+		hql = "FROM Post WHERE tag = :tag";
+		query = session.createQuery(hql);
+		query.setParameter("tag", t);
+		posts = (List<Post>)query.list();
+		session.close();
 		return posts;	
 		
 	}
