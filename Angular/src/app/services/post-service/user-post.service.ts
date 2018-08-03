@@ -21,7 +21,7 @@ export class UserPostService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      'Authorization': 'my-auth-token'
+
     })
   };
 
