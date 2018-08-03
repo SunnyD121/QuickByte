@@ -3,6 +3,7 @@ import { RequestOptions } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { UserPostService } from '../../services/post-service/user-post.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-post',
@@ -11,14 +12,14 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor(private http: HttpClient, private postService: UserPostService, private cookie: CookieService) { }
+  constructor(private router: Router, private http: HttpClient, private postService: UserPostService, private cookie: CookieService) { }
 
   ngOnInit() {
       this.displayModal = "none";
   }
 
     rejectRequest = false;
-
+    validCriteria = ["American", "British", "Carribean", "Chinese", "French", "German", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Portuguese", "Spanish", "Thai"];
     postName:string;
     recipe:string;
     comment:string
@@ -41,7 +42,7 @@ export class CreatePostComponent implements OnInit {
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]); // read file as data url
       reader.onload = (event) => { // called once readAsDataURL is completed
-            console.log(event.srcElement);
+            // console.log(event.srcElement);
           this.imgSrc = event.srcElement["result"];
       }
 
@@ -61,6 +62,8 @@ export class CreatePostComponent implements OnInit {
         this.postService.createPost(formData).subscribe(
             returnValue =>{
                 console.log(returnValue);
+
+                this.router.navigate(['/homepage']);
             }, error => {console.log(error)}
         )
     }
