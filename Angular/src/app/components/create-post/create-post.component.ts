@@ -34,53 +34,47 @@ export class CreatePostComponent implements OnInit {
     }
 
     public showModal(){
-        //if file exists
-        if(this.fileList.length>0){
-          let file: File = this.fileList[0];
-          let reader = new FileReader();
-          reader.readAsDataURL(file);
-          console.log("reading started.");
-          reader.onload = new function(){
-              console.log("reading complete.");
-              this.displayModal = "block";
-              this.imgsrc=file;
-          }
-
-        }
-
+        this.displayModal = "block";
     }
 
     public closeModal(){
         this.displayModal = "none";
-        this.imgsrc = "";
     }
+
+  url = '';
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.url = event.target.result;
+      }
+    }
+  }
 
     fileChange(e){
     this.fileList = e.target.files;
   }
 
     uploadPost(){
-        if(this.fileList.length>0){
-          let file: File = this.fileList[0];
-          let formData:FormData = new FormData();
+      //   if(this.fileList.length>0){
+      //     let file: File = this.fileList[0];
+      //     let formData:FormData = new FormData();
+      //
+      //     formData.append('uploadFile', file, file.name);
+      //     // formData.append('info', new Blob([JSON.stringify(this.model)],
+      //     //   {
+      //     //       type: "application/json"
+      //     //   }));
+      //     console.log(file);
+      //     console.log(file.name);
+      //     console.log(file.size);
+      //
+      // }
 
-          formData.append('uploadFile', file, file.name);
-          // formData.append('info', new Blob([JSON.stringify(this.model)],
-          //   {
-          //       type: "application/json"
-          //   }));
-          console.log(file);
-          console.log(file.name);
-          console.log(file.size);
-          let reader = new FileReader();
-          reader.onloadend = function () {
-    console.log(reader.result);
-    let thing = reader.readAsBinaryString(file);
-    console.log(thing);
-
-  }
-
-          this.postService.createPost(formData).subscribe(
+          this.postService.createPost(this.url).subscribe(
               data =>{
                 this.data = data;
                 console.log(this.data);
