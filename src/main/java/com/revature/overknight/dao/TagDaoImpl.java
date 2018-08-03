@@ -12,7 +12,11 @@ import com.revature.overknight.beans.Tag;
 import com.revature.overknight.utils.HibernateUtil;
 
 public class TagDaoImpl implements TagDao {
-
+	/**
+	 * Inserts an tag into the database
+	 * @param tag - the Tag object that would be persisted into the database
+	 * @return a unique id used to identify the Tag
+	 */
 	public Integer insertTag(Tag tag) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
@@ -34,7 +38,10 @@ public class TagDaoImpl implements TagDao {
 		
 		return id;
 	}
-
+	/**
+	 * Selects all of the tags that is currently in the database
+	 * @return a list of all the tags
+	 * */
 	public List<Tag> selectAllTags() {
 		List<Tag> tags = null; 
 		Session session = HibernateUtil.getSession();
@@ -54,7 +61,11 @@ public class TagDaoImpl implements TagDao {
 		}
 		return tags;	
 	}
-
+	/**
+	 * Selects all the tags associated with a particular post
+	 * @param p - the Post object whose tags which are to be returned 
+	 * @return a list of tags associated with the Post 
+	 */
 	public List<Tag> selectAllTagByPost(Post p) {
 		List<Tag> tags = null; 
 		Session session = HibernateUtil.getSession();
@@ -74,7 +85,11 @@ public class TagDaoImpl implements TagDao {
 		}
 		return tags;	
 	}
-	
+	/**
+	 * Selects a tag from the database by its tag name
+	 * @param tagName - the name of the tag
+	 * @return the tag that is associated with the tagName
+	 */
 	public Tag selectTagByName(String tagName) {
 		
 		//SETUP
@@ -95,7 +110,11 @@ public class TagDaoImpl implements TagDao {
 		}
 		 return null;
 	}
-
+	/**
+	 * Selects a tag from the database by its id
+	 * @param id - the primary key of the tag table
+	 * @return the tag that is associated with the id
+	 */
 	public Tag selectTagById(Integer id) {
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;
@@ -118,7 +137,11 @@ public class TagDaoImpl implements TagDao {
 			
 		return tag; 
 	}
-
+	/**
+	 * Removes an tag from the database by its id
+	 * @param id - the primary key id
+	 * @return true if tag is successfully removed, false otherwise
+	 */
 	public Boolean deleteTagById(Integer id) {
 		Tag tag = null;
 		Session session = HibernateUtil.getSession();
@@ -144,7 +167,11 @@ public class TagDaoImpl implements TagDao {
 		}
 		return result;
 	}
-
+	/**
+	 * Updates the tag's information in the database
+	 * @param tag - the Tag object to be updated
+	 * @return the Tag object that was updated
+	 */
 	public Tag updateTag(Tag tag) {
 		Tag t = null;
 		Session session = HibernateUtil.getSession();

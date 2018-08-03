@@ -10,6 +10,12 @@ public class CommentService {
 	
 	static CommentDaoImpl cd = new CommentDaoImpl();
 	
+	/**
+	 * Creation of a comment with the parameters of username and comment content
+	 * @param name - the username of the user that posted the comment 
+	 * @param text - the content of the comment
+	 * @return true if the comment is successfully posted to the database
+	 */
 	public static Boolean createNewComment(String name, String text)
 	{
 		//SETUP DATE AND CONVERT IT
@@ -26,10 +32,15 @@ public class CommentService {
 		System.out.println("Sorry! You did NOT create this new comment! :(");
 		return false;
 		
-		
-		
-		
-		
+				
+	}
+
+	public static CommentDaoImpl getCd() {
+		return cd;
+	}
+
+	public static void setCd(CommentDaoImpl cd) {
+		CommentService.cd = cd;
 	}
 	
 

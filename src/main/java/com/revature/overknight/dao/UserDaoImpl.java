@@ -11,7 +11,11 @@ import com.revature.overknight.beans.Users;
 import com.revature.overknight.utils.HibernateUtil;
 
 public class UserDaoImpl implements UserDao {
-
+/**
+ * Inserts an user into the database
+ * @param user - the Users object that would be persisted into the database
+ * @return a unique id used to identify the User
+ */
 	public Integer insertUser(Users user) 
 	{
 		// SETUP
@@ -40,8 +44,10 @@ public class UserDaoImpl implements UserDao {
 		
 		return id;
 	}
-
-
+	/**
+	 * Selects all of the users that is currently in the database
+	 * @return a list of all the users
+	 * */
 	public List<Users> selectAllUsers() {
 		List<Users> users = null; 
 		Session session = HibernateUtil.getSession();
@@ -66,7 +72,11 @@ public class UserDaoImpl implements UserDao {
 		}
 		return users;
 	}
-
+	/**
+	 * Selects an user from the database by its user id
+	 * @param id - the primary key user id
+	 * @return a Users object that is associated with the id 
+	 */
 	public Users selectUserById(Integer id) 
 	{
 		Session session = HibernateUtil.getSession();
@@ -94,7 +104,11 @@ public class UserDaoImpl implements UserDao {
 		return user;
 		 
 	}
-
+	/**
+	 * Removes an user from the database by its user id
+	 * @param id - the primary key user id
+	 * @return true if user is successfully removed, false otherwise
+	 */
 	public Boolean removeUserById(Integer id) 
 	{
 		Users user = null;
@@ -129,7 +143,11 @@ public class UserDaoImpl implements UserDao {
 		
 		return result;
 	}
-
+	/**
+	 * Updates the user's information in the database
+	 * @param user - the Users object to be updated
+	 * @return the Users object that was updated
+	 */
 	public Users updateUser(Users user) {
 		Users u = null;
 		Session session = HibernateUtil.getSession();
@@ -192,9 +210,12 @@ public class UserDaoImpl implements UserDao {
 		
 		return user;
 	}
-
 	
-	
+	/**
+	 * Selects a user from the database by its username
+	 * @param username
+	 * @return a Users object that is associated with the username 
+	 */
 	public Users selectUserByUsername(String username) {
 		
 		// Setup
@@ -213,7 +234,11 @@ public class UserDaoImpl implements UserDao {
 			//System.out.println("user = " + user.getfName());
 		return user;
 	}
-
+	/**
+	 * Selects users from the database by its username
+	 * @param username
+	 * @return a list of users that is associated with that username 
+	 */
 	public List<Users> selectUsersByUsername(String username) 
 	{
 		// Setup
@@ -232,13 +257,4 @@ public class UserDaoImpl implements UserDao {
 			//System.out.println("user = " + user.getfName());
 		return users;
 	}
-
-	@Override
-	public Boolean deleteUserById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-
 }
