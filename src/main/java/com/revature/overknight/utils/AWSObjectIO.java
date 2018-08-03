@@ -18,16 +18,17 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-
-import gherkin.deps.com.google.gson.Gson;
+import com.revature.overknight.beans.Post;
+import com.revature.overknight.services.PostService;
 
 public class AWSObjectIO {
 
 	
 
-	public static String uploadFile(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public static Boolean uploadFile(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
-		 ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
+		//SETUP S3 
+		ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
 	        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withRegion("us-east-1")
 	                .withCredentials(new EnvironmentVariableCredentialsProvider())
 	                .build();
@@ -36,8 +37,14 @@ public class AWSObjectIO {
 	        response.setContentType("text");
 	        String fileKey = UUID.randomUUID().toString();
 	        Item jsonItem = null;
-	        StringBuilder sb = new StringBuilder("{");
-	        String json = "";
+	        
+	        //SETUP FOR NEW POST
+	        PostService ps = new PostService();
+	        String username = "";
+	        String title = "";
+	        String imgKey = "";
+	        String content = "";
+	        String tag = "";
 	        try
 	        {
 	            List<FileItem> files = sf.parseRequest(request);
@@ -48,16 +55,29 @@ public class AWSObjectIO {
 	                    String fieldname = item.getFieldName();
 	                    String fieldvalue = item.getString();
 	                   
-	                    if(fieldname.equals("username")||fieldname.equals("postName")||fieldname.equals("recipe")||fieldname.equals("comment"))
-	                    {
-	                    	sb.append(fieldname + ":" + fieldvalue + ", ");
-	                    }
-
+	                    switch (fieldname) {
+						case "username":
+							username = fieldvalue;
+							break;
+						case "postName":
+							title = fieldvalue;
+							break;
+						case "recipe":
+							content = fieldvalue;
+							break;
+						case "tag":
+							tag = fieldvalue;
+							break;
+						default:
+							break;
+						}
+	                    
 	                }
 	                else if(!item.getName().equals("null") && item.getName() != null)
 	                {
 	                    fileKey = fileKey+item.getName();
 	                    System.out.println(fileKey);
+	                    imgKey = fileKey;
 	                    InputStream is = item.getInputStream();
 	                    s3client.putObject(new PutObjectRequest(bucketname, fileKey,is,new ObjectMetadata())
 	                            .withCannedAcl(CannedAccessControlList.PublicRead));
@@ -71,10 +91,7 @@ public class AWSObjectIO {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	        }
-            json = sb.toString();
-            json = json.substring(0, json.lastIndexOf(","));
-            json += "}";
-            System.out.println(json);
-	        return json;
+           return(ps.insertNewPost(username, title, imgKey, content, tag));
+	        
     }
 }

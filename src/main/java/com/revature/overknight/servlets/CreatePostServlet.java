@@ -60,12 +60,7 @@ public class CreatePostServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
     	
     	// UPLOAD THE FILE TO S3
-    	AWSObjectIO ai = new AWSObjectIO();
-        AWSObjectIO.uploadFile(request, response);
-        
-        // ADD POST TO THE DATABASE
-
-        out.println("This is a placeholder");
+        out.println(AWSObjectIO.uploadFile(request, response).toString());
     }
 
 }
