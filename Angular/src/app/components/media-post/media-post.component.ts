@@ -10,12 +10,12 @@ import { Comment } from '../../objects/Comment'
 })
 export class MediaPostComponent implements OnInit {
     @Input() postPic: string;
-    @Input() postComments: string;
+    @Input() postComments: Comment[];
     @Input() postRecipe: string;
 
     commentBody = "";
     createCommentDisplay: boolean;
-    commentList: Comment[] = new Array();
+    originalComment: Comment;
 
     //TODO: initialize with values from the database
     likeCounter = 0;
@@ -48,7 +48,7 @@ export class MediaPostComponent implements OnInit {
       this.postService.createComment(this.cookie.get('Username'), this.commentBody).subscribe(
           returnValue => {
               console.log(returnValue);
-              this.commentList.push(new Comment(this.cookie.get('Username'), returnValue, this.commentBody));
+              this.postComments.push(new Comment(this.cookie.get('Username'), returnValue, this.commentBody));
               this.createCommentDisplay = false;
           }, error => {
               console.log("ERROR");
@@ -58,7 +58,7 @@ export class MediaPostComponent implements OnInit {
 
   ngOnInit() {
       this.createCommentDisplay = false;
-
+      this.originalComment = this.postComments.pop();
 
   }
 

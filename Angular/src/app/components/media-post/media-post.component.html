@@ -29,10 +29,10 @@
           <img src={{img1Path}} class="media-object" style="width:45px">
       </div>
       <div class="media-body">
-          <h4 class="media-heading">Eric <small><i>Posted on february 19, 2016</i></small></h4>
-          <p>Check out this turtle!</p>
+          <h4 class="media-heading">{{originalComment.commentName}} <small><i>{{originalComment.comDate}}</i></small></h4> <!-- Posted on february 19, 2016 -->
+          <p>{{originalComment.commentText}}</p>
 
-          <div *ngFor="let comment of commentList">
+          <div *ngFor="let comment of postComments">
               <div class="media">
                   <div class="media-left">
                       <img src="{{img1Path}}" class="media-object" style="width:45px">
@@ -45,7 +45,7 @@
           </div>
       </div>
   </div>
-  
+
   </app-expandable-pane>
   <div *ngIf="createCommentDisplay">
       <div><textarea [(ngModel)]="commentBody" rows=8 cols=78></textarea></div>
