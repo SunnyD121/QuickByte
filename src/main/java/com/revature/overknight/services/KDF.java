@@ -2,35 +2,36 @@ package com.revature.overknight.services;
 
 import java.security.*;
 import java.security.spec.*;
-import java.util.Arrays;
+import java.util.*;
 import javax.crypto.*;
 import javax.crypto.spec.*;
 
-public class  KDF {
+/**
+ * 
+ * KDF encapsulates all the logic necessary to protect the confidentiality
+ * of user credit card numbers and passwords. KDF is an acronym for Key
+ * Derivation Function, a function that produces a pseudorandom key given a
+ * user's password. This key will be the protected password. As with standard
+ * practice, a salt is incorporated into the hash to increase entropy.
+ * 
+ * As of right now, this application also hashes user credit card numbers thus 
+ * we will never be able to retrieve the original number. For this reason,
+ * normal applications actually have a way to decrypt an encrypted number so
+ * it can be used with other applications. We are not actually using the credit
+ * card numbers in this manner so hashing serves our purposes. 
+ * 
+ * @author Walter Xia
+ * 
+ */
+public class KDF {
 	/*
 	 * Suppose variable is an array that holds a password. When we do not need
 	 * variable anymore, we can overwrite this sensitive information in memory
 	 * with Arrays.fill(variable, some_value).
+	 * 
 	 */
-
-	private byte[] salt;
 	
-	public static void main(String[] args) {
-		KDF kdf = new KDF();
-//		
-//		byte[] hash = kdf.hashPassword("password".toCharArray(), "".getBytes());
-//		System.out.println(Arrays.toString(hash));
-		String s = "[56, 106, 50, 35, 87, 67, 99, 119, 39, -41, -22, -15, 6, 118, 51, -126, 49, 115, -33, 97]";
-		String[] ss = s.substring(1, s.length() - 1).split(",");
-		byte[] bytes = new byte[ss.length];
-		int l = bytes.length;
-		for (int i = 0; i < l; i++) bytes[i] = Byte.parseByte(ss[i].trim());    
-		
-		
-		boolean check = kdf.checkPassword(bytes, "password".toCharArray(),
-										  "salt".getBytes());
-		System.out.println(check);
-	}
+	private byte[] salt;
 	
 	public boolean checkPassword(byte[] actual, char[] attempt, byte[] salt) {
 		byte[] hash = hashPassword(attempt, salt);
