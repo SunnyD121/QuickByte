@@ -21,7 +21,7 @@ export class HomePageComponent implements OnInit {
     searchedPosts: UserPost[] = new Array;
     premium: boolean;
     favoritedPosts_TEST = ["Pumpkin Pie", "Pheasant Under Glass", "Peach Cobbler", "Homemade Brownies"];
-    const amazon_prepend = "https://s3.amazonaws.com/quickbytes3/";
+    amazon_prepend = "https://s3.amazonaws.com/quickbytes3/";
 
     //TODO: delete this, for testing purposes only
     testString = "Voilà! In view, a humble vaudevillian veteran, cast vicariously as both victim and villian"
@@ -113,7 +113,7 @@ export class HomePageComponent implements OnInit {
                     post.img = this.amazon_prepend + returnValue[i].postImgKey;
                     post.recipe = returnValue[i].postContent;
                     post.comments = returnValue[i].comments;
-                    post.comments[0].comDate = returnValue[i].postDate;
+                    post.comments[0]["date"] = returnValue[i].postDate;
 
                     this.searchedPosts[i] = post;
                 }
