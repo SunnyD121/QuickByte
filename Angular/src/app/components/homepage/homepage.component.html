@@ -26,6 +26,7 @@ premium ? 'block' : 'none' -> element is only shown to premium users
     <div class="col-sm-8 text-left">
       <h1>{{headerTitle}}</h1>
       <p style="white-space:pre-wrap">{{headerMessage}}</p>
+      <h3>{{loadingText}}</h3>
       <div *ngIf="searchedPosts; else elseBlock1"> <!-- if there are posts (search results) -->
           <div *ngFor="let post of searchedPosts"> <!-- loop over all posts -->
               <app-media-post [postId]="post.id" [postPic]="post.img" [postComments]="post.comments" [postRecipe]="post.recipe"></app-media-post>

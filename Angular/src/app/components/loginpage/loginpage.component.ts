@@ -17,6 +17,7 @@ export class LoginPageComponent implements OnInit {
     credentialCheck = false;
     displayError = "none";
     cookieValue: string;
+    loadingText = "";
 
   constructor( private router: Router, private userService: UserService, private cookie: CookieService) { }
 
@@ -25,6 +26,7 @@ export class LoginPageComponent implements OnInit {
 
 
   public validateCredentials(){
+      this.loadingText = "Submitting, Please wait..."
       this.toggleError(false);
       this.userService.checkCredentials(this.username, this.password).subscribe(
           loginBoolean => {
@@ -32,11 +34,13 @@ export class LoginPageComponent implements OnInit {
               if (loginBoolean){
                   this.cookie.set('LoggedIn', 'true');
                   this.cookie.set('Username', this.username);
+                  this.loadingText = "";
                   this.router.navigate(['/homepage']);
               }
               else {
                   console.log("Invalid Credentials.");
                   this.toggleError(true);
+                  this.loadingText = "";
               }
           },
           error =>{console.log(error)}

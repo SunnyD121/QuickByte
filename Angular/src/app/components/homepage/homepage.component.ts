@@ -22,6 +22,7 @@ export class HomePageComponent implements OnInit {
     premium: boolean;
     favoritedPosts_TEST = ["Pumpkin Pie", "Pheasant Under Glass", "Peach Cobbler", "Homemade Brownies"];
     amazon_prepend = "https://s3.amazonaws.com/quickbytes3/";
+    loadingText = "Loading...";
 
     //TODO: delete this, for testing purposes only
     testString = "Voilà! In view, a humble vaudevillian veteran, cast vicariously as both victim and villian"
@@ -45,6 +46,7 @@ export class HomePageComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.loadingText = "Loading...";
         this.premium = (this.cookie.get("LoggedIn") == 'true');
 
         if (!this.isInitialized) {
@@ -113,9 +115,10 @@ export class HomePageComponent implements OnInit {
                     post.img = this.amazon_prepend + returnValue[i].postImgKey;
                     post.recipe = returnValue[i].postContent;
                     post.comments = returnValue[i].comments;
-                    post.comments[0]["date"] = returnValue[i].postDate;
+                    post.comments[0]["comDate"] = returnValue[i].postDate;
 
                     this.searchedPosts[i] = post;
+                    this.loadingText = "";   //remove loading text
                 }
             }, error => {console.log(error)}
         );

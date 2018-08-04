@@ -89,7 +89,7 @@ footer {
         opacity: 0;
     }
 }
-img {
+.ad {
     animation: blink 0.5s;
     animation-iteration-count: infinite;
 }
