@@ -29,6 +29,14 @@ export class UserService {
       return this.http.post("http://localhost:8081/LoginServlet", user);
   }
 
+  getAllUsers(): Observable<any>{
+      return this.http.get("http://localhost:8081/GetAllUsersServlet");
+  }
+
+  banUser(username): Observable<any> {
+      return this.http.post("http://localhost:8081/BanUserServlet", username);
+  }
+
 
 
 

@@ -6,6 +6,7 @@ import { LoginPageComponent } from './components/loginpage/loginpage.component';
 import { SignupPageComponent } from './components/signuppage/signuppage.component';
 import { ErrorPage404Component } from './components/errorpage404/errorpage404.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { AdminPageComponent } from './components/adminpage/adminpage.component';
 
 
 export const approutes: Routes = [
@@ -33,6 +34,10 @@ export const approutes: Routes = [
     {
         path: 'create-post',
         component: CreatePostComponent
+    },
+    {
+        path: 'adminpage',
+        component: AdminPageComponent
     },
     {
         //Home page

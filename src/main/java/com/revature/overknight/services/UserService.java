@@ -3,6 +3,7 @@ package com.revature.overknight.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.revature.overknight.utils.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -94,5 +95,23 @@ public class UserService {
 		return true;
 		
 	}
+
+	public static List<Users> getAllUsers(){
+	    return new UserDaoImpl().selectAllUsers();
+    }
+
+    public static boolean banUser(String username){
+	    List<Users> users = new UserDaoImpl().selectUsersByUsername(username);
+	    if (users.size() > 1) Logger.log(UserService.class, "have more than one user with username: "+ username, Logger.Severity.WARN);
+	    else if (users.size() < 1) Logger.log(UserService.class, "No user by the username \'"+username +"\' exists", Logger.Severity.WARN);
+	    else {
+	        Users user = users.get(0);
+	        user.setUserStatus(0);
+	        Users u = new UserDaoImpl().updateUser(user);
+	        System.out.println("User status is: "+new UserDaoImpl().selectUsersByUsername(username).get(0).getUserStatus());
+            return u != null;
+        }
+        return true;
+    }
 
 }

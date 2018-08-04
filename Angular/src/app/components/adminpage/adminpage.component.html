@@ -1,0 +1,18 @@
+<div class="container">
+    <table border="2px">
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.userStatus}}</td>
+            <td>
+                <button type="button" (click)="banUser(user.username)">Ban</button>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -13,6 +13,7 @@ export class NavBarComponent implements OnInit {
     logInOrOutText: string;
     signUpOrPostText: string;
     signUpOrPostGlyph: string;
+    isAdmin: boolean;
 
     constructor(private router:Router, private cookie: CookieService) {
         this.getLogInOrOutText();
@@ -56,6 +57,8 @@ export class NavBarComponent implements OnInit {
 
 
   ngOnInit() {
+      //TODO: this is NOT the way to do this. Grab the user status from the database instead
+      this.isAdmin = (this.cookie.get('Username') == 'admin')
   }
 
 }

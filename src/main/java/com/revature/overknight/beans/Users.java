@@ -77,6 +77,7 @@ public class Users {
 		this.username = username;
 		this.password = password;
 		this.saltpass = saltpass;
+		this.userStatus = 2;
 	}
 
 

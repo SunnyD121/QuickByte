@@ -19,8 +19,9 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { CookieService } from 'ngx-cookie-service';
 
-import { APP_BASE_HREF } from '@angular/common';
+import { APP_BASE_HREF, CommonModule } from '@angular/common';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { AdminPageComponent } from './components/adminpage/adminpage.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +33,14 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
     SignupPageComponent,
     ErrorPage404Component,
     ExpandablePaneComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    CommonModule,
     RouterModule.forRoot(approutes, {onSameUrlNavigation:'reload'})
   ],
   providers: [UserService, CookieService, {provide: APP_BASE_HREF, useValue : ''}, { provide: LocationStrategy, useClass: HashLocationStrategy }],

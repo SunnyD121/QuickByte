@@ -1,24 +1,30 @@
 package com.revature.overknight;
 
+import com.revature.overknight.beans.Users;
+import com.revature.overknight.dao.UserDaoImpl;
+import com.revature.overknight.services.KDF;
 import com.revature.overknight.services.PostService;
 import com.revature.overknight.services.UserService;
 
 public class MainClassTest {
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 //        UserDaoImpl dao = new UserDaoImpl();
 //        UserService us = new UserService();
 //
 //        System.out.println(LocalDate.now().toString());
 //
 //       dao.insertUser(new Users("Toby", "password".getBytes(), "password".getBytes(), 3,"Toby" , "Lobster", "something@eamil.com", 1234567890L, "Here it is!"));
-//       KDF kdf = new KDF();
-//       byte[] pass = kdf.encryptPassword("password");
-//       byte[] salt = kdf.getSalt();
-//       kdf = null;
+        KDF kdf = new KDF();
+        byte[] pass = kdf.encryptPassword("password");
+        byte[] salt = kdf.getSalt();
+        kdf = null;
 //       dao.insertUser(new Users("username", pass, salt, 2, "User", "Name", "test@email.com", 1234321234L, "Uhh..."));
-    	UserService.registerNewUser("chrisp", "chrisp", 4388576018410707L);
+
+        new UserDaoImpl().insertUser(new Users("admin", pass, salt, 3, "Admin", "Admin", "ad@min.com", 5554443332L, ""));
+
+        UserService.registerNewUser("chrisp", "chrisp", 4388576018410707L);
 		UserService.registerNewUser("erics", "erics", 7467547036697929L);
 		UserService.registerNewUser("robertc", "robertc", 5467566704648521L);
 		UserService.registerNewUser("walterx", "walterx", 4324970813603557L);
@@ -27,7 +33,7 @@ public class MainClassTest {
 		UserService.registerNewUser("wunengz", "wunengz", 4388576018410707L);
 		UserService.registerNewUser("wujings", "wujings", 7467547036697929L);
 		UserService.registerNewUser("whitedragonhorse", "whitedragonhorse", 5467566704648521L);
-		
+
 		PostService ps = new PostService();
 		ps.insertNewPost("chrisp", "Alaskan Salmon Baked With Pecan Crunch Coating", "alaskasalmonbakewithpecancrunchcoating.png", "Prep Time: 20 Minutes\r\n" + 
 				"Cook Time: 10 Minutes\r\n" + 
