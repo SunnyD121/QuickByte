@@ -65,8 +65,8 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = null;
 
         // ACTUAL CREDENTIAL CHECKS
-		boolean validUserLogin = UserService.userLogin(username, password);
-        if (validUserLogin) {
+		String validUserLogin = UserService.userLogin(username, password);
+        if (validUserLogin == "success") {
             session = request.getSession();
             session.setAttribute("username", username);
             System.out.println("LOGIN STARTED: " + session.getAttribute("username"));

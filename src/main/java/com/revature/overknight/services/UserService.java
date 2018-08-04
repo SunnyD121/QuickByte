@@ -31,20 +31,21 @@ public class UserService {
 		this.ud = ud;
 	}
 	
-	public static boolean userLogin(String username, String password)
+	public static String userLogin(String username, String password)
 	{
 		Users user = ud.selectUserByUsername(username);
 		if (user != null) {
             System.out.println(user.toString());
+            if (user.getUserStatus() == 0) return "banned";
             byte[] actual = user.getPassword();
             char[] attempt = password.toCharArray();
             // We do not need password anymore so allow it to be garbage collected.
             password = null;
             byte[] salt = user.getSaltpass();
 
-            return kdf.checkPassword(actual, attempt, salt);
+            return kdf.checkPassword(actual, attempt, salt) ? "success" : "invalid";
         }
-        else return false;
+        else return "invalid";
 	}
 	
 	public static Boolean deleteUser(Users user)

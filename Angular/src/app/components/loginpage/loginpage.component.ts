@@ -18,6 +18,7 @@ export class LoginPageComponent implements OnInit {
     displayError = "none";
     cookieValue: string;
     loadingText = "";
+    errorMessage = ""
 
   constructor( private router: Router, private userService: UserService, private cookie: CookieService) { }
 
@@ -31,17 +32,24 @@ export class LoginPageComponent implements OnInit {
       this.userService.checkCredentials(this.username, this.password).subscribe(
           loginBoolean => {
               this.credentialCheck = loginBoolean;
-              if (loginBoolean){
+              if (loginBoolean =="success"){
                   this.cookie.set('LoggedIn', 'true');
                   this.cookie.set('Username', this.username);
                   this.loadingText = "";
                   this.router.navigate(['/homepage']);
               }
-              else {
+              else if(loginBoolean == "invalid") {
                   console.log("Invalid Credentials.");
+                  this.errorMessage = "Username or Password is incorrect";
                   this.toggleError(true);
                   this.loadingText = "";
               }
+              else if (loginBoolean == "banned"){
+                  this.errorMessage = "You have been Banned.";
+                  this.toggleError(true);
+                  this.loadingText = "";
+              }
+              else console.log("WARNING! Unsupported return value");
           },
           error =>{console.log(error)}
       );

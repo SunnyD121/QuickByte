@@ -22,6 +22,7 @@ public class MainClassTest {
         kdf = null;
 //       dao.insertUser(new Users("username", pass, salt, 2, "User", "Name", "test@email.com", 1234321234L, "Uhh..."));
 
+        new UserDaoImpl().insertUser(new Users("bannedUser", pass, salt, 0, "", "", "", 0L, ""));
         new UserDaoImpl().insertUser(new Users("admin", pass, salt, 3, "Admin", "Admin", "ad@min.com", 5554443332L, ""));
 
         UserService.registerNewUser("chrisp", "chrisp", 4388576018410707L);
