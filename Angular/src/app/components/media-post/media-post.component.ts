@@ -17,6 +17,7 @@ export class MediaPostComponent implements OnInit {
     commentBody = "";
     createCommentDisplay: boolean;
     originalComment: Comment;
+    hasRated = false;
 
     //TODO: initialize with values from the database
     likeCounter = 0;
@@ -35,22 +36,30 @@ export class MediaPostComponent implements OnInit {
       alert("TODO: favoriteClicked() not implemented yet.");
   }
   public likeClicked(){
-      this.likeCounter++;
+      if (!this.hasRated){
+          this.likeCounter++;
+          this.hasRated = true;
+      }
   }
   public dislikeClicked(){
-      this.dislikeCounter++;
+      if (!this.hasRated){
+          this.dislikeCounter++;
+          this.hasRated = true;
+      }
   }
   public commentClicked(){
       this.createCommentDisplay = !this.createCommentDisplay;
+      this.commentBody = "";
+
   }
 
   public submitComment(){
-      this.postService.createComment(this.postId, this.cookie.get('Username'), this.commentBody).subscribe(
+      let tempName = this.cookie.get('Username');
+      if (tempName == null || tempName == "") tempName = "\<anonymous\>";
+      this.postService.createComment(this.postId, tempName, this.commentBody).subscribe(
           returnValue => {
-              this.postComments.push(new Comment(this.cookie.get('Username'), returnValue, this.commentBody));
+              this.postComments.push(new Comment(tempName, returnValue, this.commentBody));
               this.createCommentDisplay = false;
-              console.log("I hate you.");
-              console.log(this.postComments);
           }, error => {
               console.log("ERROR");
               console.log(error);}

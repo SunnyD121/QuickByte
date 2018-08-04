@@ -3,6 +3,7 @@ package com.revature.overknight.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.json.Json;
@@ -66,7 +67,9 @@ public class CreateCommentServlet extends HttpServlet {
 		
 		if(CommentService.createNewComment(id, username, text))
 		{
-            out.println(new ObjectMapper().writeValueAsString(LocalDate.now()));
+		    //This makes me sad, but for the sake of consistency, this is the easier change:
+//            out.println(new ObjectMapper().writeValueAsString(LocalDate.now()));
+            out.println(new ObjectMapper().writeValueAsString(Date.valueOf(LocalDate.now())));
 
 		}
 		else {
