@@ -11,7 +11,7 @@ import com.revature.overknight.utils.HibernateUtil;
 
 public class CommentDaoImpl implements CommentDao {
 
-	public Integer insertComment(Comments comment) 
+	public Integer insertComment(Comments comment)
 	{	
 		Session session = HibernateUtil.getSession();
 		Transaction trans = null;

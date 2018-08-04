@@ -5,12 +5,13 @@ import java.time.LocalDate;
 
 import com.revature.overknight.beans.Comments;
 import com.revature.overknight.dao.CommentDaoImpl;
+import com.revature.overknight.dao.PostDaoImpl;
 
 public class CommentService {
 	
 	static CommentDaoImpl cd = new CommentDaoImpl();
 	
-	public static Boolean createNewComment(String name, String text)
+	public static Boolean createNewComment(int postId, String name, String text)
 	{
 		//SETUP DATE AND CONVERT IT
 		LocalDate lDate = LocalDate.now();
@@ -18,7 +19,7 @@ public class CommentService {
 		Comments comment = new Comments(name, date, text);
 		
 		
-		if(cd.insertComment(comment) != null)
+		if(cd.insertComment(comment) != null && new PostDaoImpl().addCommentToPost(postId, comment))
 		{
 			return true;
 		}

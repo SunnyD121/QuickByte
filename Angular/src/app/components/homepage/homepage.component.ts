@@ -104,19 +104,18 @@ export class HomePageComponent implements OnInit {
     }
 
     public getSearchedPosts(tagName){
-        console.log(tagName);
         this.postService.getPostsByTag(tagName).subscribe(
             returnValue => {
                 console.log(returnValue);
                 for (let i in returnValue){
                     let post = new UserPost();
+                    post.id = returnValue[i].postId;
                     post.img = this.amazon_prepend + returnValue[i].postImgKey;
                     post.recipe = returnValue[i].postContent;
                     post.comments = returnValue[i].comments;
                     post.comments[0].comDate = returnValue[i].postDate;
 
                     this.searchedPosts[i] = post;
-                    console.log(this.searchedPosts[i]);
                 }
             }, error => {console.log(error)}
         );

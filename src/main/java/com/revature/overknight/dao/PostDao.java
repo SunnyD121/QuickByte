@@ -2,6 +2,7 @@ package com.revature.overknight.dao;
 
 import java.util.List;
 
+import com.revature.overknight.beans.Comments;
 import com.revature.overknight.beans.Post;
 import com.revature.overknight.beans.Tag;
 
@@ -13,4 +14,5 @@ public interface PostDao {
 	public Post selectPostById(Integer id);
 	public Boolean deletePostById(Integer id);
 	public Post updatePost(Post post);
+	public Boolean addCommentToPost(Integer postId, Comments comment);
 }

@@ -29,7 +29,7 @@
           <img src={{img1Path}} class="media-object" style="width:45px">
       </div>
       <div class="media-body">
-          <h4 class="media-heading">{{originalComment.commentName}} <small><i>{{originalComment.comDate}}</i></small></h4> <!-- Posted on february 19, 2016 -->
+          <h4 class="media-heading">{{originalComment.commentName}} <small><i>Posted on {{originalComment.comDate}}</i></small></h4> <!-- Posted on february 19, 2016 -->
           <p>{{originalComment.commentText}}</p>
 
           <div *ngFor="let comment of postComments">
@@ -38,8 +38,8 @@
                       <img src="{{img1Path}}" class="media-object" style="width:45px">
                   </div>
                   <div class="media-body">
-                      <h4 class="media-heading">{{comment.username}} <small><i>Posted on {{comment.date.month.toLowerCase()}} {{comment.date.dayOfMonth}}, {{comment.date.year}}</i></small></h4>
-                      <p>{{comment.message}}</p>
+                      <h4 class="media-heading">{{comment.commentName}} <small><i>Posted on {{comment.comDate}}</i></small></h4> <!-- {{comment.date.month.toLowerCase()}} {{comment.date.dayOfMonth}}, {{comment.date.year}} -->
+                      <p>{{comment.commentText}}</p>
                   </div>
               </div>
           </div>

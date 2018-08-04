@@ -43,7 +43,6 @@ export class CreatePostComponent implements OnInit {
             var reader = new FileReader();
             reader.readAsDataURL(event.target.files[0]); // read file as data url
             reader.onload = (event) => { // called once readAsDataURL is completed
-            // console.log(event.srcElement);
             this.imgSrc = event.srcElement["result"];
             }
         }
@@ -67,8 +66,6 @@ export class CreatePostComponent implements OnInit {
         formData.append('tag', this.tag);
         this.postService.createPost(formData).subscribe(
             returnValue =>{
-                console.log(returnValue);
-
                 this.router.navigate(['/homepage']);
             }, error => {console.log(error)}
         )

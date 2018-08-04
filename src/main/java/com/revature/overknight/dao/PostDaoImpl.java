@@ -2,6 +2,7 @@ package com.revature.overknight.dao;
 
 import java.util.List;
 
+import com.revature.overknight.beans.Comments;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -184,6 +185,35 @@ public class PostDaoImpl implements PostDao {
 		}
 		return post;
 	}
+
+    @Override
+    public Boolean addCommentToPost(Integer postId, Comments comment) {
+        Post p = null;
+        Session session = HibernateUtil.getSession();
+        Transaction trans = null;
+
+        try{
+            trans = session.beginTransaction();
+            p = (Post)session.get(Post.class, postId);
+            if(null != p){
+                if(comment !=null){
+                    p.addComment(comment);
+                }
+
+                session.save(p);
+            }
+            trans.commit();
+            return true;
+        }catch(HibernateException e){
+            if(trans!=null){
+                trans.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }finally{
+            session.close();
+        }
+    }
 
 	
 }

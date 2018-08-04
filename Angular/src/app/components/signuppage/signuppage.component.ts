@@ -79,7 +79,6 @@ export class SignupPageComponent implements OnInit {
           returnValue => {
               //whaterver gets returned.
               this.serverSideCheck = returnValue;
-              console.log("Return Value: " + returnValue);
               if (this.serverSideCheck) {
                   this.cookie.set("LoggedIn", 'true');
                   this.cookie.set("Username", this.username);

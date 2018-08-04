@@ -9,6 +9,7 @@ import { Comment } from '../../objects/Comment'
   styleUrls: ['./media-post.component.css']
 })
 export class MediaPostComponent implements OnInit {
+    @Input() postId: number;
     @Input() postPic: string;
     @Input() postComments: Comment[];
     @Input() postRecipe: string;
@@ -44,12 +45,12 @@ export class MediaPostComponent implements OnInit {
   }
 
   public submitComment(){
-      console.log(this.commentBody);
-      this.postService.createComment(this.cookie.get('Username'), this.commentBody).subscribe(
+      this.postService.createComment(this.postId, this.cookie.get('Username'), this.commentBody).subscribe(
           returnValue => {
-              console.log(returnValue);
               this.postComments.push(new Comment(this.cookie.get('Username'), returnValue, this.commentBody));
               this.createCommentDisplay = false;
+              console.log("I hate you.");
+              console.log(this.postComments);
           }, error => {
               console.log("ERROR");
               console.log(error);}
@@ -58,7 +59,7 @@ export class MediaPostComponent implements OnInit {
 
   ngOnInit() {
       this.createCommentDisplay = false;
-      this.originalComment = this.postComments.pop();
+      this.originalComment = this.postComments.shift();
 
   }
 

@@ -54,6 +54,7 @@ public class CreateCommentServlet extends HttpServlet {
         reader.close();
 
 		//GET USERNAME, PASSWORD AND CC# FIELDS
+        int id = personObject.getInt("postId");
         String username = personObject.getString("username");
 		String text = personObject.getString("text");
 		
@@ -63,7 +64,7 @@ public class CreateCommentServlet extends HttpServlet {
 		
 		//CREATE COMMENT
 		
-		if(CommentService.createNewComment(username, text))
+		if(CommentService.createNewComment(id, username, text))
 		{
             out.println(new ObjectMapper().writeValueAsString(LocalDate.now()));
 

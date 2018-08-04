@@ -129,5 +129,7 @@ public class Post {
 		this.comments = comments;
 	}
 	
-	
+	public void addComment(Comments comment){
+	    comments.add(comment);
+    }
 }

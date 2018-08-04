@@ -1,11 +1,11 @@
 export class Comment{
-    public username:string;
+    public commentName:string;
     public date:Object;
-    public message:string;
+    public commentText:string;
 
     constructor(un, dt, msg){
-        this.username = un;
+        this.commentName = un;
         this.date = dt;
-        this.message = msg;
+        this.commentText = msg;
     }
 }

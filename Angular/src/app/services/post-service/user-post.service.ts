@@ -13,8 +13,8 @@ export class UserPostService {
       //return this.http.get("http://localhost:8081/", {});
   }
 
-  public createComment(username, commentBody){
-      return this.http.post("http://localhost:8081/CreateCommentServlet", {username: username, text: commentBody}); //user NAME, Text
+  public createComment(id, username, commentBody){
+      return this.http.post("http://localhost:8081/CreateCommentServlet", {postId: id, username: username, text: commentBody}); //user NAME, Text
   }
 
 

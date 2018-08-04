@@ -63,7 +63,7 @@ public class PostService {
 		{
 			posts = pd.selectAllPostsByTag(tagT);
 		}
-		
+
 		return posts;
 	}
 	
