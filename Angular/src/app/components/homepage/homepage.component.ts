@@ -18,7 +18,7 @@ export class HomePageComponent implements OnInit {
     headerMessage: string;
     validCriteria = ["American", "British", "Carribean", "Chinese", "French", "German", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Portuguese", "Spanish", "Thai"];
     isInitialized: boolean;
-    searchedPosts: Array<UserPost>;
+    searchedPosts: UserPost[] = new Array;
     premium: boolean;
     favoritedPosts_TEST = ["Pumpkin Pie", "Pheasant Under Glass", "Peach Cobbler", "Homemade Brownies"];
 

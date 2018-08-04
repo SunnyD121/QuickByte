@@ -45,10 +45,8 @@ public class SearchPostServlet extends HttpServlet {
         while ((input = request.getReader().readLine()) != null) sb.append(input);
 		input = sb.toString();
 
-		//GET USERNAME AND PASSWORD FIELDS
-        System.out.println(input);
-        String tag = input;
-		
+		//GET TAG FIELDS
+		String tag = input.toLowerCase();
 		//GET POSTS BASED ON TAG
 		PostService ps = new PostService();
 		List<Post> posts = ps.SearchPostByTag(tag);
