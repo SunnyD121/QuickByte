@@ -16,11 +16,12 @@ export class HomePageComponent implements OnInit {
     array = new Array<number>(7);
     headerTitle: string;
     headerMessage: string;
+    subheaderMessage: string;
     validCriteria = ["American", "British", "Carribean", "Chinese", "French", "German", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Portuguese", "Spanish", "Thai"];
     isInitialized: boolean;
     searchedPosts: UserPost[] = new Array;
     premium: boolean;
-    favoritedPosts_TEST = ["Pumpkin Pie", "Pheasant Under Glass", "Peach Cobbler", "Homemade Brownies"];
+    favoritedPosts = [""];
     amazon_prepend = "https://s3.amazonaws.com/quickbytes3/";
     loadingText = "Loading...";
 
@@ -55,8 +56,12 @@ export class HomePageComponent implements OnInit {
             this.activatedRoute.queryParams.subscribe(params => {this.query = params.query;});
             if (!this.query) {    //if not arriving here via search results
                 this.headerTitle = "Welcome";
-                this.headerMessage = "This is some information. There are words here talking about the words that should be here instead of the words that are here,"
-                      + " these words. Words words words words words. Did you know that you can type virtually anything onto a webpage?"
+                this.headerMessage = "QuickByte aims to bring communities of people together through the power" +
+                " of food. Our goal is to enable artisans of the culinary community to more easily share their artistry and offer their wisdom" +
+                " to new and upcoming chefs. On QuickByte, you can post your favorite recipes*, browse other recipes, rate, and give comments on" +
+                " posts that other users have uploaded*. You are also able to search for posts by cutlture.";
+                this.subheaderMessage = "* You must be signed in to access this functionality";
+
                 // this.searchedPosts = this.getPostsMatchingSearchCriteria("trending");
                 this.getSearchedPosts("trending");
             }
@@ -65,6 +70,7 @@ export class HomePageComponent implements OnInit {
                 if (!this.contains(this.query, this.validCriteria)){
                     this.headerMessage = "\'" + this.query + "\' is not a valid search criteria. Valid critera are: \n" + this.validCriteria;
                     this.searchedPosts = null;
+                    this.loadingText = "";
                 }
                 else {
                     this.headerMessage = "Showing results for \'" + this.query + "\':";
@@ -73,7 +79,9 @@ export class HomePageComponent implements OnInit {
                 }
             }
         }
-        else{}
+        else{
+            this.loadingText = "";
+        }
     }
 
     getPostsMatchingSearchCriteria(searchQuery: string):Array<Object>{
@@ -108,6 +116,7 @@ export class HomePageComponent implements OnInit {
     public getSearchedPosts(tagName){
         this.postService.getPostsByTag(tagName).subscribe(
             returnValue => {
+                this.searchedPosts = new Array;
                 console.log(returnValue);
                 for (let i in returnValue){
                     let post = new UserPost();
@@ -116,10 +125,11 @@ export class HomePageComponent implements OnInit {
                     post.recipe = returnValue[i].postContent;
                     post.comments = returnValue[i].comments;
                     post.comments[0]["comDate"] = returnValue[i].postDate;
-
+                    post.title = returnValue[i].postTitle;
                     this.searchedPosts[i] = post;
-                    this.loadingText = "";   //remove loading text
+
                 }
+                this.loadingText = "";   //remove loading text
             }, error => {console.log(error)}
         );
     }

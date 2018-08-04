@@ -17,7 +17,7 @@ premium ? 'block' : 'none' -> element is only shown to premium users
         <p [style.display]="premium ? 'none' : 'block'"><a routerLink="/signuppage">Become a Premium Member!</a></p>
         <hr>
         <h3 [style.display]="premium ? 'block' : 'none'">Favorites</h3>
-        <div *ngFor="let favorite of favoritedPosts_TEST" [style.display]="premium ? 'block' : 'none'"> <!-- loop over all favorites -->
+        <div *ngFor="let favorite of favoritedPosts" [style.display]="premium ? 'block' : 'none'"> <!-- loop over all favorites -->
             <p><a href="#">{{favorite}}</a></p>
         </div>
         <hr [style.display]="premium ? 'block' : 'none'">
@@ -26,10 +26,11 @@ premium ? 'block' : 'none' -> element is only shown to premium users
     <div class="col-sm-8 text-left">
       <h1>{{headerTitle}}</h1>
       <p style="white-space:pre-wrap">{{headerMessage}}</p>
+      <p style="color:grey"><i>{{subheaderMessage}}</i></p>
       <h3>{{loadingText}}</h3>
       <div *ngIf="searchedPosts; else elseBlock1"> <!-- if there are posts (search results) -->
           <div *ngFor="let post of searchedPosts"> <!-- loop over all posts -->
-              <app-media-post [postId]="post.id" [postPic]="post.img" [postComments]="post.comments" [postRecipe]="post.recipe"></app-media-post>
+              <app-media-post [postId]="post.id" [postPic]="post.img" [postComments]="post.comments" [postRecipe]="post.recipe" [postTitle]="post.title"></app-media-post>
           </div>
       </div>  <!-- end *ngIf -->
       <ng-template #elseBlock1>
@@ -50,6 +51,5 @@ premium ? 'block' : 'none' -> element is only shown to premium users
 </div>
 
 <footer class="container-fluid text-center">
-<p>Down here are even more words! However, the words here probably shouldn't be these words but rather links to some fancy
-places. Hopefully the links are safe, but who knows, its all just words.</p>
+<p>Quickbyte™ © ® ℗ </p>
 </footer>

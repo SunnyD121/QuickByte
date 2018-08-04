@@ -13,6 +13,7 @@ export class MediaPostComponent implements OnInit {
     @Input() postPic: string;
     @Input() postComments: Comment[];
     @Input() postRecipe: string;
+    @Input() postTitle: string;
 
     commentBody = "";
     createCommentDisplay: boolean;
@@ -33,7 +34,7 @@ export class MediaPostComponent implements OnInit {
   }
 
   public favoriteClicked(){
-      alert("TODO: favoriteClicked() not implemented yet.");
+      console.log("TODO: favoriteClicked() not implemented yet.");
   }
   public likeClicked(){
       if (!this.hasRated){
@@ -48,9 +49,13 @@ export class MediaPostComponent implements OnInit {
       }
   }
   public commentClicked(){
-      this.createCommentDisplay = !this.createCommentDisplay;
+      if (this.createCommentDisplay) this.createCommentDisplay = false;
+      else {
+          if (this.cookie.get('LoggedIn') == 'true') {
+              this.createCommentDisplay = true;
+          }
+      }
       this.commentBody = "";
-
   }
 
   public submitComment(){
