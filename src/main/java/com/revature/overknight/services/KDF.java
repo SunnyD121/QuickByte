@@ -7,13 +7,12 @@ import javax.crypto.*;
 import javax.crypto.spec.*;
 
 /**
- * 
  * KDF encapsulates all the logic necessary to protect the confidentiality
  * of user credit card numbers and passwords. KDF is an acronym for Key
  * Derivation Function, a function that produces a pseudorandom key given a
  * user's password. This key will be the protected password. As with standard
  * practice, a salt is incorporated into the hash to increase entropy.
- * 
+ * <p>
  * As of right now, this application also hashes user credit card numbers thus 
  * we will never be able to retrieve the original number. For this reason,
  * normal applications actually have a way to decrypt an encrypted number so
@@ -30,9 +29,21 @@ public class KDF {
 	 * with Arrays.fill(variable, some_value).
 	 * 
 	 */
+	/**
+	 * A salt is nothing more than a random string associated with a password.
+	 * Its purpose is to cause the hash function to produce different results
+	 * for users who are using identical passwords.
+	 */
+	private byte[] salt = null;
 	
-	private byte[] salt;
-	
+	/**
+	 * Compares a password used to login with the password used to register.
+	 * 
+	 * @param actual the actual password a user registered with
+	 * @param attempt the attempted password a user is using to login
+	 * @param salt the salt associated with the actual password
+	 * @return true if passwords match, false otherwise.
+	 */
 	public boolean checkPassword(byte[] actual, char[] attempt, byte[] salt) {
 		byte[] hash = hashPassword(attempt, salt);
 		Arrays.fill(attempt, Character.MIN_VALUE);
@@ -43,6 +54,15 @@ public class KDF {
 		return equal;
 	}
 	
+	/**
+	 * Uses the Java-implemented PBKDF2 algorithm with HMAC SHA1 to hash a
+	 * user password.  
+	 * 
+	 * @param password the password to hash
+	 * @param salt the salt to add entropy
+	 * @return a hash value that is 160 bits long or null when something went
+	 * wrong.
+	 */
 	public byte[] hashPassword(char[] password, byte[] salt) {
 		/* 
 		 * 20000 iterations is twice the recommendation. SHA1 produces a value
@@ -76,6 +96,12 @@ public class KDF {
 		return null;
 	}
 	
+	/**
+	 * Generates a pseudorandom string that is forever associated with a
+	 * password.
+	 * 
+	 * @return a pseudorandom salt or null when something went wrong.
+	 */
 	public byte[] generateSalt() {
 		SecureRandom sr = null;
 		
@@ -96,11 +122,15 @@ public class KDF {
 		return null;
 	}
 
-    public byte[] encryptPassword(String password){
-        return new KDF().hashPassword(password.toCharArray(), salt = generateSalt());
+	/**
+	 * @param password the password a use is registering with.
+	 * @return the encrypted password or null when something went wrong.
+	 */
+    public byte[] encryptPassword(String password) {
+        return hashPassword(password.toCharArray(), salt = generateSalt());
     }
 
-    public byte[] getSalt(){
+    public byte[] getSalt() {
 	    return salt;
     }
 }
