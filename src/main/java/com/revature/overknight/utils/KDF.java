@@ -1,5 +1,6 @@
-package com.revature.overknight.services;
+package com.revature.overknight.utils;
 
+import com.revature.overknight.utils.Logger.*;
 import java.security.*;
 import java.security.spec.*;
 import java.util.*;
@@ -20,7 +21,6 @@ import javax.crypto.spec.*;
  * card numbers in this manner so hashing serves our purposes. 
  * 
  * @author Walter Xia
- * 
  */
 public class KDF {
 	/*
@@ -45,11 +45,13 @@ public class KDF {
 	 * @return true if passwords match, false otherwise.
 	 */
 	public boolean checkPassword(byte[] actual, char[] attempt, byte[] salt) {
+		Logger.log(this.getClass(), "Entered checkPassword().");
 		byte[] hash = hashPassword(attempt, salt);
 		Arrays.fill(attempt, Character.MIN_VALUE);
 		boolean equal = Arrays.equals(actual, hash);
 		Arrays.fill(actual, Byte.MIN_VALUE);
 		Arrays.fill(hash, Byte.MIN_VALUE);
+		Logger.log(this.getClass(), "Exiting checkPassword().");
 		
 		return equal;
 	}
@@ -63,7 +65,8 @@ public class KDF {
 	 * @return a hash value that is 160 bits long or null when something went
 	 * wrong.
 	 */
-	public byte[] hashPassword(char[] password, byte[] salt) {
+	byte[] hashPassword(char[] password, byte[] salt) {
+		Logger.log(this.getClass(), "Entered hashPassword().");
 		/* 
 		 * 20000 iterations is twice the recommendation. SHA1 produces a value
 		 * that is 160 bits long so we use 160 bits for the key length.
@@ -75,23 +78,27 @@ public class KDF {
 		try {
 			// We will use the PBKDF2 algorithm that uses SHA1.
 			skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+			Logger.log(this.getClass(), "Exiting hashPassword() normally.");
 			
 			// Hash the password.
 			return skf.generateSecret(ks).getEncoded();
 		} 
 		
 		catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}
 		
 		catch (InvalidKeySpecException e) {
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}
 		
 		finally {
 			// We do not need ks anymore so clear it from memory.
 			if (ks != null) ks.clearPassword();
 		}
+		
+		Logger.log(this.getClass(), "Exiting hashPassword() with errors.", 
+				   Severity.WARN);
 		
 		return null;
 	}
@@ -102,22 +109,29 @@ public class KDF {
 	 * 
 	 * @return a pseudorandom salt or null when something went wrong.
 	 */
-	public byte[] generateSalt() {
+	byte[] generateSalt() {
+		Logger.log(this.getClass(), "Entered generateSalt().");
 		SecureRandom sr = null;
 		
 		try {
 			sr = SecureRandom.getInstance("SHA1PRNG");
-			/* The salt should be around the same length as the result of the
+			/* 
+			 * The salt should be around the same length as the result of the
 			 * hash function, 160 bits.
 			 */
 			byte[] salt = new byte[20];
 			sr.nextBytes(salt);
+			Logger.log(this.getClass(), "Exiting generateSalt() normally.");
 			
 			return salt;
 		} 
+		
 		catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}
+		
+		Logger.log(this.getClass(), "Exiting generateSalt() with errors.", 
+				   Severity.WARN);
 		
 		return null;
 	}
@@ -127,6 +141,8 @@ public class KDF {
 	 * @return the encrypted password or null when something went wrong.
 	 */
     public byte[] encryptPassword(String password) {
+    	Logger.log(this.getClass(), "Entered and exiting encryptPassword().");
+    	
         return hashPassword(password.toCharArray(), salt = generateSalt());
     }
 

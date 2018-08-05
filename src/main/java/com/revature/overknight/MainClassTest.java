@@ -2,9 +2,9 @@ package com.revature.overknight;
 
 import com.revature.overknight.beans.Users;
 import com.revature.overknight.dao.UserDaoImpl;
-import com.revature.overknight.services.KDF;
 import com.revature.overknight.services.PostService;
 import com.revature.overknight.services.UserService;
+import com.revature.overknight.utils.KDF;
 
 public class MainClassTest {
 

@@ -9,6 +9,7 @@ import org.mockito.Mockito;
 
 import com.revature.overknight.beans.Users;
 import com.revature.overknight.dao.UserDaoImpl;
+import com.revature.overknight.utils.KDF;
 
 
 public class UserServiceTestWithMock {

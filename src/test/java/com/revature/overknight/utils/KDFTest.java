@@ -1,4 +1,4 @@
-package com.revature.overknight.tests;
+package com.revature.overknight.utils;
 
 import com.revature.overknight.services.*;
 import org.junit.*;
