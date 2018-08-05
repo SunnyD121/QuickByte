@@ -28,7 +28,7 @@ public class Post {
 	private String postTitle;
 	@Column
 	private String postImgKey;
-	@Column
+	@Column(length=4000)
 	private String postContent;
 	@Column
 	private Date postDate;

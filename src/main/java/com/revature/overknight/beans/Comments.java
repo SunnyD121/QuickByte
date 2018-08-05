@@ -25,6 +25,7 @@ public class Comments {
 	private Integer cid;
 	private String commentName;
 	private Date comDate;
+	@Column(length=4000)
 	private String commentText;
 	
 	
