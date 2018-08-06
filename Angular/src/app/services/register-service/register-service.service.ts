@@ -11,15 +11,15 @@ export class RegisterService {
     constructor(private http: HttpClient) { }
 
       registerUser(username: string, password: string, creditCardNum: number): Observable<any>{
-        return this.http.post("http://18.206.54.186:8085/QuickByte/RegisterServlet",
+        return this.http.post("http://18.206.54.186:8085//RegisterServlet",
             {username: username, password: password, creditCardNumber: creditCardNum.toString()});
     }
 
     checkUniqueUsername(username: string): Observable<any>{
-        return this.http.post("http://18.206.54.186:8085/QuickByte/UniqueUsernameServlet", {username: username});
+        return this.http.post("http://18.206.54.186:8085//UniqueUsernameServlet", {username: username});
     }
 
     checkValidCardNumber(cardNum: number): Observable<any>{
-        return this.http.post("http://18.206.54.186:8085/QuickByte/CreditCardVerificationServlet", {creditCardNumber: cardNum.toString()})
+        return this.http.post("http://18.206.54.186:8085//CreditCardVerificationServlet", {creditCardNumber: cardNum.toString()})
     }
 }
