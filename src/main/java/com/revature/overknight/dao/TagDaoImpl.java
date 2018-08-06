@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import com.revature.overknight.beans.Post;
 import com.revature.overknight.beans.Tag;
 import com.revature.overknight.utils.HibernateUtil;
+import com.revature.overknight.utils.Logger;
 
 public class TagDaoImpl implements TagDao {
 

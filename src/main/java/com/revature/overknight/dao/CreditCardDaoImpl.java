@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import com.revature.overknight.beans.CreditCard;
 import com.revature.overknight.beans.Users;
 import com.revature.overknight.utils.HibernateUtil;
+import com.revature.overknight.utils.Logger;
 
 public class CreditCardDaoImpl implements CreditCardDao {
 

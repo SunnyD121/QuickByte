@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.revature.overknight.utils.CcVerify;
+import com.revature.overknight.utils.Logger;
 import com.revature.overknight.services.UserService;
 
 /**

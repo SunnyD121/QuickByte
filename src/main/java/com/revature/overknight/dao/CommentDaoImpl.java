@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import com.revature.overknight.beans.Comments;
 import com.revature.overknight.utils.HibernateUtil;
+import com.revature.overknight.utils.Logger;
 
 public class CommentDaoImpl implements CommentDao {
 
