@@ -2,6 +2,7 @@ package com.revature.overknight.dao;
 
 import java.util.List;
 
+import com.revature.overknight.utils.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -236,9 +237,10 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public Boolean deleteUserById(Integer id) {
 		// TODO Auto-generated method stub
+        Logger.log(this.getClass(), "I hope no one was using this, because its an empty stub", Logger.Severity.ERROR);
 		return null;
 	}
 
-	
+
 
 }

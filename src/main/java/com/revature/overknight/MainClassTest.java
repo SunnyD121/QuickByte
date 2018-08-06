@@ -36,7 +36,7 @@ public class MainClassTest {
 		UserService.registerNewUser("whitedragonhorse", "whitedragonhorse", 5467566704648521L);
 
 		PostService ps = new PostService();
-		ps.insertNewPost("chrisp", "Alaskan Salmon Baked With Pecan Crunch Coating", "alaskasalmonbakewithpecancrunchcoating.png", "Prep Time: 20 Minutes\r\n" + 
+		ps.insertNewPost("chrisp", "Alaskan Salmon Baked With Pecan Crunch Coating", "alaskasalmonbakewithpecancrunchcoating.PNG", "Prep Time: 20 Minutes\r\n" + 
 				"Cook Time: 10 Minutes\r\n" + 
 				"Ready In: 30 Minutes\r\n" + 
 				"Servings: 6\r\n" + 
@@ -64,7 +64,7 @@ public class MainClassTest {
 				"3. Bake for 10 minutes per inch of thickness, measured at thickest part, or\r\n" + 
 				"until salmon just flakes when tested with a fork. Serve garnished with\r\n" + 
 				"lemon wedges.", "American", "");
-		ps.insertNewPost("erics", "Armadillo Eggs", "armadilloeggs.png", "Prep Time: 30 Minutes\r\n" + 
+		ps.insertNewPost("erics", "Armadillo Eggs", "armadilloeggs.PNG", "Prep Time: 30 Minutes\r\n" + 
 				"Cook Time: 25 Minutes\r\n" + 
 				"Ready In: 55 Minutes\r\n" + 
 				"Servings: 12\r\n" + 
@@ -92,7 +92,7 @@ public class MainClassTest {
 				"\r\n" + 
 				"5. Arrange jalapeno balls on the prepared baking sheet. Bake 25 minutes in\r\n" + 
 				"the preheated oven, until lightly browned.", "American", "");
-		ps.insertNewPost("robertc", "asparagus Wrapped in Crispy Proscuitto", "asparaguswrappedincrispproscuitto.png", "Prep Time: 5 Minutes\r\n" + 
+		ps.insertNewPost("robertc", "asparagus Wrapped in Crispy Proscuitto", "asparaguswrappedincrispproscuitto.PNG", "Prep Time: 5 Minutes\r\n" + 
 				"Cook Time: 15 Minutes\r\n" + 
 				"Ready In: 20 Minutes\r\n" + 
 				"Servings: 16\r\n" + 
@@ -138,7 +138,7 @@ public class MainClassTest {
 				"4. Lightly brown the butter in a saucepan over medium heat. Remove\r\n" + 
 				"from heat, and stir in soy sauce and balsamic vinegar. Pour over the\r\n" + 
 				"baked asparagus to serve.", "American", "");
-		ps.insertNewPost("xuanzangc", "Beef Lasagna", "beeflasagna.png", "Prep Time: 20 Minutes\r\n" + 
+		ps.insertNewPost("xuanzangc", "Beef Lasagna", "beeflasagna.PNG", "Prep Time: 20 Minutes\r\n" + 
 				"Cook Time: 45 Minutes\r\n" + 
 				"Ready In: 1 Hour 5 Minutes\r\n" + 
 				"Servings: 10\r\n" + 
@@ -167,7 +167,7 @@ public class MainClassTest {
 				"sprinkle with remaining 1/4 cup Parmesan cheese. Bake\r\n" + 
 				"uncovered an additional 5 minutes. Let stand 10 minutes\r\n" + 
 				"before serving.", "American", "");
-		ps.insertNewPost("wukongs", "Brownies", "brownies.png", "Servings: 12\r\n" + 
+		ps.insertNewPost("wukongs", "Brownies", "brownies.PNG", "Servings: 12\r\n" + 
 				"\r\n" + 
 				"Ingredients\r\n" + 
 				"4 (1 ounce) squares unsweetened chocolate\r\n" + 
@@ -190,7 +190,7 @@ public class MainClassTest {
 				"\r\n" + 
 				"4. Spread in greased 13 x 9 inch pan. Bake for 35 minutes\r\n" + 
 				"(do not overbake).", "American", "");
-		ps.insertNewPost("wunengz", "Bruchetta", "bruchetta.png", "Prep Time: 15 Minutes\r\n" + 
+		ps.insertNewPost("wunengz", "Bruchetta", "bruchetta.PNG", "Prep Time: 15 Minutes\r\n" + 
 				"Cook Time: 5 Minutes\r\n" + 
 				"Ready In: 30 Minutes\r\n" + 
 				"Yield: 12 Servings\r\n" + 
@@ -218,7 +218,7 @@ public class MainClassTest {
 				"4. Broil for 5 minutes.\r\n" + 
 				"\r\n" + 
 				"5. Divide the tomato mixture evenly over baguette slices. Serve.", "American", "");
-		ps.insertNewPost("wujings", "Butter Cream Icing", "buttercreamicing.png", "Prep Time: 15 Minutes \r\n" + 
+		ps.insertNewPost("wujings", "Butter Cream Icing", "buttercreamicing.PNG", "Prep Time: 15 Minutes \r\n" + 
 				"Ready In: 15 Minutes\r\n" + 
 				"Servings: 20\r\n" + 
 				"\r\n" + 
@@ -236,7 +236,7 @@ public class MainClassTest {
 				"Blend in the sugar, one cup at a time, beating well after each addition.\r\n" + 
 				"Beat in the milk, and continue mixing until light and fluffy.\r\n" + 
 				"Keep icing covered until ready to decorate.", "American", "");
-		ps.insertNewPost("whitedragonhorse", "Cheese Bake Bars", "cheesecakebars.png", "Servings:16\r\n" + 
+		ps.insertNewPost("whitedragonhorse", "Cheese Bake Bars", "cheesecakebars.PNG", "Servings:16\r\n" + 
 				"\r\n" + 
 				"Ingredients:\r\n" + 
 				"Crust\r\n" + 
