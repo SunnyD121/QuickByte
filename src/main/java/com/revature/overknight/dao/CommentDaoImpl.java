@@ -30,7 +30,7 @@ public class CommentDaoImpl implements CommentDao {
 			{
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}
 		finally
 		{
@@ -57,7 +57,7 @@ public class CommentDaoImpl implements CommentDao {
 			{
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}
 		finally
 		{
@@ -86,7 +86,7 @@ public class CommentDaoImpl implements CommentDao {
 			{
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}
 		finally 
 		{
@@ -115,7 +115,7 @@ public class CommentDaoImpl implements CommentDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close(); 
 		}
@@ -147,7 +147,7 @@ public class CommentDaoImpl implements CommentDao {
 			{
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}
 		finally
 		{

@@ -27,7 +27,7 @@ public class TagDaoImpl implements TagDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close();
 		}
@@ -48,7 +48,7 @@ public class TagDaoImpl implements TagDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close();
 		}
@@ -68,7 +68,7 @@ public class TagDaoImpl implements TagDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close();
 		}
@@ -108,7 +108,7 @@ public class TagDaoImpl implements TagDao {
 			
 			trans.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 			if(trans!=null){
 				trans.rollback();
 			}
@@ -138,7 +138,7 @@ public class TagDaoImpl implements TagDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close(); 
 		}
@@ -165,7 +165,7 @@ public class TagDaoImpl implements TagDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close(); 
 		}

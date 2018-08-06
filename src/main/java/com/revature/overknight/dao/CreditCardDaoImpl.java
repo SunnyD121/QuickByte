@@ -25,7 +25,7 @@ public class CreditCardDaoImpl implements CreditCardDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close();
 		}
@@ -44,7 +44,7 @@ public class CreditCardDaoImpl implements CreditCardDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close();
 		}
@@ -70,7 +70,7 @@ public class CreditCardDaoImpl implements CreditCardDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close(); 
 		}
@@ -118,7 +118,7 @@ public class CreditCardDaoImpl implements CreditCardDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close(); 
 		}
@@ -137,7 +137,7 @@ public class CreditCardDaoImpl implements CreditCardDao {
 			
 			trans.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 			if(trans!=null){
 				trans.rollback();
 			}

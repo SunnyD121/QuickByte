@@ -53,12 +53,12 @@ public class GetObject {
         catch(AmazonServiceException e) {
             // The call was transmitted successfully, but Amazon S3 couldn't process 
             // it, so it returned an error response.
-            e.printStackTrace();
+            Logger.log(GetObject.class, e);
         }
         catch(SdkClientException e) {
             // Amazon S3 couldn't be contacted for a response, or the client
             // couldn't parse the response from Amazon S3.
-            e.printStackTrace();
+            Logger.log(GetObject.class, e);
         }
         finally {
             // To ensure that the network connection doesn't remain open, close any open input streams.

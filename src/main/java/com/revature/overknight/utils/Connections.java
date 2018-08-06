@@ -48,10 +48,10 @@ public class Connections {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger.log(Connections.class, e);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger.log(Connections.class, e);
 			System.out.println("ORACLE DRIVER CLASS NOT FOUND.");
 		} 
 		return conn;

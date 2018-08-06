@@ -64,7 +64,7 @@ public class RegisterServlet extends HttpServlet {
         }
 		catch (NumberFormatException e)
 		{	
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}
 		
 		//SETUP REPLY

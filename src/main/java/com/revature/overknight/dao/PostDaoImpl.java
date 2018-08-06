@@ -29,7 +29,7 @@ public class PostDaoImpl implements PostDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close();
 		}
@@ -51,7 +51,7 @@ public class PostDaoImpl implements PostDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close();
 		}
@@ -72,7 +72,7 @@ public class PostDaoImpl implements PostDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close();
 		}
@@ -107,7 +107,7 @@ public class PostDaoImpl implements PostDao {
 			
 			trans.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 			if(trans!=null){
 				trans.rollback();
 			}
@@ -137,7 +137,7 @@ public class PostDaoImpl implements PostDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close(); 
 		}
@@ -179,7 +179,7 @@ public class PostDaoImpl implements PostDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close(); 
 		}
@@ -208,7 +208,7 @@ public class PostDaoImpl implements PostDao {
             if(trans!=null){
                 trans.rollback();
             }
-            e.printStackTrace();
+            Logger.log(this.getClass(), e);
             return false;
         }finally{
             session.close();

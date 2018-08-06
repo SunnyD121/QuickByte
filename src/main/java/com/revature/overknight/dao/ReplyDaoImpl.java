@@ -25,7 +25,7 @@ public class ReplyDaoImpl implements ReplyDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close();
 		}
@@ -46,7 +46,7 @@ public class ReplyDaoImpl implements ReplyDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close();
 		}
@@ -66,7 +66,7 @@ public class ReplyDaoImpl implements ReplyDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close();
 		}
@@ -86,7 +86,7 @@ public class ReplyDaoImpl implements ReplyDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close();
 		}
@@ -105,7 +105,7 @@ public class ReplyDaoImpl implements ReplyDao {
 			
 			trans.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 			if(trans!=null){
 				trans.rollback();
 			}
@@ -135,7 +135,7 @@ public class ReplyDaoImpl implements ReplyDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close(); 
 		}
@@ -168,7 +168,7 @@ public class ReplyDaoImpl implements ReplyDao {
 			if(trans!=null){
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}finally{
 			session.close(); 
 		}
@@ -187,7 +187,7 @@ public class ReplyDaoImpl implements ReplyDao {
 			
 			trans.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 			if(trans!=null){
 				trans.rollback();
 			}

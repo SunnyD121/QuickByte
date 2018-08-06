@@ -94,7 +94,7 @@ public class AWSObjectIO {
 	        catch (Exception e)
 	        {
 	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+	            Logger.log(this.getClass(), e);
 	        }
 	        
            return(ps.insertNewPost(username, title, imgKey, content, tag, commentText));

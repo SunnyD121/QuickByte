@@ -32,7 +32,7 @@ public class UserDaoImpl implements UserDao {
 			{
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}
 		finally
 		{
@@ -59,7 +59,7 @@ public class UserDaoImpl implements UserDao {
 			{
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}
 		finally
 		{
@@ -82,7 +82,7 @@ public class UserDaoImpl implements UserDao {
 		} 
 		catch (Exception e) 
 		{
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 			if(tx!=null)
 			{
 				tx.rollback();
@@ -121,7 +121,7 @@ public class UserDaoImpl implements UserDao {
 			{
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}
 		finally
 		{
@@ -184,7 +184,7 @@ public class UserDaoImpl implements UserDao {
 			{
 				trans.rollback();
 			}
-			e.printStackTrace();
+			Logger.log(this.getClass(), e);
 		}
 		finally
 		{
