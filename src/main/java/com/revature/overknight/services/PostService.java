@@ -11,6 +11,7 @@ import com.revature.overknight.beans.Tag;
 import com.revature.overknight.dao.CommentDaoImpl;
 import com.revature.overknight.dao.PostDaoImpl;
 import com.revature.overknight.dao.UserDaoImpl;
+import com.revature.overknight.utils.Logger;
 
 public class PostService {
 	
@@ -25,6 +26,10 @@ public class PostService {
 		Integer userId = null;
 		
 		//GET USER'S ID
+		Logger.log(this.getClass(), "SEARCH HERE: " + username);
+		Logger.log(this.getClass(), "SEARCH HERE: " + ud);
+		Logger.log(this.getClass(), "SEARCH HERE: " + ud.selectUserByUsername(username));
+		Logger.log(this.getClass(), "SEARCH HERE: " + ud.selectUserByUsername(username).getId());
 		userId = ud.selectUserByUsername(username).getId();
 		
 		// VERIFY THAT TAG EXISTS OR ADD IT IF IT DOESN'T
