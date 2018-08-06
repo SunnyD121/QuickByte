@@ -10,11 +10,11 @@ export class UserPostService {
   constructor(private http: HttpClient) { }
 
   getPost(){
-      //return this.http.get("http://18.206.54.186:8085/:8085/", {});
+      
   }
 
   public createComment(id, username, commentBody){
-      return this.http.post("http://18.206.54.186:8085//CreateCommentServlet", {postId: id, username: username, text: commentBody}); //user NAME, Text
+      return this.http.post("http://18.206.54.186:8085/CreateCommentServlet", {postId: id, username: username, text: commentBody}); //user NAME, Text
   }
 
 
@@ -22,11 +22,11 @@ export class UserPostService {
 
 
   public createPost(formData){
-      return this.http.post("http://18.206.54.186:8085//CreatePostServlet", formData);
+      return this.http.post("http://18.206.54.186:8085/CreatePostServlet", formData);
   }
 
   public getPostsByTag(tagName){
-      return this.http.post("http://18.206.54.186:8085//SearchPostServlet", tagName);
+      return this.http.post("http://18.206.54.186:8085/SearchPostServlet", tagName);
   }
 
 }

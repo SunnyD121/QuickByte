@@ -30,11 +30,11 @@ export class UserService {
   }
 
   getAllUsers(): Observable<any>{
-      return this.http.get("http://18.206.54.186:8085//GetAllUsersServlet");
+      return this.http.get("http://18.206.54.186:8085/GetAllUsersServlet");
   }
 
   banUser(username): Observable<any> {
-      return this.http.post("http://18.206.54.186:8085//BanUserServlet", username);
+      return this.http.post("http://18.206.54.186:8085/BanUserServlet", username);
   }
 
 
